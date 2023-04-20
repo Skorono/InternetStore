@@ -1,0 +1,45 @@
+﻿<Window x:Class="InternetStore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InternetStore"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="715" Width="998">
+    <Grid x:Name="grid" MaxWidth="800" MinWidth="750">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition MaxWidth="600" Width="5*"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition  Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="entryField" Grid.Column="1" Grid.Row="1" Background="#FF822BAD" BorderBrush="White" BorderThickness="1" CornerRadius="50">
+            <Border BorderBrush="#FF822BAD" Background="#FF6F2096" BorderThickness="2" Height="250" Width="300" Margin="25, 20, 0, 0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Canvas Grid.Row="1" Grid.Column="1">
+                        <Button x:Name="Registration" Content="Регистрация" Width="100" Height="25" Click="RegistrationNavigate"></Button>
+                        <Button x:Name="SignUp" Content="Войти" Width="100" Height="25" Click="SignUpNavigate" Margin="0 30 0 0"></Button>
+                    </Canvas>
+                </Grid>
+            </Border>
+        </Border>
+        <Frame x:Name="Frame" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3"></Frame>
+    </Grid>
+</Window>
