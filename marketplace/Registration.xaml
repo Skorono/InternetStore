@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:InternetStore"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -34,7 +35,7 @@
                 <Canvas Grid.Column="0" Grid.Row="0">
                     <Border BorderBrush="#FF822BAD" Background="#FF6F2096" BorderThickness="2" Height="250" Width="300" Margin="25, 20, 0, 0">
                         <Canvas x:Name="InputArea">
-                            <Grid>
+                            <Grid Margin="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
@@ -47,13 +48,20 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition MinWidth="150" MaxWidth="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox x:Name="NameField" Grid.Row="0" Grid.Column="0"></TextBox>
-                                <TextBox Grid.Row="1" Grid.Column="0"></TextBox>
-                                <TextBox Grid.Row="2" Grid.Column="0"></TextBox>
-                                <TextBox Grid.Row="3" Grid.Column="0"></TextBox>
-                                <TextBox Grid.Row="4" Grid.Column="0"></TextBox>
+                                <StackPanel>
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type xctk:WatermarkTextBox}">
+                                            <Setter Property="Margin" Value="2"></Setter>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <xctk:WatermarkTextBox x:Name="NameField" Watermark="Имя"/>
+                                    <xctk:WatermarkTextBox Watermark="Фамилия"/>
+                                    <xctk:WatermarkTextBox Watermark="Отчество"/>
+                                    <xctk:WatermarkTextBox Watermark="Пароль"/>
+                                </StackPanel>
                             </Grid>
                         </Canvas>
                     </Border>

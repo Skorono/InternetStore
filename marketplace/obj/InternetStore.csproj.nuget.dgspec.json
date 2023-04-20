@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ольга\\Source\\Repos\\Skorono\\InternetStore\\marketplace\\InternetStore.csproj": {}
+    "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ольга\\Source\\Repos\\Skorono\\InternetStore\\marketplace\\InternetStore.csproj": {
+    "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ольга\\Source\\Repos\\Skorono\\InternetStore\\marketplace\\InternetStore.csproj",
+        "projectUniqueName": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
         "projectName": "InternetStore",
-        "projectPath": "C:\\Users\\Ольга\\Source\\Repos\\Skorono\\InternetStore\\marketplace\\InternetStore.csproj",
-        "packagesPath": "C:\\Users\\Ольга\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ольга\\Source\\Repos\\Skorono\\InternetStore\\marketplace\\obj\\",
+        "projectPath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
+        "packagesPath": "C:\\Users\\astat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio SDK\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Ольга\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\astat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +43,12 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Extended.Wpf.Toolkit": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

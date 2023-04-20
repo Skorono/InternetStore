@@ -33,9 +33,11 @@
                         <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Canvas Grid.Row="1" Grid.Column="1">
-                        <Button x:Name="Registration" Content="Регистрация" Width="100" Height="25" Click="RegistrationNavigate"></Button>
-                        <Button x:Name="SignUp" Content="Войти" Width="100" Height="25" Click="SignUpNavigate" Margin="0 30 0 0"></Button>
+                    <Canvas Grid.Row="1" Grid.Column="1" Margin="0 20 0 0">
+                        <UniformGrid Rows="2" Columns="1" Width="150" Height="50">
+                            <Button x:Name="Registration" Content="Регистрация" Click="RegistrationNavigate"></Button>
+                            <Button x:Name="SignUp" Content="Войти" Click="SignUpNavigate"></Button>
+                        </UniformGrid>
                     </Canvas>
                 </Grid>
             </Border>

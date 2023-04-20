@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "RDwne7qYkRTVA1oDwvivxQuLkTus02O8yO1x6WBGRXvNBXxKSF+Z5KqG2NCNPZ4iGbr90kPlorqI5GOji0M9uA==",
+  "dgSpecHash": "XA0c8XMXOsebqRA43flRWTIdkuqRu2bFF9/VjHqqXJOmLrtnCfZbQDOFcuAmQzMx4SfphJB3c8Pq73sMzX4IfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ольга\\Source\\Repos\\Skorono\\InternetStore\\marketplace\\InternetStore.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\astat\\.nuget\\packages\\extended.wpf.toolkit\\4.5.0\\extended.wpf.toolkit.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }
