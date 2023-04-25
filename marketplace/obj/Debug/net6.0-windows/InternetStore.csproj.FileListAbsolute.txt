@@ -43,8 +43,6 @@ C:\Users\Ольга\Desktop\projects\praktika\marketplace\marketplace\obj\Debug\
 C:\Users\Ольга\Desktop\projects\praktika\marketplace\marketplace\obj\Debug\net6.0-windows\InternetStore.genruntimeconfig.cache
 C:\Users\Ольга\Desktop\projects\praktika\marketplace\marketplace\obj\Debug\net6.0-windows\ref\InternetStore.dll
 C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\InternetStore.csproj.AssemblyReference.cache
-C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Registration.g.cs
 C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\InternetStore_MarkupCompile.cache
 C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\InternetStore_MarkupCompile.lref
@@ -56,8 +54,6 @@ C:\Users\astat\Source\Repos\InternetStore\marketplace\bin\Debug\net6.0-windows\I
 C:\Users\astat\Source\Repos\InternetStore\marketplace\bin\Debug\net6.0-windows\InternetStore.runtimeconfig.json
 C:\Users\astat\Source\Repos\InternetStore\marketplace\bin\Debug\net6.0-windows\InternetStore.dll
 C:\Users\astat\Source\Repos\InternetStore\marketplace\bin\Debug\net6.0-windows\InternetStore.pdb
-C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Registration.baml
 C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\InternetStore.g.resources
 C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\InternetStore.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\astat\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows\InternetStore.AssemblyInfoInputs.cache
@@ -83,3 +79,14 @@ C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows\r
 C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows\ru\Xceed.Wpf.AvalonDock.NET5.resources.dll
 C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows\sv\Xceed.Wpf.AvalonDock.NET5.resources.dll
 C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows\zh-Hans\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\MainWindow.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\Registration.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\SignUp.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ElementField.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\UserControl1.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\Registration.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\SignUp.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ElementField.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\UserControl1.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\MainWindow.baml

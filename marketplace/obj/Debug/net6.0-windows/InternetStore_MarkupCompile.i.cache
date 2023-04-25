@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\astat\source\repos\InternetStore\marketplace\App.xaml
-2284635002
+5-839785132
 
-6-210388312
+9-1357615649
 199-532483556
-MainWindow.xaml;Registration.xaml;
+Controls\ElementField.xaml;Controls\ItemsFraming.xaml;Pages\MainWindow.xaml;Pages\Registration.xaml;Pages\SignUp.xaml;
 
-True
+False
 

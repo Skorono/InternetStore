@@ -7,15 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Registration.xaml.cs">
+    <Compile Update="Controls\UserControl1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Registration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\ElementField.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\SignUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Controls\UserControl1.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Registration.xaml">
+    <Page Update="Pages\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Registration.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ElementField.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\SignUp.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
