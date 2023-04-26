@@ -19,8 +19,7 @@ namespace InternetStore.Pages
 
         public Registration()
         {
-            string ImgPath = Path.Combine(@"pack://application:,,,/Assets/Images/camera_200.png");
-            UsrAvatar = new BitmapImage(new Uri(ImgPath, UriKind.Relative));
+            //UsrAvatar = new BitmapImage(new Uri(@"pack://application:,,,/Assets/Images/camera_200.png", UriKind.RelativeOrAbsolute));
             InitializeComponent();
         }
 

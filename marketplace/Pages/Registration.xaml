@@ -59,7 +59,7 @@
 
             <Canvas Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="25">
                 <Border BorderThickness="1" BorderBrush="SeaShell"  Width="115" Height="115">
-                    <Image Source="{Binding UsrAvatar}" AllowDrop="True" DragDrop.Drop="SelectImageCommand"/>
+                    <Image Source="/Assets/Images/camera_200.png" AllowDrop="True" DragDrop.Drop="SelectImageCommand"/>
                 </Border>
             </Canvas>
 

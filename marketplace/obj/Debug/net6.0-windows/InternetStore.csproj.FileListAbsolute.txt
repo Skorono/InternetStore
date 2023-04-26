@@ -79,7 +79,6 @@ C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows\r
 C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows\ru\Xceed.Wpf.AvalonDock.NET5.resources.dll
 C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows\sv\Xceed.Wpf.AvalonDock.NET5.resources.dll
 C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows\zh-Hans\Xceed.Wpf.AvalonDock.NET5.resources.dll
-C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\MainWindow.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\Registration.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\SignUp.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ElementField.g.cs
@@ -87,10 +86,11 @@ C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\G
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\Registration.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\SignUp.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ElementField.baml
-C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\MainWindow.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ChildCompositor.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ChildControl.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ItemsFraming.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ChildCompositor.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ChildControl.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ItemsFraming.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\MainWindow.baml
