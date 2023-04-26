@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace InternetStore.Pages
 {
@@ -20,9 +12,22 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class Registration : Page
     {
+        private BitmapImage UsrAvatar {
+            get { return UsrAvatar; }
+            set { UsrAvatar = value; }
+        }
+
         public Registration()
         {
+            string ImgPath = Path.Combine(@"pack://application:,,,/Assets/Images/camera_200.png");
+            UsrAvatar = new BitmapImage(new Uri(ImgPath, UriKind.Relative));
             InitializeComponent();
+        }
+
+        public void SelectImageCommand(object sender, DragEventArgs e) {
+            var dlg = new OpenFileDialog();
+            if (dlg.ShowDialog() == true)
+                UsrAvatar = new BitmapImage(new Uri(dlg.FileName, UriKind.Relative));
         }
     }
 }

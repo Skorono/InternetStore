@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,7 +25,8 @@ namespace InternetStore.Controls
     public partial class ElementField : UserControl
     {
         static private DependencyProperty? ChildProperty;
-        
+        ChildControl composition = new ChildControl();
+
         public ElementField()
         {
             InitializeComponent();
@@ -37,7 +39,7 @@ namespace InternetStore.Controls
 
         static void OnChildChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((ElementField)d).entryField.Child = (UIElement)e.NewValue; 
+            ((ElementField)d).entryField.Child = (UIElement)e.NewValue;
         }
 
         public UIElement Children

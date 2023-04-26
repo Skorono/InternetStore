@@ -7,7 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Controls\UserControl1.xaml.cs">
+    <Compile Update="Controls\ChildCompositor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\ChildControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\ItemsFraming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\Registration.xaml.cs">
@@ -21,7 +27,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Controls\UserControl1.xaml">
+    <Page Update="Controls\ChildCompositor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ChildControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ItemsFraming.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\MainWindow.xaml">

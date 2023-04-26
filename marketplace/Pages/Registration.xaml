@@ -5,7 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-      xmlns:local="clr-namespace:InternetStore"
+      xmlns:local="clr-namespace:InternetStore.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Registration">
@@ -21,8 +21,8 @@
                 <RowDefinition MinHeight="300"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Canvas Grid.Column="0" Grid.Row="0">
-                <Border BorderBrush="#FF822BAD" Background="#FF6F2096" BorderThickness="2" Height="250" Width="300" Margin="25, 20, 0, 0">
+            <Canvas Grid.Column="1" Grid.Row="0">
+                <Border BorderBrush="#FF822BAD" Background="#FF6F2096" BorderThickness="2" Height="250" Width="300" Margin="-35, 15, 0, 0">
                     <Canvas>
                         <Grid Margin="10">
                             <Grid.RowDefinitions>
@@ -42,19 +42,30 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Width="150">
                                 <StackPanel.Resources>
-                                    <Style TargetType="{x:Type xctk:WatermarkTextBox}">
-                                        <Setter Property="Margin" Value="2"></Setter>
+                                    <Style x:Key="InputField">
+                                        <Setter Property="Border.Margin" Value="2"></Setter>
                                     </Style>
                                 </StackPanel.Resources>
-                                <xctk:WatermarkTextBox Watermark="Имя"/>
-                                <xctk:WatermarkTextBox Watermark="Фамилия"/>
-                                <xctk:WatermarkTextBox Watermark="Отчество"/>
-                                <xctk:WatermarkTextBox Watermark="Пароль"/>
+                                <xctk:WatermarkTextBox Watermark="Имя" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkTextBox Watermark="Фамилия" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkTextBox Watermark="Отчество" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkPasswordBox Watermark="Пароль" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkPasswordBox Watermark="Повторите пароль" Style="{StaticResource InputField}"/>
                             </StackPanel>
                         </Grid>
                     </Canvas>
                 </Border>
             </Canvas>
+
+            <Canvas Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="25">
+                <Border BorderThickness="1" BorderBrush="SeaShell"  Width="115" Height="115">
+                    <Image Source="{Binding UsrAvatar}" AllowDrop="True" DragDrop.Drop="SelectImageCommand"/>
+                </Border>
+            </Canvas>
+
+            <Border Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="120" Height="20">
+                <Button Button.Name="Confirm" Content="Зарегистрироваться" ></Button>
+            </Border>
         </Grid>
     </ef:ElementField>
 </Page>

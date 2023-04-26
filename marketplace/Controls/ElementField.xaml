@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <Border x:Name="entryField" Grid.Column="1" Grid.Row="1" Background="#FF822BAD" BorderBrush="White" BorderThickness="1" CornerRadius="50">
-                
+
         </Border>
     </Grid>
 </UserControl>
