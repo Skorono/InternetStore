@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -19,7 +18,6 @@ namespace InternetStore.Pages
 
         public Registration()
         {
-            //UsrAvatar = new BitmapImage(new Uri(@"pack://application:,,,/Assets/Images/camera_200.png", UriKind.RelativeOrAbsolute));
             InitializeComponent();
         }
 
@@ -27,6 +25,11 @@ namespace InternetStore.Pages
             var dlg = new OpenFileDialog();
             if (dlg.ShowDialog() == true)
                 UsrAvatar = new BitmapImage(new Uri(dlg.FileName, UriKind.Relative));
+        }
+
+        private void Registrastration(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StoreMain());
         }
     }
 }

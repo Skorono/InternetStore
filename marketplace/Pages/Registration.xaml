@@ -46,11 +46,11 @@
                                         <Setter Property="Border.Margin" Value="2"></Setter>
                                     </Style>
                                 </StackPanel.Resources>
-                                <xctk:WatermarkTextBox Watermark="Имя" Style="{StaticResource InputField}"/>
-                                <xctk:WatermarkTextBox Watermark="Фамилия" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkTextBox Watermark="Имя*" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkTextBox Watermark="Фамилия*" Style="{StaticResource InputField}"/>
                                 <xctk:WatermarkTextBox Watermark="Отчество" Style="{StaticResource InputField}"/>
-                                <xctk:WatermarkPasswordBox Watermark="Пароль" Style="{StaticResource InputField}"/>
-                                <xctk:WatermarkPasswordBox Watermark="Повторите пароль" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkPasswordBox Watermark="Пароль*" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkPasswordBox Watermark="Повторите пароль*" Style="{StaticResource InputField}"/>
                             </StackPanel>
                         </Grid>
                     </Canvas>
@@ -63,8 +63,8 @@
                 </Border>
             </Canvas>
 
-            <Border Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="120" Height="20">
-                <Button Button.Name="Confirm" Content="Зарегистрироваться" ></Button>
+            <Border Grid.Column="1" BorderBrush="#FF230146" Background="Wheat" BorderThickness="1" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="125" Height="30" Padding="1" Margin="0 0 40 10">
+                <Button BorderThickness="0" Button.Name="Confirm" Content="Зарегистрироваться" Click="Registrastration"></Button>
             </Border>
         </Grid>
     </ef:ElementField>

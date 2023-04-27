@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InternetStore"
         mc:Ignorable="d"
-        Title="MainWindow" Height="715" Width="998">
+        Title="InternetStore" Height="715" Width="998">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -27,16 +27,25 @@
                     <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Canvas Grid.Row="1" Grid.Column="1" Margin="0 20 0 0">
-                    <UniformGrid Rows="2" Columns="1" Width="150" Height="50">
-                        <Button Content="Регистрация" Click="RegistrationNavigate"></Button>
-                        <Button Content="Войти" Click="SignUpNavigate"></Button>
-                    </UniformGrid>
-                </Canvas>
+
+
+                <Border Grid.Row="1" Grid.Column="1" Margin="10 0 10 0" BorderBrush="#FF822BAD" Background="#FF6F2096" BorderThickness="1" CornerRadius="10">
+                    <Grid>    
+                        <UniformGrid Rows="2" Columns="1" Width="150" Height="50">
+                            <UniformGrid.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Margin" Value="0 0 0 1"></Setter>
+                                </Style>
+                            </UniformGrid.Resources>
+                                <Button Content="Регистрация" Click="RegistrationNavigate"></Button>
+                                <Button Content="Войти" Click="SignUpNavigate"></Button>
+                        </UniformGrid>
+                    </Grid>    
+                </Border>
             </Grid>
         </ef:ElementField>
 
-        <Frame x:Name="Frame" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3"></Frame>
+        <Frame x:Name="Frame" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" NavigationUIVisibility="Hidden"></Frame>
 
     </Grid>
 </Window>

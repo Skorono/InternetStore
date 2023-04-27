@@ -94,3 +94,7 @@ C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\C
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ItemsFraming.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\StoreMain.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\StoreMain.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\SearchBox.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\SearchBox.baml

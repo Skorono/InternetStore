@@ -16,6 +16,9 @@
     <Compile Update="Controls\ItemsFraming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\SearchBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\Registration.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -23,6 +26,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\SignUp.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\StoreMain.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -36,6 +42,9 @@
     <Page Update="Controls\ItemsFraming.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\SearchBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -46,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\SignUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\StoreMain.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
