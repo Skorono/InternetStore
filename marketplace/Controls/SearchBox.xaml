@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Border BorderThickness="1" BorderBrush="#FF6469B1">
-            <xctk:WatermarkTextBox Width="auto" Height="auto" Watermark="Поиск..." TextWrapping="NoWrap" Margin="0 0 45 0"></xctk:WatermarkTextBox>
+            <xctk:WatermarkTextBox FontSize="16" Width="auto" Height="auto" Watermark="Поиск..." TextWrapping="NoWrap" Margin="0 0 45 0"></xctk:WatermarkTextBox>
         </Border>
     </Grid>
 </UserControl>

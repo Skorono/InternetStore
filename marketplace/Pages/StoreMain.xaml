@@ -25,7 +25,9 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
+        
+        <ct:ToolBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="0 0 0 1"></ct:ToolBox>
+        
         <Border BorderThickness="1" Background="#FF33318C"  BorderBrush="#FF33318C" CornerRadius="10" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="1" Padding="3">
             <Canvas>
             
@@ -35,10 +37,16 @@
         <ct:SearchBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="1 0 0 0" Background="#FF325DE4">
         </ct:SearchBox>
 
-        <Border Padding="1" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" >
-            <Canvas Background="#FF9F9FA2" >
-            
-            </Canvas>
+        <Border Padding="5" Background="#FF9F9FA2" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" >
+            <ScrollViewer VerticalScrollBarVisibility="Visible">
+                <ListBox>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn ></GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListBox>
+            </ScrollViewer>
         </Border>
     </Grid>
 </Page>

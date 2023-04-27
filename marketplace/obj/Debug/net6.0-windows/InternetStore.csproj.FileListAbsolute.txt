@@ -98,3 +98,7 @@ C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\P
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Pages\StoreMain.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\SearchBox.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\SearchBox.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ToolBox.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\ToolBox.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\Item.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows\Controls\Item.baml

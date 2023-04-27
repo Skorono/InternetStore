@@ -13,6 +13,9 @@
     <Compile Update="Controls\ChildControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\Item.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\ItemsFraming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,12 +34,18 @@
     <Compile Update="Pages\StoreMain.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\ToolBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\ChildCompositor.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ChildControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Item.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ItemsFraming.xaml">
@@ -58,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\StoreMain.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ToolBox.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
