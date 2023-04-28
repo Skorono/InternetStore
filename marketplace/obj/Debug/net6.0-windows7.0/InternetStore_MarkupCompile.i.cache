@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Ольга\Source\Repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\
 InternetStore
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Ольга\Source\Repos\InternetStore\marketplace\App.xaml
+C:\Users\astat\source\repos\InternetStore\marketplace\App.xaml
 11-514460496
 
 15-718429051
-231-1955571743
+231-271739512
 Controls\ChildCompositor.xaml;Controls\ChildControl.xaml;Controls\ElementField.xaml;Controls\Item.xaml;Controls\ItemsFraming.xaml;Controls\SearchBox.xaml;Controls\ToolBox.xaml;MainWindow.xaml;Pages\Registration.xaml;Pages\SignUp.xaml;Pages\StoreMain.xaml;
 
-False
+True
 

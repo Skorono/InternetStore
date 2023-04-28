@@ -3769,19 +3769,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ольга\\.nuget\\packages\\": {}
+    "C:\\Users\\astat\\.nuget\\packages\\": {},
+    "D:\\Visual Studio SDK\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ольга\\Source\\Repos\\InternetStore\\marketplace\\InternetStore.csproj",
+      "projectUniqueName": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
       "projectName": "InternetStore",
-      "projectPath": "C:\\Users\\Ольга\\Source\\Repos\\InternetStore\\marketplace\\InternetStore.csproj",
-      "packagesPath": "C:\\Users\\Ольга\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ольга\\Source\\Repos\\InternetStore\\marketplace\\obj\\",
+      "projectPath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
+      "packagesPath": "C:\\Users\\astat\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Visual Studio SDK\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Ольга\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\astat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3843,7 +3848,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
