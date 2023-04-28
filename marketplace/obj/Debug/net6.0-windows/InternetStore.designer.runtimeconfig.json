@@ -12,9 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\astat\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\astat\\.nuget\\packages",
-      "D:\\Visual Studio SDK\\NuGetPackages"
+      "C:\\Users\\Ольга\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Ольга\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Reflection.NullabilityInfoContext.IsSupported": true,
