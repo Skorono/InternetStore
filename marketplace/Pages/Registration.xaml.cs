@@ -29,6 +29,7 @@ namespace InternetStore.Pages
 
         private void Registrastration(object sender, RoutedEventArgs e)
         {
+            DataContext.
             NavigationService.Navigate(new StoreMain());
         }
     }
