@@ -1,28 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj": {}
+    "C:\\Users\\Ольга\\Source\\Repos\\InternetStore\\marketplace\\InternetStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj": {
+    "C:\\Users\\Ольга\\Source\\Repos\\InternetStore\\marketplace\\InternetStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
+        "projectUniqueName": "C:\\Users\\Ольга\\Source\\Repos\\InternetStore\\marketplace\\InternetStore.csproj",
         "projectName": "InternetStore",
-        "projectPath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
-        "packagesPath": "C:\\Users\\astat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\obj\\",
+        "projectPath": "C:\\Users\\Ольга\\Source\\Repos\\InternetStore\\marketplace\\InternetStore.csproj",
+        "packagesPath": "C:\\Users\\Ольга\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ольга\\Source\\Repos\\InternetStore\\marketplace\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Visual Studio SDK\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\astat\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Ольга\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net6.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,7 +26,7 @@
         },
         "frameworks": {
           "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+            "targetAlias": "net6.0-windows7.0",
             "projectReferences": {}
           }
         },
@@ -42,8 +38,12 @@
       },
       "frameworks": {
         "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+          "targetAlias": "net6.0-windows7.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
             "Extended.Wpf.Toolkit": {
               "target": "Package",
               "version": "[4.5.0, )"
@@ -76,7 +76,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="0.20*"></ColumnDefinition>
             <ColumnDefinition Width="0.20*"></ColumnDefinition>
@@ -16,9 +17,8 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        
-        <Canvas Grid.Column="0" Grid.Row="0" Background="#FF5172F7"></Canvas>
-        <TextBlock Grid.Column="1" Grid.Row="0" >Пользователь</TextBlock>
-        <TextBlock Grid.Column="2" Grid.Row="0" >Корзина</TextBlock>
+        <local:SearchBox Grid.Row="0" Grid.Column="1" ></local:SearchBox>
+        <TextBlock Grid.Column="2" Grid.Row="0" >Пользователь</TextBlock>
+        <TextBlock Grid.Column="3" Grid.Row="0" >Корзина</TextBlock>
     </Grid>
 </UserControl>
