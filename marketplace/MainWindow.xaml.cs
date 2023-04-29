@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using InternetStore.ModelBD;
 using InternetStore.Pages;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternetStore
 {
@@ -9,8 +11,11 @@ namespace InternetStore
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static InternetStoreContext dbContext = new InternetStoreContext();
+        
         public MainWindow()
         {
+            dbContext.Database.OpenConnection();
             InitializeComponent();
         }
 

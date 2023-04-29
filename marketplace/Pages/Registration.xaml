@@ -46,10 +46,10 @@
                                         <Setter Property="Border.Margin" Value="2"></Setter>
                                     </Style>
                                 </StackPanel.Resources>
-                                <xctk:WatermarkTextBox Watermark="Имя*" Style="{StaticResource InputField}"/>
-                                <xctk:WatermarkTextBox Watermark="Фамилия*" Style="{StaticResource InputField}"/>
-                                <xctk:WatermarkTextBox Watermark="Отчество" Style="{StaticResource InputField}"/>
-                                <xctk:WatermarkPasswordBox Watermark="Пароль*" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkTextBox Uid="NameField" Watermark="Имя*" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkTextBox Uid="SurnameField" Watermark="Фамилия*" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkTextBox Uid="MiddleNameField" Watermark="Отчество" Style="{StaticResource InputField}"/>
+                                <xctk:WatermarkPasswordBox Uid="PasswordField" Watermark="Пароль*" Style="{StaticResource InputField}"/>
                                 <xctk:WatermarkPasswordBox Watermark="Повторите пароль*" Style="{StaticResource InputField}"/>
                             </StackPanel>
                         </Grid>

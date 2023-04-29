@@ -13,6 +13,9 @@
     <Compile Update="Controls\ChildControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\Image.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\Item.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -43,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ChildControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Image.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\Item.xaml">
