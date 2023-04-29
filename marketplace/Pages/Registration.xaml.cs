@@ -57,7 +57,7 @@ namespace InternetStore.Pages
 
         private void Registrastration(object sender, RoutedEventArgs e)
         {
-            var email = new SqlParameter("email", ((WatermarkTextBox?)(FindUid(this, "NameField")))?.Text);
+            var email = new SqlParameter("email", ((WatermarkTextBox?)(FindUid(this, "EmailField")))?.Text);
             var name = new SqlParameter("name", ((WatermarkTextBox?)(FindUid(this, "NameField")))?.Text);
             var password = new SqlParameter("password", ((WatermarkPasswordBox?)(FindUid(this, "PasswordField")))?.Text);
             MainWindow.dbContext.Database.ExecuteSqlRaw("EXEC AddUser @email, @password, @name", parameters: new[] { email, password, name });

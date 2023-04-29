@@ -8,7 +8,7 @@ CREATE PROCEDURE AddUser
 	@surname varchar(max) = '',
 	@middle_name varchar(max) = '',
 	@photo varbinary(max) = NULL,
-	@phone_number varchar(12) = '',
+	@phone_number varchar(12) = NULL,
 	@role char(1) = 'U'
 AS
 	INSERT INTO [User](email, [password], role_id) VALUES(@email, @password, @role);

@@ -7,6 +7,11 @@ CREATE TABLE UserPersonalInf(
 	name varchar(MAX) NOT NULL,
 	surname varchar(MAX),
 	middle_name varchar(MAX),
-	phone_number varchar(12) CONSTRAINT PHONE_FORMAT CHECK(phone_number like '8[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
-	UNIQUE(phone_number)
-)
+	photo varbinary(MAX),
+	phone_number varchar(12) 
+	CONSTRAINT PHONE_FORMAT CHECK(phone_number like '8[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
+);
+
+CREATE UNIQUE NONCLUSTERED INDEX UQ_PhoneNumber
+ON dbo.UserPersonalInf(phone_number)
+WHERE phone_number IS NOT NULL;
