@@ -24,7 +24,7 @@ namespace InternetStore.Controls
         public string? ItemName { get; set; }
         public float Cost { get; set; }
         public static DependencyProperty ProtocolNumberProperty =
-       DependencyProperty.Register("ProtocolNumber", typeof(int), typeof(Item));
+       DependencyProperty.Register("ItemName", typeof(int), typeof(Item));
         public Item(string name, float cost)
         {
             Name = name;
