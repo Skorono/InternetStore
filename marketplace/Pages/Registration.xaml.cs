@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.IO.Packaging;
 using System.Windows.Navigation;
+using InternetStore.Controls;
 
 namespace InternetStore.Pages
 {
@@ -60,7 +61,7 @@ namespace InternetStore.Pages
             var email = new SqlParameter("email", ((WatermarkTextBox?)(FindUid(this, "EmailField")))?.Text);
             var name = new SqlParameter("name", ((WatermarkTextBox?)(FindUid(this, "NameField")))?.Text);
             var password = new SqlParameter("password", ((WatermarkPasswordBox?)(FindUid(this, "PasswordField")))?.Text);
-            MainWindow.dbContext.Database.ExecuteSqlRaw("EXEC AddUser @email, @password, @name", parameters: new[] { email, password, name });
+            BaseControl.CallStoredProcedureByName("AddUser", email, password, name);
             NavigationService.Navigate(new StoreMain());
         }
     }

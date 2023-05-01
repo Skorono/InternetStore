@@ -11,11 +11,8 @@ namespace InternetStore
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static InternetStoreContext dbContext = new InternetStoreContext();
-        
         public MainWindow()
         {
-            dbContext.Database.OpenConnection();
             InitializeComponent();
         }
 

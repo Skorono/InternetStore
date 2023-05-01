@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="InternetStore.Controls.Item"
+﻿<UserControl x:Class="InternetStore.Controls.Item" 
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -19,10 +19,10 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                
-                <Image Grid.Row="0" Grid.Column="0" Source="{Binding ElementName=this, Path=Image, TargetNullValue=./Assets/Images/camera_200.png}"></Image>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Cost, TargetNullValue=0}"></TextBlock>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding ItemName, TargetNullValue=Example Name}"></TextBlock>
+
+                <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=ItemImage, TargetNullValue=./Assets/Images/camera_200.png}"></Image>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=ItemCost, TargetNullValue=0}"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}"></TextBlock>
                 <Button Grid.Row="3" Grid.Column="0" Margin="25 0">В корзину</Button>
             </Grid>
         </Border>

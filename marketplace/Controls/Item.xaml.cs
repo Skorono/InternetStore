@@ -23,9 +23,13 @@ namespace InternetStore.Controls
         public BitmapImage? Image { get; set; }
         public string? ItemName { get; set; }
         public float Cost { get; set; }
-        
-        public Item()
+        public static DependencyProperty ProtocolNumberProperty =
+       DependencyProperty.Register("ProtocolNumber", typeof(int), typeof(Item));
+        public Item(string name, float cost)
         {
+            Name = name;
+            Cost = cost;
+
             InitializeComponent();
         }
     }

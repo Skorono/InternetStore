@@ -35,13 +35,7 @@
 
         <Border Padding="5" Background="#FF9F9FA2" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" >
             <ScrollViewer VerticalScrollBarVisibility="Visible">
-                <ListBox>
-                    <GridView>
-                        <GridView.Columns>
-                            <GridViewColumn ></GridViewColumn>
-                        </GridView.Columns>
-                    </GridView>
-                </ListBox>
+                <ListView x:Name="ItemList"></ListView>
             </ScrollViewer>
         </Border>
     </Grid>
