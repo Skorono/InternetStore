@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternetStore.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace InternetStore.Pages
 {
@@ -23,6 +25,21 @@ namespace InternetStore.Pages
         public SignUp()
         {
             InitializeComponent();
+        }
+
+        private void OnSignUp(object sender, RoutedEventArgs e)
+        {
+            var login = (WatermarkTextBox?)UIHelper.FindUid(this, "LoginField");
+            var password = (WatermarkPasswordBox?)UIHelper.FindUid(this, "PasswordField");
+            
+            foreach (var user in BaseControl.DbContext.Users.ToList())
+            {
+                if ((login.Text == user.Email) && (password.Password == user.Password))
+                {
+                    NavigationService.Navigate(new StoreMain());
+                }
+            }
+            Xceed.Wpf.Toolkit.MessageBox.Show("Неверный логин или пароль");
         }
     }
 }

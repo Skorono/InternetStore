@@ -23,7 +23,7 @@ namespace InternetStore
 
         private void SignUpNavigate(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(new SignUp());
         }
     }
 }

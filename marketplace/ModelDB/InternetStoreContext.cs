@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetStore.ModelBD;
 
 public partial class InternetStoreContext : DbContext
 {
-    public InternetStoreContext()
+    private static InternetStoreContext? _context;
+
+    private InternetStoreContext() {}
+
+    private InternetStoreContext(DbContextOptions<InternetStoreContext> options)
+        : base(options)
     {
     }
 
-    public InternetStoreContext(DbContextOptions<InternetStoreContext> options)
-        : base(options)
+    public static InternetStoreContext getInstance()
     {
+        if (_context == null)
+            _context = new InternetStoreContext();
+        return _context;
     }
 
     public virtual DbSet<Basket> Baskets { get; set; }

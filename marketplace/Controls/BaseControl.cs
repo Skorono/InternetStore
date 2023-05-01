@@ -11,7 +11,7 @@ namespace InternetStore.Controls
 {
     static class BaseControl
     {
-        private static InternetStoreContext dbContext = new InternetStoreContext();
+        private static InternetStoreContext dbContext = InternetStoreContext.getInstance();
 
         public static InternetStoreContext DbContext {
             get

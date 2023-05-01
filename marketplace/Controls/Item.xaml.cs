@@ -27,9 +27,8 @@ namespace InternetStore.Controls
        DependencyProperty.Register("ItemName", typeof(int), typeof(Item));
         public Item(string name, float cost)
         {
-            Name = name;
+            ItemName = name;
             Cost = cost;
-
             InitializeComponent();
         }
     }

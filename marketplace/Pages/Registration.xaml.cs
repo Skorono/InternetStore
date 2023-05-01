@@ -38,29 +38,17 @@ namespace InternetStore.Pages
                 //UsrAvatar = new Image().Upload();
         }
 
-        public static UIElement? FindUid(DependencyObject parent, string uid)
-        {
-            UIElement? el = new UIElement();
-            int count = VisualTreeHelper.GetChildrenCount(parent);
-            for (int i = 0; i < count; i++)
-            {
-                el = VisualTreeHelper.GetChild(parent, i) as UIElement;
-                if (el != null)
-                {
-                    if (el?.Uid == uid)
-                        return el;
-                    el = FindUid(el, uid);
-                    if (el != null) return el;
-                }
-            }
-            return null;
-        }
-
         private void Registrastration(object sender, RoutedEventArgs e)
         {
-            var email = new SqlParameter("email", ((WatermarkTextBox?)(FindUid(this, "EmailField")))?.Text);
-            var name = new SqlParameter("name", ((WatermarkTextBox?)(FindUid(this, "NameField")))?.Text);
-            var password = new SqlParameter("password", ((WatermarkPasswordBox?)(FindUid(this, "PasswordField")))?.Text);
+            var email = new SqlParameter("email", 
+                ((WatermarkTextBox?)(UIHelper.FindUid(this, "EmailField")))?.Text);
+            
+            var name = new SqlParameter("name", 
+                ((WatermarkTextBox?)(UIHelper.FindUid(this, "NameField")))?.Text);
+            
+            var password = new SqlParameter("password", 
+                ((WatermarkPasswordBox?)(UIHelper.FindUid(this, "PasswordField")))?.Password);
+            
             BaseControl.CallStoredProcedureByName("AddUser", email, password, name);
             NavigationService.Navigate(new StoreMain());
         }

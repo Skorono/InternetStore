@@ -3,12 +3,42 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:InternetStore.Pages"
+      xmlns:ef="clr-namespace:InternetStore.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SignUp">
 
     <Grid>
-        
+        <ef:ElementField>
+            <Grid>
+                <Border BorderBrush="#FF822BAD" Background="#FF6F2096" BorderThickness="2" Height="250" Width="300">
+                    <Grid Width="auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Canvas>
+                            
+                            <xctk:WatermarkTextBox Uid="LoginField" Watermark="Почта/Номер телефона*"></xctk:WatermarkTextBox>
+                            <xctk:WatermarkPasswordBox Uid="PasswordField" Watermark="Пароль..."></xctk:WatermarkPasswordBox>
+
+                            <Border Grid.Row="2" Grid.Column="2" BorderBrush="#FF230146" Background="Wheat" BorderThickness="1" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="125" Height="30" Padding="1">
+                                <Button Background="Wheat" Click="OnSignUp" >Войти</Button>   
+                            </Border>
+                        </Canvas>
+                    </Grid>
+                </Border>
+            </Grid>
+        </ef:ElementField>
     </Grid>
 </Page>
