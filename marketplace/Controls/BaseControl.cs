@@ -11,7 +11,7 @@ namespace InternetStore.Controls
 {
     static class BaseControl
     {
-        private static InternetStoreContext dbContext = InternetStoreContext.getInstance();
+        private static InternetStoreContext dbContext;
 
         public static InternetStoreContext DbContext {
             get
@@ -20,6 +20,11 @@ namespace InternetStore.Controls
             }
 
             private set { }
+        }
+
+        static BaseControl()
+        {
+            dbContext = InternetStoreContext.getInstance();
         }
 
         /// <summary>

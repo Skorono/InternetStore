@@ -9,7 +9,7 @@ public partial class InternetStoreContext : DbContext
 {
     private static InternetStoreContext? _context;
 
-    private InternetStoreContext() {}
+    private InternetStoreContext() { }
 
     private InternetStoreContext(DbContextOptions<InternetStoreContext> options)
         : base(options)

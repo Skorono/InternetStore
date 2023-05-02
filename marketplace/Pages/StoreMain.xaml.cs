@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows.Controls;
 using InternetStore.Controls;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternetStore.Pages
 {
@@ -12,7 +13,7 @@ namespace InternetStore.Pages
         public StoreMain()
         {
             InitializeComponent();
-            foreach (var item in BaseControl.DbContext.Products.ToList()) 
+            foreach (var item in BaseControl.DbContext.Products.ToList())
             {
                 ItemList.Items.Add(new Item(item.ProductName, 365f));
             }

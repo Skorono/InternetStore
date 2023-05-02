@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using InternetStore.Controls;
 using InternetStore.ModelBD;
 using InternetStore.Pages;
 using Microsoft.EntityFrameworkCore;

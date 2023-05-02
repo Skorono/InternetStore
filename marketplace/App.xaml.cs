@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using InternetStore.Controls;
+using Microsoft.EntityFrameworkCore;
 
 namespace marketplace
 {
@@ -13,5 +9,8 @@ namespace marketplace
     /// </summary>
     public partial class App : Application
     {
+        public App() {
+            BaseControl.DbContext.Database.OpenConnection();
+        }
     }
 }

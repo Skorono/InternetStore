@@ -1,18 +1,10 @@
 ﻿using InternetStore.Controls;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Diagnostics;
 using Xceed.Wpf.Toolkit;
 
 namespace InternetStore.Pages
@@ -32,14 +24,21 @@ namespace InternetStore.Pages
             var login = (WatermarkTextBox?)UIHelper.FindUid(this, "LoginField");
             var password = (WatermarkPasswordBox?)UIHelper.FindUid(this, "PasswordField");
             
-            foreach (var user in BaseControl.DbContext.Users.ToList())
+            var startTime = Stopwatch.StartNew();
+            var user = BaseControl.DbContext.Users
+                                .Where(user => (login.Text == user.Email) && (password.Password == user.Password))
+                                .FirstOrDefault();
+            if (user != null)
             {
-                if ((login.Text == user.Email) && (password.Password == user.Password))
-                {
-                    NavigationService.Navigate(new StoreMain());
-                }
+                NavigationService.Navigate(new StoreMain());
+               startTime.Stop();
+               Xceed.Wpf.Toolkit.MessageBox.Show(string.Format(" Затраченное время в секундах {0}.{1}",
+                                        startTime.Elapsed.Seconds,
+                                        startTime.Elapsed.Milliseconds
+                                        ));
             }
-            Xceed.Wpf.Toolkit.MessageBox.Show("Неверный логин или пароль");
+            else
+                Xceed.Wpf.Toolkit.MessageBox.Show("Неверный логин или пароль");
         }
     }
 }
