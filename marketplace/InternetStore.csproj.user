@@ -22,6 +22,9 @@
     <Compile Update="Controls\ItemsFraming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\ProfileIcon.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\SearchBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ItemsFraming.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ProfileIcon.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\SearchBox.xaml">

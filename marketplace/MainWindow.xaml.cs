@@ -1,9 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using InternetStore.Controls;
-using InternetStore.ModelBD;
 using InternetStore.Pages;
-using Microsoft.EntityFrameworkCore;
 
 namespace InternetStore
 {
@@ -12,6 +9,7 @@ namespace InternetStore
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();

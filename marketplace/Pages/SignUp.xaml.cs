@@ -30,7 +30,7 @@ namespace InternetStore.Pages
                                 .FirstOrDefault();
             if (user != null)
             {
-                NavigationService.Navigate(new StoreMain());
+                NavigationService.Navigate(new StoreMain(user));
                startTime.Stop();
                Xceed.Wpf.Toolkit.MessageBox.Show(string.Format(" Затраченное время в секундах {0}.{1}",
                                         startTime.Elapsed.Seconds,

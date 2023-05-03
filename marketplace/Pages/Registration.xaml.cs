@@ -1,19 +1,14 @@
 ﻿using Microsoft.Win32;
-using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
-using System.Windows.Media;
-using Xceed.Wpf.Toolkit.Core.Converters;
 using Xceed.Wpf.Toolkit;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.IO.Packaging;
 using System.Windows.Navigation;
 using InternetStore.Controls;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace InternetStore.Pages
 {
@@ -27,6 +22,41 @@ namespace InternetStore.Pages
             set { UsrAvatar = value; }
         }
 
+        #region [ Binding Fields]
+        private DependencyProperty username =
+              DependencyProperty.Register("UserName", typeof(string), typeof(Registration));
+
+        private DependencyProperty email =
+              DependencyProperty.Register("Email", typeof(string), typeof(Registration));
+
+        private DependencyProperty password =
+              DependencyProperty.Register("Password", typeof(string), typeof(Registration));
+
+        private DependencyProperty repeatpassword =
+              DependencyProperty.Register("RepeatPassword", typeof(string), typeof(Registration));
+        #endregion
+
+        #region [ Binding Properties ]
+        [Required(AllowEmptyStrings = false)]
+        public string UserName { private get { return (string)GetValue(username); } 
+                                 set { SetValue(username, value); } }
+
+        [Required(AllowEmptyStrings = false)]
+        [EmailAddress(ErrorMessage = "Невалидная почта!")]
+        public string Email { private get { return (string)GetValue(email); } 
+                              set { SetValue(email, value); } }
+
+        [Required(AllowEmptyStrings = false)]
+        [PasswordPropertyText]
+        public string Password { private get { return (string)GetValue(password); } 
+                                 set { SetValue(password, value); } }
+        
+        [Required(AllowEmptyStrings = false)]
+        [Compare("Password")]
+        public string RepeatedPassword { private get { return (string)GetValue(repeatpassword); }
+                                         set { SetValue(repeatpassword, value); } }
+        #endregion
+
         public Registration()
         {
             InitializeComponent();
@@ -38,19 +68,50 @@ namespace InternetStore.Pages
                 //UsrAvatar = new Image().Upload();
         }
 
+        private bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false;
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool IsValidPassword()
+        {
+            var context = new ValidationContext(this);
+            var errors = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+            if (!Validator.TryValidateProperty(Password, context, errors))
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Слишком простой пароль!");
+            }
+            if (!Validator.TryValidateProperty(RepeatedPassword, context, errors))
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Пароли не совпадают!");
+            }
+            return true;
+        }
+
         private void Registrastration(object sender, RoutedEventArgs e)
         {
-            var email = new SqlParameter("email", 
-                ((WatermarkTextBox?)(UIHelper.FindUid(this, "EmailField")))?.Text);
-            
-            var name = new SqlParameter("name", 
-                ((WatermarkTextBox?)(UIHelper.FindUid(this, "NameField")))?.Text);
-            
-            var password = new SqlParameter("password", 
-                ((WatermarkPasswordBox?)(UIHelper.FindUid(this, "PasswordField")))?.Password);
-            
-            BaseControl.CallStoredProcedureByName("AddUser", email, password, name);
-            NavigationService.Navigate(new StoreMain());
+            //if (IsValidPassword())
+            //{
+                var email = new SqlParameter("email", Email);
+                var name = new SqlParameter("name", UserName);
+                var password = new SqlParameter("password", ((WatermarkPasswordBox?)UIHelper.FindUid(this, "Password")).Password);
+                BaseControl.CallStoredProcedureByName("AddUser", email, password, name);
+                NavigationService.Navigate(new StoreMain(new ModelBD.User()));
+            //}
         }
     }
 }

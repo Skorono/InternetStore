@@ -1,11 +1,8 @@
 ﻿using InternetStore.ModelBD;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Primitives;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Windows.Documents;
 
 namespace InternetStore.Controls
 {
@@ -35,7 +32,7 @@ namespace InternetStore.Controls
         /// <returns></returns>
         public static int CallStoredProcedureByName(string procedure, params SqlParameter[] parameters)
         {
-            StringBuilder sqlRequest = new StringBuilder($"EXEC {procedure} ");
+            StringBuilder sqlRequest = new StringBuilder($"EXEC ").AppendFormat("{0} ", procedure);
             foreach ( SqlParameter parameter in parameters )
             {
                 sqlRequest.AppendFormat("@{0}", parameter.ParameterName);

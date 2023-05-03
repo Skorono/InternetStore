@@ -113,3 +113,5 @@ C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\Image.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Pages\Profile.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Pages\Profile.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\ProfileIcon.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\ProfileIcon.baml
