@@ -14,7 +14,7 @@
                     <Border CornerRadius="5" BorderBrush="Wheat" BorderThickness="1">
                         <Image></Image>
                     </Border>
-                    <TextBlock Width="100" Foreground="Black" Background="White" Text="{Binding Path=UserName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+                    <TextBlock Width="100" Foreground="Black" Background="White" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" ></TextBlock>
                 </DockPanel>
             </Button>
         </Border>

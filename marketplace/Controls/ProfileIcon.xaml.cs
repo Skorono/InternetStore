@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -10,9 +12,9 @@ namespace InternetStore.Controls
     /// <summary>
     /// Логика взаимодействия для ProfileIcon.xaml
     /// </summary>
-    public partial class ProfileIcon : UserControl
+    public partial class ProfileIcon : UserControl, INotifyPropertyChanged
     {
-        private static DependencyProperty usrName =
+        private DependencyProperty usrName =
             DependencyProperty.Register("usrName", typeof(string), typeof(ProfileIcon));
 
         public string UserName {
@@ -22,6 +24,7 @@ namespace InternetStore.Controls
 
                 set{
                     SetValue(usrName, value);
+                    NotifyPropertyChanged("UserName");           
                 } 
             }
 
@@ -33,6 +36,13 @@ namespace InternetStore.Controls
         private void ProfileNavigate(object sender, RoutedEventArgs e)
         {
             NavigationService.GetNavigationService(this).Navigate(new Profile());
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

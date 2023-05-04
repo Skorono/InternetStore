@@ -28,6 +28,12 @@
     <Compile Update="Controls\SearchBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\UserView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ProfileEdit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\Registration.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -66,7 +72,13 @@
     <Page Update="Controls\SearchBox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\UserView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ProfileEdit.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Registration.xaml">

@@ -2,7 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:InternetStore.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -17,7 +18,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.15*"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
@@ -25,5 +27,42 @@
         <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FF46B7D4">
             <Button Width="75" Margin="5 0 0 0" Click="OnMainPage"> На главную </Button>
         </Canvas>
+
+        <Image Grid.Column="0" Grid.Row="2"></Image>
+        <TextBlock Grid.Column="0" Grid.Row="3">
+            <Hyperlink Click="Hyperlink_RequestNavigate">
+                Изменить профиль        
+            </Hyperlink> 
+        </TextBlock>
+        <StackPanel DataContext="{Binding Path=User}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" Margin="2">
+            <StackPanel.Style>
+                <Style>
+                    <Setter Property="Border.BorderThickness" Value="1"></Setter>
+                    <Setter Property="Border.Margin" Value="0 0 10 0"></Setter>
+                    <Setter Property="Border.BorderBrush" Value="DarkBlue"></Setter>
+                </Style>
+            </StackPanel.Style>
+            
+            <Border>
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Foreground="Gray">Имя</TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom">Какое-то Имя</TextBlock>
+                </DockPanel>
+            </Border>
+
+            <Border>
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Foreground="Gray">Фамилия</TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom">Какая-то фамилия</TextBlock>
+                </DockPanel>
+            </Border>
+
+            <Border>
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Foreground="Gray">Отчество</TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom">Какое-то отчество</TextBlock>
+                </DockPanel>
+            </Border>
+        </StackPanel>
     </Grid>
 </Page>

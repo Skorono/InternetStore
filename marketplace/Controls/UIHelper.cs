@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace InternetStore.Controls
 {
-    static class UIHelper
+    class UIHelper    
     {
+
         public static UIElement? FindUid(DependencyObject parent, string uid)
         {
             UIElement? el = new UIElement();

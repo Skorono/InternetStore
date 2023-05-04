@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using InternetStore.Pages;
 
 namespace InternetStore.Pages
 {
@@ -9,12 +11,18 @@ namespace InternetStore.Pages
     {
         public Profile()
         {
+
             InitializeComponent();
         }
 
         private void OnMainPage(object sender, System.Windows.RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ProfileEdit());
         }
     }
 }

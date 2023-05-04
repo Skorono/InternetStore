@@ -9,6 +9,7 @@ using InternetStore.Controls;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace InternetStore.Pages
 {
@@ -110,7 +111,8 @@ namespace InternetStore.Pages
                 var name = new SqlParameter("name", UserName);
                 var password = new SqlParameter("password", ((WatermarkPasswordBox?)UIHelper.FindUid(this, "Password")).Password);
                 BaseControl.CallStoredProcedureByName("AddUser", email, password, name);
-                NavigationService.Navigate(new StoreMain(new ModelBD.User()));
+                NavigationService.Navigate(new StoreMain(BaseControl.DbContext.Users.ToList().
+                                            Where(user => user.Email == (string)email.Value).First()));
             //}
         }
     }
