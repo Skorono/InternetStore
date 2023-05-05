@@ -9,10 +9,10 @@
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Border BorderThickness="1" BorderBrush="Gray" >
-            <Button Click="ProfileNavigate">
-                <DockPanel >
-                    <Border CornerRadius="5" BorderBrush="Wheat" BorderThickness="1">
-                        <Image></Image>
+            <Button Click="Navigate">
+                <DockPanel>
+                    <Border CornerRadius="10" BorderBrush="Wheat" BorderThickness="2">
+                        <Image Width="15" Height="15"></Image>
                     </Border>
                     <TextBlock Width="100" Foreground="Black" Background="White" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" ></TextBlock>
                 </DockPanel>

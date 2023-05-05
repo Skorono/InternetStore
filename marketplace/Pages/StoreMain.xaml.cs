@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using InternetStore.Controls;
 using InternetStore.ModelBD;
+using System.Windows;
 
 namespace InternetStore.Pages
 {
@@ -20,6 +21,7 @@ namespace InternetStore.Pages
         {
             InitializeComponent();
             User = user;
+            ToolPanel.profileIcon.Click += ProfileNavigate;
             ToolPanel.profileIcon.UserName = BaseControl.DbContext.UserPersonalInfs.ToList()
                                          .Where(row => row.Id == User.Id).First().Name;
             foreach (var item in BaseControl.DbContext.Products.ToList())
@@ -28,5 +30,11 @@ namespace InternetStore.Pages
             }
             ListBox.ItemsSource = ItemList;
         }
+
+        private void ProfileNavigate(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Profile());
+        }
+
     }
 }
