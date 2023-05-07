@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using InternetStore.Controls;
+using InternetStore.ModelBD;
 using InternetStore.ModelDB;
 
 namespace InternetStore.Pages
@@ -11,7 +12,7 @@ namespace InternetStore.Pages
     /// <summary>
     /// Логика взаимодействия для Profile.xaml
     /// </summary>
-    public partial class Profile : Page
+    public partial class Profile : Page, INotifyPropertyChanged
     {
         private UserViewDto User { get; set; }
         private static Profile? _profilepage;
@@ -28,6 +29,9 @@ namespace InternetStore.Pages
 
         private DependencyProperty middleName = DependencyProperty.Register(
             "MiddleName", typeof(string), typeof(Profile));
+
+        private DependencyProperty photo = DependencyProperty.Register(
+            "Photo", typeof(byte[]), typeof(Profile));
         #endregion
 
         #region [ Binding Properties ]
@@ -35,6 +39,7 @@ namespace InternetStore.Pages
         public string Email { get { return (string)GetValue(email); } set { SetValue(email, value); } }
         public string? Surname { get { return (string)GetValue(surname); } set { SetValue(surname, value); } }
         public string? MiddleName { get { return (string)GetValue(middleName); } set { SetValue(middleName, value); } }
+        public byte[]? Photo { get { return (byte[])GetValue(photo); } set { SetValue(photo, value); } }
         #endregion
 
         private Profile(UserViewDto user)
@@ -43,6 +48,11 @@ namespace InternetStore.Pages
             UserName = User.Name;
             Surname = User.Surname;
             MiddleName = User.MiddleName;
+            Photo = User.Photo;
+            if (Photo == null)
+            {
+                Photo = ImageManager.Upload(@"C:\Users\astat\source\repos\InternetStore\marketplace\Assets\Images\camera_200.png");
+            }
 
             InitializeComponent();
         }
@@ -64,6 +74,13 @@ namespace InternetStore.Pages
         private void Hyperlink_EditProfile(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(ProfileEdit.getInstance(User));
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

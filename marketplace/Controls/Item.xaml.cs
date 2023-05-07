@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InternetStore.Controls.Interfaces;
+using InternetStore.ModelBD;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,11 +10,23 @@ namespace InternetStore.Controls
     /// <summary>
     /// Логика взаимодействия для Item.xaml
     /// </summary>
-    public partial class Item : UserControl
+    public partial class Item : UserControl, IProductView
     {
-        public Uri? Image { 
+        public Product ProductModel { get; private set; }
+
+        #region [ Binding Fields ]
+        public static DependencyProperty PropertyImage =
+            DependencyProperty.Register("Image", typeof(Uri), typeof(Item));
+        public static DependencyProperty PropertyName =
+            DependencyProperty.Register("itemName", typeof(string), typeof(Item));
+        public static DependencyProperty PropertyCost =
+            DependencyProperty.Register("Cost", typeof(float), typeof(Item));
+        #endregion
+
+        #region [ Binding Properties ]
+        public byte[] Image { 
             get {
-                return (Uri)GetValue(PropertyImage);
+                return (byte[])GetValue(PropertyImage);
             }
 
             set { 
@@ -42,19 +56,14 @@ namespace InternetStore.Controls
                 SetValue(PropertyCost, value);
             } 
         }
+        #endregion
 
-        public static DependencyProperty PropertyImage =
-            DependencyProperty.Register("Image", typeof(Uri), typeof(Item));
-        public static DependencyProperty PropertyName =
-            DependencyProperty.Register("itemName", typeof(string), typeof(Item));
-        public static DependencyProperty PropertyCost =
-            DependencyProperty.Register("Cost", typeof(float), typeof(Item));
-
-
-        public Item(string name, float cost)
+        public Item(Product model)
         {
-            ItemName = name;
-            Cost = cost;
+            ProductModel = model;
+            ItemName = ProductModel.ProductName;
+            /*PropertyImage = ItemModel.*/
+            Cost = ProductModel.Count;
             InitializeComponent();
         }
     }

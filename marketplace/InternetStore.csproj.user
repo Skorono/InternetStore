@@ -7,13 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\BasketIcon.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\ChildCompositor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\ChildControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\Image.xaml.cs">
+    <Compile Update="Controls\ImageManager.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\Item.xaml.cs">
@@ -32,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\UserView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ProductBasket.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\ProfileEdit.xaml.cs">
@@ -54,13 +60,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\BasketIcon.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\ChildCompositor.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ChildControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\Image.xaml">
+    <Page Update="Controls\ImageManager.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\Item.xaml">
@@ -82,6 +91,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ProductBasket.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\ProfileEdit.xaml">

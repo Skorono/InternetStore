@@ -26,16 +26,16 @@
         </Grid.RowDefinitions>
 
         <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FF46B7D4">
-            <Button Width="75" Margin="5 0 0 0" Click="OnMainPage"> На главную </Button>
+            <Button Width="75" Margin="5 0 0 0" Click="OnMainPage">На главную</Button>
         </Canvas>
 
-        <Image Grid.Column="0" Grid.Row="2"></Image>
+        <Image HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" Source="{Binding Path=Photo}"></Image>
         <TextBlock Grid.Column="0" Grid.Row="3">
             <Hyperlink Click="Hyperlink_EditProfile">
                 Изменить профиль        
-            </Hyperlink> 
+            </Hyperlink>
         </TextBlock>
-        <StackPanel Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" Margin="2">
+        <StackPanel Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Margin="160,2,2,2" Grid.ColumnSpan="2">
             <StackPanel.Style>
                 <Style>
                     <Setter Property="Border.BorderThickness" Value="1"></Setter>
@@ -43,25 +43,25 @@
                     <Setter Property="Border.BorderBrush" Value="DarkBlue"></Setter>
                 </Style>
             </StackPanel.Style>
-            
+
             <Border>
                 <DockPanel>
                     <TextBlock DockPanel.Dock="Top" Foreground="Gray">Имя</TextBlock>
-                    <TextBlock DockPanel.Dock="Bottom" Text="{Binding Path=Name}"></TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
                 </DockPanel>
             </Border>
 
             <Border>
                 <DockPanel>
                     <TextBlock DockPanel.Dock="Top" Foreground="Gray">Фамилия</TextBlock>
-                    <TextBlock DockPanel.Dock="Bottom" Text="{Binding Path=Surname}"></TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom" Text="{Binding Path=Surname, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
                 </DockPanel>
             </Border>
 
             <Border>
                 <DockPanel>
                     <TextBlock DockPanel.Dock="Top" Foreground="Gray">Отчество</TextBlock>
-                    <TextBlock DockPanel.Dock="Bottom" Text="{Binding Path=MiddleName}"></TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom" Text="{Binding Path=MiddleName, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
                 </DockPanel>
             </Border>
         </StackPanel>

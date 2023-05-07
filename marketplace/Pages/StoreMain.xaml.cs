@@ -25,7 +25,7 @@ namespace InternetStore.Pages
                                          .Where(row => row.Id == User.Id).First().Name;
             foreach (var item in BaseControl.DbContext.Products.ToList())
             {
-                ItemList.Add(new Item(item.ProductName, 365f));
+                ItemList.Add(new Item(item));
             }
             ListBox.ItemsSource = ItemList;
         }
