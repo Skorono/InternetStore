@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
@@ -32,8 +33,13 @@
 
   <ItemGroup>
     <Folder Include="Controls\Interfaces\" />
-    <Folder Include="ModelDB\" />
     <Folder Include="ModelDiagram\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DocumentConverter">
+      <HintPath>..\..\Skorono\DocumentConverter\DocumentConverter\bin\Debug\net6.0-windows\DocumentConverter.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

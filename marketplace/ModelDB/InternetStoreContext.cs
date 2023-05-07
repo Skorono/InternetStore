@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Data;
+using DocumentFormat.OpenXml.Vml.Office;
+using DocumentFormat.OpenXml.Wordprocessing;
+using InternetStore.Controls;
+using InternetStore.ModelDB;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetStore.ModelBD;
@@ -36,6 +40,9 @@ public partial class InternetStoreContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserPersonalInf> UserPersonalInfs { get; set; }
+
+    public virtual DbSet<UserViewDto> UserViewDtos { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -192,6 +199,41 @@ public partial class InternetStoreContext : DbContext
                 .HasForeignKey(d => d.Id)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__UserPersonal__id__74AE54BC");
+        });
+
+        modelBuilder.Entity<UserViewDto>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("UserViewDTO");
+
+            entity.Property(e => e.Email)
+                .HasMaxLength(256)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.MiddleName)
+                .IsUnicode(false)
+                .HasColumnName("middle_name");
+            entity.Property(e => e.Name)
+                .IsUnicode(false)
+                .HasColumnName("name");
+            entity.Property(e => e.Password)
+                .IsUnicode(false)
+                .HasColumnName("password");
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(12)
+                .IsUnicode(false)
+                .HasColumnName("phone_number");
+            entity.Property(e => e.Photo).HasColumnName("photo");
+            entity.Property(e => e.RoleId)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("role_id");
+            entity.Property(e => e.Surname)
+                .IsUnicode(false)
+                .HasColumnName("surname");
         });
 
         OnModelCreatingPartial(modelBuilder);

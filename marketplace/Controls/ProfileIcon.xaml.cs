@@ -17,7 +17,7 @@ namespace InternetStore.Controls
             DependencyProperty.Register("usrName", typeof(string), typeof(ProfileIcon));
 
         public static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click", 
-                RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(ProfileIcon));
+                RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ProfileIcon));
         #endregion
 
         #region [ Binding Properties ]

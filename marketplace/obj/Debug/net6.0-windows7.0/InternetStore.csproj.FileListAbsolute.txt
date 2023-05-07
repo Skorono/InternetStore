@@ -119,3 +119,8 @@ C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Pages\ProfileEdit.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\UserView.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\UserView.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\UserPersonalView.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows7.0\DocumentConverter.dll
+C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows7.0\DocumentConverter.pdb
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\UserPersonalView.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows7.0\DocumentFormat.OpenXml.dll

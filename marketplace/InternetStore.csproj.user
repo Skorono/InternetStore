@@ -28,6 +28,9 @@
     <Compile Update="Controls\SearchBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\UserPersonalView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\UserView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -70,6 +73,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\SearchBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\UserPersonalView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\UserView.xaml">

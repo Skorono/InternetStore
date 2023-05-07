@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternetStore.ModelDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class ProfileEdit : Page
     {
-        public ProfileEdit()
+        private static ProfileEdit? _profileditpage;
+        
+        private ProfileEdit(UserViewDto user)
         {
             InitializeComponent();
+        }
+
+        public static ProfileEdit getInstance(UserViewDto user)
+        {
+            if (_profileditpage == null)
+            {
+                _profileditpage= new ProfileEdit(user);
+            }
+            return _profileditpage;
         }
     }
 }

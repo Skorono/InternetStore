@@ -2,8 +2,8 @@
 using System.Windows.Controls;
 using System.Collections.Generic;
 using InternetStore.Controls;
-using InternetStore.ModelBD;
 using System.Windows;
+using InternetStore.ModelDB;
 
 namespace InternetStore.Pages
 {
@@ -12,15 +12,14 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class StoreMain : Page
     {
-        private User User;
+        private UserViewDto User;
         public List<Item> ItemList = new List<Item>();
+        public UserViewDto CurrentUser { get { return User; } }
 
-        public User CurrentUser { get { return User; } }
-
-        public StoreMain(User user)
+        public StoreMain(UserViewDto userModel)
         {
             InitializeComponent();
-            User = user;
+            User = userModel;
             ToolPanel.profileIcon.Click += ProfileNavigate;
             ToolPanel.profileIcon.UserName = BaseControl.DbContext.UserPersonalInfs.ToList()
                                          .Where(row => row.Id == User.Id).First().Name;
@@ -33,8 +32,7 @@ namespace InternetStore.Pages
 
         private void ProfileNavigate(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Profile());
+            NavigationService.Navigate(Profile.getInstance(CurrentUser));
         }
-
     }
 }

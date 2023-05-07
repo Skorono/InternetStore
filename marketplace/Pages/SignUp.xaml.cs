@@ -1,10 +1,8 @@
 ﻿using InternetStore.Controls;
-using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using System.Diagnostics;
 using Xceed.Wpf.Toolkit;
 
 namespace InternetStore.Pages
@@ -24,18 +22,13 @@ namespace InternetStore.Pages
             var login = (WatermarkTextBox?)UIHelper.FindUid(this, "LoginField");
             var password = (WatermarkPasswordBox?)UIHelper.FindUid(this, "PasswordField");
             
-            var startTime = Stopwatch.StartNew();
-            var user = BaseControl.DbContext.Users
+            var User = BaseControl.DbContext.Users
                                 .Where(user => (login.Text == user.Email) && (password.Password == user.Password))
                                 .FirstOrDefault();
-            if (user != null)
+            if (User != null)
             {
-                NavigationService.Navigate(new StoreMain(user));
-               startTime.Stop();
-               Xceed.Wpf.Toolkit.MessageBox.Show(string.Format(" Затраченное время в секундах {0}.{1}",
-                                        startTime.Elapsed.Seconds,
-                                        startTime.Elapsed.Milliseconds
-                                        ));
+                var userDTO = BaseControl.DbContext.UserViewDtos.ToList().Where(user => user.Id == User.Id).First();
+                NavigationService.Navigate(new StoreMain(userDTO));
             }
             else
                 Xceed.Wpf.Toolkit.MessageBox.Show("Неверный логин или пароль");
