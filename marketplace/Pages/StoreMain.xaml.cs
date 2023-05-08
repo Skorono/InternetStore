@@ -40,7 +40,9 @@ namespace InternetStore.Pages
 
         private void AddToBasket(object sender, RoutedEventArgs e)
         {
-            Basket.Add(new BasketItem(((Item)sender).ProductModel));
+            BasketItem BasketEl = new BasketItem(((Item)sender).ProductModel);
+            BasketEl.MinWidth = 250;
+            Basket.Add(BasketEl);
         }
 
         private void ToBasket(object sender, RoutedEventArgs e)
