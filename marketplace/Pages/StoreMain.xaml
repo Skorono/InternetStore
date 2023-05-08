@@ -26,10 +26,10 @@
         </Grid.RowDefinitions>
 
         <ct:ToolBox x:Name="ToolPanel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="0 0 0 1" Background="#FF46B7D4"></ct:ToolBox>
-        
+
         <Border BorderThickness="1" Background="#FF33318C"  BorderBrush="#FF33318C" CornerRadius="10" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="1" Padding="3">
             <Canvas>
-            
+
             </Canvas>
         </Border>
 
@@ -39,5 +39,6 @@
                 </ListView>
             </ScrollViewer>
         </Border>
+        <Button Grid.Column="3" Margin="155,0,10,1" Click="ToBasket"/>
     </Grid>
 </Page>

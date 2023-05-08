@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\astat\source\repos\InternetStore\marketplace\App.xaml
-17-1416883396
+201601007309
 
-30-656494664
+35-568261990
 2331077978126
-Controls\ChildCompositor.xaml;Controls\ChildControl.xaml;Controls\ElementField.xaml;Controls\ImageManager.xaml;Controls\Item.xaml;Controls\ItemsFraming.xaml;Controls\ProfileIcon.xaml;Controls\SearchBox.xaml;Controls\ToolBox.xaml;Controls\UserPersonalView.xaml;Controls\UserView.xaml;MainWindow.xaml;Pages\Profile.xaml;Pages\ProfileEdit.xaml;Pages\Registration.xaml;Pages\SignUp.xaml;Pages\StoreMain.xaml;
+Controls\BasketIcon.xaml;Controls\BasketItem.xaml;Controls\ChildCompositor.xaml;Controls\ChildControl.xaml;Controls\ElementField.xaml;Controls\ImageManager.xaml;Controls\Item.xaml;Controls\ItemsFraming.xaml;Controls\ProfileIcon.xaml;Controls\SearchBox.xaml;Controls\ToolBox.xaml;Controls\UserPersonalView.xaml;Controls\UserView.xaml;MainWindow.xaml;Pages\ProductBasket.xaml;Pages\Profile.xaml;Pages\ProfileEdit.xaml;Pages\Registration.xaml;Pages\SignUp.xaml;Pages\StoreMain.xaml;
 
 False
 

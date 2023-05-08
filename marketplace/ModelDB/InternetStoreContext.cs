@@ -7,7 +7,7 @@ using InternetStore.Controls;
 using InternetStore.ModelDB;
 using Microsoft.EntityFrameworkCore;
 
-namespace InternetStore.ModelBD;
+namespace InternetStore.ModelDB;
 
 public partial class InternetStoreContext : DbContext
 {

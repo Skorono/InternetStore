@@ -124,3 +124,9 @@ C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.
 C:\Users\astat\source\repos\InternetStore\marketplace\bin\Debug\net6.0-windows7.0\DocumentFormat.OpenXml.dll
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\ImageManager.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\ImageManager.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\BasketIcon.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Pages\ProductBasket.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\BasketIcon.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Pages\ProductBasket.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\BasketItem.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\BasketItem.baml

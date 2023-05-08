@@ -1,8 +1,6 @@
-﻿using DocumentFormat.OpenXml.Office2010.ExcelAc;
-using InternetStore.ModelBD;
+﻿using InternetStore.ModelDB;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 

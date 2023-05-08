@@ -13,6 +13,7 @@ namespace InternetStore.Pages
     public partial class StoreMain : Page
     {
         private UserViewDto User;
+        public static ProductBasket Basket = new ProductBasket();
         public List<Item> ItemList = new List<Item>();
         public UserViewDto CurrentUser { get { return User; } }
 
@@ -23,9 +24,11 @@ namespace InternetStore.Pages
             ToolPanel.profileIcon.Click += ProfileNavigate;
             ToolPanel.profileIcon.UserName = BaseControl.DbContext.UserPersonalInfs.ToList()
                                          .Where(row => row.Id == User.Id).First().Name;
-            foreach (var item in BaseControl.DbContext.Products.ToList())
+            foreach (var product in BaseControl.DbContext.Products.ToList())
             {
-                ItemList.Add(new Item(item));
+                Item newItem = new Item(product);
+                newItem.Click += AddToBasket;
+                ItemList.Add(newItem);
             }
             ListBox.ItemsSource = ItemList;
         }
@@ -33,6 +36,16 @@ namespace InternetStore.Pages
         private void ProfileNavigate(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(Profile.getInstance(CurrentUser));
+        }
+
+        private void AddToBasket(object sender, RoutedEventArgs e)
+        {
+            Basket.Add(new BasketItem(((Item)sender).ProductModel));
+        }
+
+        private void ToBasket(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(Basket);
         }
     }
 }

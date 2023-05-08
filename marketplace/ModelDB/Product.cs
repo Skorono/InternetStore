@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace InternetStore.ModelBD;
+namespace InternetStore.ModelDB;
 
 public partial class Product
 {

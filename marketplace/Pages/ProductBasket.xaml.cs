@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using InternetStore.Controls;
-using InternetStore.ModelBD;
+using InternetStore.Controls.Interfaces;
+using InternetStore.ModelDB;
 
 namespace InternetStore.Pages
 {
@@ -10,21 +14,29 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class ProductBasket : Page
     {
-        private List<Product> Products = new List<Product>();
+        private List<IProductView> Products = new List<IProductView>();
+
         public ProductBasket()
         {
-            BasketList.ItemsSource = Products;
             InitializeComponent();
         }
 
-        public void Add()
+        private void NotifyPropertyChange()
         {
-            //Products.Add();
+            if (Products.Count > 0)
+                BasketList.ItemsSource = Products;
         }
 
-        public void Remove()
+        public void Add(IProductView product)
         {
-            //Products.Remove();
+            Products.Add(product);
+            NotifyPropertyChange();
+        }
+
+        public void Remove(IProductView product)
+        {
+            Products.Remove(product);
+            NotifyPropertyChange();
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using InternetStore.Controls;
-using InternetStore.ModelBD;
 using InternetStore.ModelDB;
 
 namespace InternetStore.Pages

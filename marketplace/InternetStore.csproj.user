@@ -10,6 +10,9 @@
     <Compile Update="Controls\BasketIcon.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\BasketItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\ChildCompositor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -61,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\BasketIcon.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\BasketItem.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ChildCompositor.xaml">

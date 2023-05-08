@@ -1,4 +1,4 @@
-﻿using InternetStore.ModelBD;
+﻿using InternetStore.ModelDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InternetStore.Controls.Interfaces
 {
-    interface IProductView
+    public interface IProductView
     {
         Product ProductModel { get; }
         byte[] Image { get; }
