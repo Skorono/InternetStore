@@ -41,7 +41,7 @@ namespace InternetStore.Pages
         private void AddToBasket(object sender, RoutedEventArgs e)
         {
             BasketItem BasketEl = new BasketItem(((Item)sender).ProductModel);
-            BasketEl.MinWidth = 250;
+            BasketEl.Width = 500;
             Basket.Add(BasketEl);
         }
 

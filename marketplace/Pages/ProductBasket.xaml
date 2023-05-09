@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:InternetStore.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -23,9 +24,17 @@
             <RowDefinition Height="0.5*"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <materialDesign:Card Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Margin="0 0 0 5">
+            <UniformGrid Columns="3">
+                <TextBlock></TextBlock>
+                <TextBlock></TextBlock>
+                <Button Width="150" Background="LightGreen" Foreground="Black">Оформить</Button>
+            </UniformGrid>
+        </materialDesign:Card>
+
         <Border Grid.Column="2" Grid.Row="1" BorderBrush="DarkSlateGray" BorderThickness="3" CornerRadius="5" Margin="2" Padding="3">
             <ScrollViewer HorizontalScrollBarVisibility="Disabled">
-                <ListView Background="#FFDCDCDE" x:Name="BasketList" Margin="0 0 2 0">
+                <ListView Background="#FFDCDCDE" x:Name="BasketList">
                     
                 </ListView>
             </ScrollViewer>

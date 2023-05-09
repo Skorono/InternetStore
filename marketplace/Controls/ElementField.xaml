@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InternetStore.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="grid" MaxWidth="800" MinWidth="750">
@@ -19,8 +20,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Border x:Name="entryField" Grid.Column="1" Grid.Row="1" Background="#FF822BAD" BorderBrush="White" BorderThickness="1" CornerRadius="50">
+        <materialDesign:Card Grid.Column="1" Grid.Row="1" Background="#FF822BAD">
+            <Border x:Name="entryField">
 
-        </Border>
+            </Border>
+        </materialDesign:Card>
+
     </Grid>
 </UserControl>

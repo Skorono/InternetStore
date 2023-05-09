@@ -4,11 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InternetStore.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             FontFamily="{DynamicResource MaterialDesignFont}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" MinHeight="115" MaxHeight="130" Padding="5">
+        <materialDesign:Card Background="AliceBlue" BorderBrush="Black" BorderThickness="1" MinHeight="115" MaxHeight="130" Padding="5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.25*"></ColumnDefinition>
@@ -16,13 +23,14 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                
                 <CheckBox Grid.Column="0" VerticalAlignment="Center"></CheckBox>
-                <Border Grid.Column="0">
+                <Border Grid.Column="1" BorderBrush="#FF868686" BorderThickness="1" CornerRadius="5" Margin="3">
                     <Image MaxHeight="100" MaxWidth="150" Source="{Binding Path=Image}"></Image>
                 </Border>
-                <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=ItemName}" TextWrapping="Wrap"></TextBlock>
-                <TextBlock VerticalAlignment="Center" Grid.Column="3" Text="{Binding Path=Cost}"></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=ItemName}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" Text="{Binding Path=Cost}"></TextBlock>
             </Grid>
-        </Border>
+        </materialDesign:Card>
     </Grid>
 </local:AbsProductView>

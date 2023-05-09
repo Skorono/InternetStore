@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:ct="clr-namespace:InternetStore.Controls"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:InternetStore.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -36,6 +37,17 @@
         <Border Padding="5" Background="#FF9F9FA2" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" >
             <ScrollViewer VerticalScrollBarVisibility="Visible">
                 <ListView x:Name="ListBox">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
+                                RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                ItemWidth="{Binding (ListView.View).ItemWidth, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}"
+                                MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
+                                ItemHeight="{Binding (ListView.View).ItemHeight, 
+                                RelativeSource={RelativeSource AncestorType=ListView}}" />      
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
                 </ListView>
             </ScrollViewer>
         </Border>

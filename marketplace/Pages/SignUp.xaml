@@ -32,7 +32,7 @@
                         <xctk:WatermarkPasswordBox Grid.Column="1" Grid.Row="2" Uid="PasswordField" Watermark="Пароль..."></xctk:WatermarkPasswordBox>
 
                         <Border Grid.Column="2" Grid.Row="4" BorderBrush="#FF230146" Background="#FFDDDDDD" BorderThickness="1" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="3">
-                            <Button BorderThickness="0" Click="OnSignUp" >Войти</Button>   
+                            <Button BorderThickness="0" Click="OnSignUp">Войти</Button>   
                         </Border>
                     </Grid>
                 </Border>
