@@ -31,9 +31,7 @@
                         <xctk:WatermarkTextBox Grid.Column="1" Grid.Row="1" Uid="LoginField" Watermark="Почта/Номер телефона*"></xctk:WatermarkTextBox>
                         <xctk:WatermarkPasswordBox Grid.Column="1" Grid.Row="2" Uid="PasswordField" Watermark="Пароль..."></xctk:WatermarkPasswordBox>
 
-                        <Border Grid.Column="2" Grid.Row="4" BorderBrush="#FF230146" Background="#FFDDDDDD" BorderThickness="1" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="3">
-                            <Button BorderThickness="0" Click="OnSignUp">Войти</Button>   
-                        </Border>
+                        <Button Grid.Column="2" Grid.Row="4" Width="75" Height="25" BorderThickness="0" Padding="0" Click="OnSignUp" Margin="1">Войти</Button>   
                     </Grid>
                 </Border>
             </Grid>

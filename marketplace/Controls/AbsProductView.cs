@@ -1,13 +1,17 @@
 ﻿using InternetStore.Controls.Interfaces;
 using InternetStore.ModelDB;
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace InternetStore.Controls
 {
-    public abstract class AbsProductView : UserControl, IProductView
+    public abstract class AbsProductView : UserControl, IProductView, INotifyPropertyChanged
     {
         #region [ Binding Fields ]
+
         public static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click",
                 RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(AbsProductView));
         public static DependencyProperty PropertyImage =
@@ -16,10 +20,12 @@ namespace InternetStore.Controls
             DependencyProperty.Register("itemName", typeof(string), typeof(AbsProductView));
         public static DependencyProperty PropertyCost =
             DependencyProperty.Register("Cost", typeof(float), typeof(AbsProductView));
+        
         #endregion
 
         #region [ Binding Properties ]
-        public virtual byte[]? Image
+
+        public virtual byte[] Image
         {
             get
             {
@@ -56,6 +62,7 @@ namespace InternetStore.Controls
                 SetValue(PropertyCost, value);
             }
         }
+
         #endregion
 
         public event RoutedEventHandler Click
@@ -75,7 +82,6 @@ namespace InternetStore.Controls
         public AbsProductView(Product model)
         {
             ProductModel = model;
-            ProductModel = model;
             ItemName = ProductModel.ProductName;
             /*PropertyImage = ItemModel.*/
             Cost = ProductModel.Count;
@@ -85,6 +91,13 @@ namespace InternetStore.Controls
         {
             RoutedEventArgs args = new RoutedEventArgs(ClickEvent);
             RaiseEvent(args);
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

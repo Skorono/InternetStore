@@ -19,12 +19,25 @@
             <RowDefinition  Height="3*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Border Grid.Column="1" Grid.Row="1" BorderBrush="#FF822BAD" BorderThickness="1" CornerRadius="25">
+            <Border.OpacityMask>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Border
+                    Background="Black"
+                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                    Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                    Height="{Binding ActualHeight, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                    />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Border.OpacityMask>
+            <materialDesign:Card>
+                <Border x:Name="entryField" Background="#FF822BAD">
 
-        <materialDesign:Card Grid.Column="1" Grid.Row="1" Background="#FF822BAD">
-            <Border x:Name="entryField">
-
-            </Border>
-        </materialDesign:Card>
+                </Border>
+            </materialDesign:Card>
+        </Border>
 
     </Grid>
 </UserControl>

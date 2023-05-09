@@ -17,6 +17,18 @@
     <Grid>
         <materialDesign:Card>
             <Border BorderThickness="1" BorderBrush="Black" CornerRadius="5" Width="175" Height="275" Padding="5">
+                <Border.OpacityMask>
+                    <VisualBrush>
+                        <VisualBrush.Visual>
+                            <Border
+                    Background="Black"
+                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                    Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                    Height="{Binding ActualHeight, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                    />
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Border.OpacityMask>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="3*"></RowDefinition>
@@ -36,7 +48,7 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}" FontSize="12" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"  Margin="2"></TextBlock>
-                    <Button Grid.Row="3" Grid.Column="0" Margin="25 0" Click="Navigate">В корзину</Button>
+                    <Button Grid.Row="3" Grid.Column="0" Margin="25 0" Click="Navigate" Style="{DynamicResource MaterialDesignRaisedDarkButton}">В корзину</Button>
                 </Grid>
             </Border>
         </materialDesign:Card>

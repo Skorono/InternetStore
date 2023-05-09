@@ -13,17 +13,26 @@ namespace InternetStore.Pages
     public partial class StoreMain : Page
     {
         private UserViewDto User;
-        public static ProductBasket Basket = new ProductBasket();
+        public static ProductBasket Basket;
         public List<Item> ItemList = new List<Item>();
         public UserViewDto CurrentUser { get { return User; } }
 
         public StoreMain(UserViewDto userModel)
         {
             InitializeComponent();
+            LoadProducts();
             User = userModel;
-            ToolPanel.profileIcon.Click += ProfileNavigate;
-            ToolPanel.profileIcon.UserName = BaseControl.DbContext.UserPersonalInfs.ToList()
-                                         .Where(row => row.Id == User.Id).First().Name;
+            LoadProfileIcon();
+            CreateBasket();
+        }
+
+        private void CreateBasket()
+        {
+            Basket = new ProductBasket(User.Id);
+        }
+
+        private void LoadProducts()
+        {
             foreach (var product in BaseControl.DbContext.Products.ToList())
             {
                 Item newItem = new Item(product);
@@ -31,6 +40,13 @@ namespace InternetStore.Pages
                 ItemList.Add(newItem);
             }
             ListBox.ItemsSource = ItemList;
+        }
+
+        private void LoadProfileIcon()
+        {
+            ToolPanel.profileIcon.Click += ProfileNavigate;
+            ToolPanel.profileIcon.UserName = BaseControl.DbContext.UserPersonalInfs.ToList()
+                                         .Where(row => row.Id == User.Id).First().Name;
         }
 
         private void ProfileNavigate(object sender, RoutedEventArgs e)
@@ -41,7 +57,7 @@ namespace InternetStore.Pages
         private void AddToBasket(object sender, RoutedEventArgs e)
         {
             BasketItem BasketEl = new BasketItem(((Item)sender).ProductModel);
-            BasketEl.Width = 500;
+            BasketEl.Width = 525;
             Basket.Add(BasketEl);
         }
 

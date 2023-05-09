@@ -19,10 +19,11 @@ namespace InternetStore.Controls
     /// <summary>
     /// Логика взаимодействия для BasketItem.xaml
     /// </summary>
-    public partial class BasketItem : AbsProductView
+    public partial class BasketItem : AbsBasketProductView
     {
         public BasketItem(Product model): base(model) 
         {
+            Count = 1;
             InitializeComponent();
         }
     }

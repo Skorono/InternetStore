@@ -1,4 +1,4 @@
-﻿<local:AbsProductView x:Class="InternetStore.Controls.BasketItem"
+﻿<local:AbsBasketProductView x:Class="InternetStore.Controls.BasketItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -18,10 +18,12 @@
         <materialDesign:Card Background="AliceBlue" BorderBrush="Black" BorderThickness="1" MinHeight="115" MaxHeight="130" Padding="5">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 
                 <CheckBox Grid.Column="0" VerticalAlignment="Center"></CheckBox>
@@ -29,8 +31,13 @@
                     <Image MaxHeight="100" MaxWidth="150" Source="{Binding Path=Image}"></Image>
                 </Border>
                 <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=ItemName}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" Text="{Binding Path=Cost}"></TextBlock>
+                <UniformGrid Grid.Column="4" Columns="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Width="15" Height="15" Margin="0" Padding="0">-</Button>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="45" Text="{Binding Path=Count, UpdateSourceTrigger=PropertyChanged}" Margin="1 0 1 0"></TextBlock>
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"  Width="15" Height="15" Margin="0" Padding="0">+</Button>
+                </UniformGrid>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5" FontSize="11" Text="{Binding Path=Cost}"></TextBlock>
             </Grid>
         </materialDesign:Card>
     </Grid>
-</local:AbsProductView>
+</local:AbsBasketProductView>
