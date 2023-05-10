@@ -51,6 +51,5 @@
                 </ListView>
             </ScrollViewer>
         </Border>
-        <Button Grid.Column="3" Margin="155,0,10,1" Click="ToBasket"/>
     </Grid>
 </Page>

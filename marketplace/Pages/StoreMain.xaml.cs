@@ -44,8 +44,8 @@ namespace InternetStore.Pages
 
         private void LoadProfileIcon()
         {
-            ToolPanel.profileIcon.Click += ProfileNavigate;
-            ToolPanel.profileIcon.UserName = BaseControl.DbContext.UserPersonalInfs.ToList()
+            ToolPanel.ProfileIcon.Click += ProfileNavigate;
+            ToolPanel.ProfileIcon.UserName = BaseControl.DbContext.UserPersonalInfs.ToList()
                                          .Where(row => row.Id == User.Id).First().Name;
         }
 
@@ -59,6 +59,7 @@ namespace InternetStore.Pages
             BasketItem BasketEl = new BasketItem(((Item)sender).ProductModel);
             BasketEl.Width = 525;
             Basket.Add(BasketEl);
+            ToolPanel.BasketIcon.Count = Basket.ProductCount;
         }
 
         private void ToBasket(object sender, RoutedEventArgs e)

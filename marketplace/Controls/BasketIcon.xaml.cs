@@ -1,25 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace InternetStore.Controls
 {
     /// <summary>
     /// Логика взаимодействия для BasketIcon.xaml
     /// </summary>
-    public partial class BasketIcon : UserControl
+    public partial class BasketIcon : UserControl, INotifyPropertyChanged
     {
+        #region [ Binding Properties ]
+        public static DependencyProperty PropertyCount =
+            DependencyProperty.Register("Count", typeof(int), typeof(BasketIcon));
+        #endregion
+
+        #region [ Binding Fields ]
+        public virtual int Count
+        {
+            get
+            {
+                return (int)GetValue(PropertyCount);
+            }
+
+            set
+            {
+                SetValue(PropertyCount, value);
+                NotifyPropertyChanged("Count");
+            }
+        }
+        #endregion
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public BasketIcon()
         {
             InitializeComponent();

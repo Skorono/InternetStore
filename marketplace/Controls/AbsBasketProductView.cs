@@ -14,7 +14,7 @@ namespace InternetStore.Controls
         #region [ Binding Fields ]
 
         public static DependencyProperty PropertyCount =
-            DependencyProperty.Register("Count", typeof(int), typeof(AbsProductView));
+            DependencyProperty.Register("Count", typeof(int), typeof(AbsBasketProductView));
 
         #endregion
 
