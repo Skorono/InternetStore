@@ -4,6 +4,7 @@ using System.Windows.Data;
 using DocumentFormat.OpenXml.Vml.Office;
 using DocumentFormat.OpenXml.Wordprocessing;
 using InternetStore.Controls;
+using InternetStore.ModelBD;
 using InternetStore.ModelDB;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,6 +43,8 @@ public partial class InternetStoreContext : DbContext
     public virtual DbSet<UserPersonalInf> UserPersonalInfs { get; set; }
 
     public virtual DbSet<UserViewDto> UserViewDtos { get; set; }
+
+    public virtual DbSet<SubCategory> SubCategories { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -112,16 +115,17 @@ public partial class InternetStoreContext : DbContext
             entity.ToTable("Product");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.CategoryId).HasColumnName("category_id");
-            entity.Property(e => e.Count).HasColumnName("count");
+            entity.Property(e => e.SubCategoryId).HasColumnName("subcategory_id");
+            entity.Property(e => e.Properties)
+                .HasColumnName("properties");
             entity.Property(e => e.ProductName)
                 .IsUnicode(false)
                 .HasColumnName("product_name");
 
-            entity.HasOne(d => d.Category).WithMany(p => p.Products)
-                .HasForeignKey(d => d.CategoryId)
+            /*entity.HasOne(d => d.SubCategory).WithMany(p => p.Products)
+                .HasForeignKey(d => d.SubCategoryId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("Product.FK_CATEGORY_ID");
+                .HasConstraintName("Product.FK_SUBCATEGORY_ID");*/
         });
 
         modelBuilder.Entity<Role>(entity =>
@@ -234,6 +238,20 @@ public partial class InternetStoreContext : DbContext
             entity.Property(e => e.Surname)
                 .IsUnicode(false)
                 .HasColumnName("surname");
+        });
+
+        modelBuilder.Entity<SubCategory>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SubCategories.PK_SUBCATEGORIES_ID");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Attributes)
+                .IsUnicode(false)
+                .HasColumnName("attributes");
+            entity.Property(e => e.CategoryId).HasColumnName("category_id");
+            entity.Property(e => e.Name)
+                .IsUnicode(false)
+                .HasColumnName("name");
         });
 
         OnModelCreatingPartial(modelBuilder);

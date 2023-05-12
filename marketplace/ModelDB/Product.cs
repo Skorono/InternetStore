@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternetStore.ModelBD;
+using System;
 using System.Collections.Generic;
 
 namespace InternetStore.ModelDB;
@@ -7,11 +8,11 @@ public partial class Product
 {
     public int Id { get; set; }
 
-    public int? CategoryId { get; set; }
+    public int? SubCategoryId { get; set; }
 
     public string ProductName { get; set; } = null!;
 
-    public int Count { get; set; }
+    public string Properties { get; set; } = null!;
 
-    public virtual Category? Category { get; set; }
+    public virtual SubCategory? SubCategory { get; set; }
 }

@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Text.Json;
+using System.Collections.Generic;
 
 namespace InternetStore.Controls
 {
@@ -84,7 +86,8 @@ namespace InternetStore.Controls
             ProductModel = model;
             ItemName = ProductModel.ProductName;
             /*PropertyImage = ItemModel.*/
-            Cost = ProductModel.Count;
+            //var Properties = JsonSerializer.Deserialize<Dictionary<string, string>>(ProductModel.Properties);
+            //Cost = float.TryParse(Properties?.cost, out PropertyCost);
         }
 
         protected virtual void Navigate(object sender, RoutedEventArgs e)

@@ -10,7 +10,7 @@ namespace marketplace
     public partial class App : Application
     {
         public App() {
-            BaseControl.DbContext.Database.OpenConnection();
+            BaseControl.DbContext.Database.ExecuteSqlRaw("SELECT * FROM [User]");
         }
     }
 }
