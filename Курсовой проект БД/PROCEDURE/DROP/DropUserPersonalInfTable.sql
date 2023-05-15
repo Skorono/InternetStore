@@ -10,3 +10,5 @@ AS
 			DROP TABLE UserPersonalInf;
 		END
 GO
+
+EXEC DropUsrPersonalInf;
