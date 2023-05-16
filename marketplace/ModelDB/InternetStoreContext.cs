@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Data;
-using DocumentFormat.OpenXml.Vml.Office;
-using DocumentFormat.OpenXml.Wordprocessing;
-using InternetStore.Controls;
-using InternetStore.ModelBD;
 using InternetStore.ModelDB;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,14 +7,11 @@ namespace InternetStore.ModelDB;
 
 public partial class InternetStoreContext : DbContext
 {
-    private static InternetStoreContext? _context;
-
-    private InternetStoreContext() { }
-
-    private InternetStoreContext(DbContextOptions<InternetStoreContext> options)
-        : base(options)
+    public InternetStoreContext()
     {
     }
+
+    private static InternetStoreContext? _context;
 
     public static InternetStoreContext getInstance()
     {
@@ -28,24 +20,30 @@ public partial class InternetStoreContext : DbContext
         return _context;
     }
 
+    public InternetStoreContext(DbContextOptions<InternetStoreContext> options)
+        : base(options)
+    {
+    }
+
     public virtual DbSet<Basket> Baskets { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
 
+    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
+
+    public virtual DbSet<SubCategory> SubCategories { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserPersonalInf> UserPersonalInfs { get; set; }
 
     public virtual DbSet<UserViewDto> UserViewDtos { get; set; }
-
-    public virtual DbSet<SubCategory> SubCategories { get; set; }
-
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -94,18 +92,31 @@ public partial class InternetStoreContext : DbContext
             entity.ToTable("Order");
 
             entity.Property(e => e.OrderId).HasColumnName("order_id");
-            entity.Property(e => e.DatatimeOfForm)
+            entity.Property(e => e.DatetimeOfForm)
                 .HasColumnType("datetime")
-                .HasColumnName("datatime_of_form");
-            entity.Property(e => e.DatatimeOfPayment)
+                .HasColumnName("datetime_of_form");
+            entity.Property(e => e.DatetimeOfPayment)
                 .HasColumnType("datetime")
-                .HasColumnName("datatime_of_payment");
+                .HasColumnName("datetime_of_payment");
             entity.Property(e => e.Paid).HasColumnName("paid");
             entity.Property(e => e.UserId).HasColumnName("user_id");
 
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("Order.FK_USER_ID");
+        });
+
+        modelBuilder.Entity<OrderDetail>(entity =>
+        {
+            entity.HasNoKey();
+
+            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.ProductId).HasColumnName("product_id");
+
+            entity.HasOne(d => d.Order).WithMany()
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("Order.FK_ORDER_ID");
         });
 
         modelBuilder.Entity<Product>(entity =>
@@ -115,94 +126,56 @@ public partial class InternetStoreContext : DbContext
             entity.ToTable("Product");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.SubCategoryId).HasColumnName("subcategory_id");
-            entity.Property(e => e.Properties)
-                .HasColumnName("properties");
             entity.Property(e => e.ProductName)
                 .IsUnicode(false)
                 .HasColumnName("product_name");
+            entity.Property(e => e.Properties)
+                .IsUnicode(false)
+                .HasColumnName("properties");
+            entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
 
-            /*entity.HasOne(d => d.SubCategory).WithMany(p => p.Products)
-                .HasForeignKey(d => d.SubCategoryId)
+            entity.HasOne(d => d.Subcategory).WithMany(p => p.Products)
+                .HasForeignKey(d => d.SubcategoryId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("Product.FK_SUBCATEGORY_ID");*/
+                .HasConstraintName("Product.FK_SUBCATEGORY_ID");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__Role__760965CCD89F97D7");
+            entity.HasKey(e => e.Id).HasName("Role.PK_ID");
 
             entity.ToTable("Role");
 
-            entity.HasIndex(e => e.RoleName, "UQ__Role__783254B1AFA2B73B").IsUnique();
+            entity.HasIndex(e => e.RoleName, "UQ__Role__783254B110AA1ECF").IsUnique();
 
-            entity.Property(e => e.RoleId)
+            entity.Property(e => e.Id)
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .IsFixedLength()
-                .HasColumnName("role_id");
+                .HasColumnName("id");
             entity.Property(e => e.RoleName)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("role_name");
         });
 
-        modelBuilder.Entity<User>(entity =>
+        modelBuilder.Entity<SubCategory>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F29E2098C");
-
-            entity.ToTable("User");
-
-            entity.HasIndex(e => e.Email, "UQ__User__AB6E6164387ECCC8").IsUnique();
+            entity.HasKey(e => e.Id).HasName("SubCategories.PK_SUBCATEGORIES_ID");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Email)
-                .HasMaxLength(256)
+            entity.Property(e => e.Attributes)
                 .IsUnicode(false)
-                .HasColumnName("email");
-            entity.Property(e => e.Password)
-                .IsUnicode(false)
-                .HasColumnName("password");
-            entity.Property(e => e.RoleId)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("role_id");
-
-            entity.HasOne(d => d.Role).WithMany(p => p.Users)
-                .HasForeignKey(d => d.RoleId)
-                .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("FK__User__role_id__49C3F6B7");
-        });
-
-        modelBuilder.Entity<UserPersonalInf>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("UserPersonalInf");
-
-            entity.HasIndex(e => e.PhoneNumber, "UQ__UserPers__A1936A6B20DF7058").IsUnique();
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.MiddleName)
-                .IsUnicode(false)
-                .HasColumnName("middle_name");
+                .HasColumnName("attributes");
+            entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.Name)
                 .IsUnicode(false)
                 .HasColumnName("name");
-            entity.Property(e => e.PhoneNumber)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("phone_number");
-            entity.Property(e => e.Photo).HasColumnName("photo");
-            entity.Property(e => e.Surname)
-                .IsUnicode(false)
-                .HasColumnName("surname");
 
-            entity.HasOne(d => d.IdNavigation).WithMany()
-                .HasForeignKey(d => d.Id)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__UserPersonal__id__74AE54BC");
+            entity.HasOne(d => d.Category).WithMany(p => p.SubCategories)
+                .HasForeignKey(d => d.CategoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("SubCategories.FK_CATEGORY_ID");
         });
 
         modelBuilder.Entity<UserViewDto>(entity =>
@@ -240,18 +213,64 @@ public partial class InternetStoreContext : DbContext
                 .HasColumnName("surname");
         });
 
-        modelBuilder.Entity<SubCategory>(entity =>
+        modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SubCategories.PK_SUBCATEGORIES_ID");
+            entity.HasKey(e => e.Id).HasName("User.PK_ID");
+
+            entity.ToTable("User");
+
+            entity.HasIndex(e => e.Email, "UQ__User__AB6E61644D48C4C5").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Attributes)
+            entity.Property(e => e.Email)
+                .HasMaxLength(256)
                 .IsUnicode(false)
-                .HasColumnName("attributes");
-            entity.Property(e => e.CategoryId).HasColumnName("category_id");
+                .HasColumnName("email");
+            entity.Property(e => e.Password)
+                .IsUnicode(false)
+                .HasColumnName("password");
+            entity.Property(e => e.RoleId)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("role_id");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.Users)
+                .HasForeignKey(d => d.RoleId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("User.FK_ROLE_ID");
+        });
+
+        modelBuilder.Entity<UserPersonalInf>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("UserPersonalInf");
+
+            entity.HasIndex(e => e.PhoneNumber, "UQ_PhoneNumber")
+                .IsUnique()
+                .HasFilter("([phone_number] IS NOT NULL)");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.MiddleName)
+                .IsUnicode(false)
+                .HasColumnName("middle_name");
             entity.Property(e => e.Name)
                 .IsUnicode(false)
                 .HasColumnName("name");
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(12)
+                .IsUnicode(false)
+                .HasColumnName("phone_number");
+            entity.Property(e => e.Photo).HasColumnName("photo");
+            entity.Property(e => e.Surname)
+                .IsUnicode(false)
+                .HasColumnName("surname");
+
+            entity.HasOne(d => d.IdNavigation).WithMany()
+                .HasForeignKey(d => d.Id)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("UserPrepsonalInf.FK_ID");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -5,7 +5,7 @@ namespace InternetStore.ModelDB;
 
 public partial class Role
 {
-    public string RoleId { get; set; } = null!;
+    public string Id { get; set; } = null!;
 
     public string RoleName { get; set; } = null!;
 

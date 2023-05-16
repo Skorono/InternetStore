@@ -12,8 +12,8 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class StoreMain : Page
     {
-        private UserViewDto User;
-        public static ProductBasket Basket;
+        private UserViewDto User = null!;
+        public static ProductBasket Basket = null!;
         public List<Item> ItemList = new List<Item>();
         public UserViewDto CurrentUser { get { return User; } }
 

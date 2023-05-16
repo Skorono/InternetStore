@@ -9,9 +9,9 @@ public partial class Order
 
     public int? UserId { get; set; }
 
-    public DateTime DatatimeOfForm { get; set; }
+    public DateTime DatetimeOfForm { get; set; }
 
-    public DateTime? DatatimeOfPayment { get; set; }
+    public DateTime? DatetimeOfPayment { get; set; }
 
     public bool Paid { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using InternetStore.Controls;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +11,7 @@ namespace marketplace
     public partial class App : Application
     {
         public App() {
-            BaseControl.DbContext.Database.ExecuteSqlRaw("SELECT * FROM [User]");
+            BaseControl.DbContext.Products.Count();
         }
     }
 }

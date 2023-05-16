@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace InternetStore.ModelBD;
+namespace InternetStore.ModelDB;
 
 public partial class SubCategory
 {
@@ -12,4 +12,8 @@ public partial class SubCategory
     public string Name { get; set; } = null!;
 
     public string? Attributes { get; set; }
+
+    public virtual Category Category { get; set; } = null!;
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }
