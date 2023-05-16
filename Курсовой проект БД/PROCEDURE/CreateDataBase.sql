@@ -270,3 +270,26 @@ CREATE TABLE Basket(
 )
 
 -- -------------------------
+
+-- Создание представлений
+
+GO
+CREATE VIEW UserViewDTO
+AS
+	SELECT [User].id, email, password, role_id, [name], surname, middle_name, photo, phone_number FROM [User]
+	INNER JOIN UserPersonalInf ON [User].id = UserPersonalInf.id
+GO
+
+----------------------------
+
+-- Заполнение таблиц данными
+
+IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES
+			WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME='Role')
+BEGIN
+	INSERT INTO Role(id, role_name) VALUES('U', 'User');
+	INSERT INTO Role(id, role_name) VALUES('A', 'Administrator');
+	INSERT INTO Role(id, role_name) VALUES('R', 'Retailer');
+END
+
+-- -------------------------
