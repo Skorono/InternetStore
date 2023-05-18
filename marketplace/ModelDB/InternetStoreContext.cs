@@ -11,14 +11,14 @@ public partial class InternetStoreContext : DbContext
     {
     }
 
-    private static InternetStoreContext? _context;
+    /*private static InternetStoreContext? _context;*/
 
-    public static InternetStoreContext getInstance()
+   /* public static InternetStoreContext getInstance()
     {
         if (_context == null)
             _context = new InternetStoreContext();
         return _context;
-    }
+    }*/
 
     public InternetStoreContext(DbContextOptions<InternetStoreContext> options)
         : base(options)

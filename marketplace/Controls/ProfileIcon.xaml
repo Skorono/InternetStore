@@ -9,13 +9,13 @@
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Border BorderThickness="1" BorderBrush="Gray" >
-            <DockPanel>
-                <Border DockPanel.Dock="Left" CornerRadius="10" BorderBrush="Wheat" BorderThickness="2">
-                    <Image Width="15" Height="15"></Image>
+            <UniformGrid Columns="3">
+                <Border Width="45" Height="45" CornerRadius="20" BorderBrush="Wheat" BorderThickness="1">
+                    <Image></Image>
                 </Border>
                 <TextBlock DockPanel.Dock="Right" Width="100" Foreground="Black" Background="White" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" ></TextBlock>
-                <Button DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"></Button>
-            </DockPanel>
+                <Button DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Click="Navigate"></Button>
+            </UniformGrid>
         </Border>
     </Grid>
 </UserControl>

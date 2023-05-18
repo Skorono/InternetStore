@@ -6,9 +6,9 @@ using System.Text;
 
 namespace InternetStore.Controls
 {
-    static class BaseControl
+    static class BaseProvider
     {
-        private static InternetStoreContext dbContext;
+        private static InternetStoreContext dbContext = null!;
 
         public static InternetStoreContext DbContext {
             get
@@ -19,9 +19,9 @@ namespace InternetStore.Controls
             private set { }
         }
 
-        static BaseControl()
+        static BaseProvider()
         {
-            dbContext = InternetStoreContext.getInstance();
+            Update();
         }
 
         /// <summary>
@@ -40,6 +40,11 @@ namespace InternetStore.Controls
                     sqlRequest.Append(", ");
             }
             return dbContext.Database.ExecuteSqlRaw(sqlRequest.ToString(), parameters);
+        }
+
+        public static void Update()
+        {
+            dbContext = new InternetStoreContext();
         }
 
         /*public static List<T> GetView<T>(string viewName)

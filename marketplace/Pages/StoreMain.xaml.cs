@@ -19,9 +19,10 @@ namespace InternetStore.Pages
 
         public StoreMain(UserViewDto userModel)
         {
+            User = userModel;
             InitializeComponent();
             LoadProducts();
-            User = userModel;
+            LoadBasketIcon();
             LoadProfileIcon();
             CreateBasket();
         }
@@ -33,7 +34,7 @@ namespace InternetStore.Pages
 
         private void LoadProducts()
         {
-            foreach (var product in BaseControl.DbContext.Products.ToList())
+            foreach (var product in BaseProvider.DbContext.Products.ToList())
             {
                 Item newItem = new Item(product);
                 newItem.Click += AddToBasket;
@@ -45,8 +46,13 @@ namespace InternetStore.Pages
         private void LoadProfileIcon()
         {
             ToolPanel.ProfileIcon.Click += ProfileNavigate;
-            ToolPanel.ProfileIcon.UserName = BaseControl.DbContext.UserPersonalInfs.ToList()
+            ToolPanel.ProfileIcon.UserName = BaseProvider.DbContext.UserPersonalInfs.ToList()
                                          .Where(row => row.Id == User.Id).First().Name;
+        }
+
+        private void LoadBasketIcon()
+        {
+            ToolPanel.BasketIcon.DoubleClick += ToBasket;
         }
 
         private void ProfileNavigate(object sender, RoutedEventArgs e)

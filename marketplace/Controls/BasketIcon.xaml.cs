@@ -12,8 +12,13 @@ namespace InternetStore.Controls
     public partial class BasketIcon : UserControl, INotifyPropertyChanged
     {
         #region [ Binding Properties ]
+        
         public static DependencyProperty PropertyCount =
             DependencyProperty.Register("Count", typeof(int), typeof(BasketIcon));
+
+        public static readonly RoutedEvent DoubleClickEvent = EventManager.RegisterRoutedEvent("DoubleClick",
+                RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(BasketIcon));
+
         #endregion
 
         #region [ Binding Fields ]
@@ -30,6 +35,18 @@ namespace InternetStore.Controls
                 NotifyPropertyChanged("Count");
             }
         }
+
+        public event RoutedEventHandler DoubleClick
+        {
+            add
+            {
+                base.AddHandler(DoubleClickEvent, value);
+            }
+            remove
+            {
+                base.RemoveHandler(DoubleClickEvent, value);
+            }
+        }
         #endregion
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -42,6 +59,12 @@ namespace InternetStore.Controls
         public BasketIcon()
         {
             InitializeComponent();
+        }
+
+        private void Navigate(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            RoutedEventArgs args = new RoutedEventArgs(DoubleClickEvent);
+            RaiseEvent(args);
         }
     }
 }

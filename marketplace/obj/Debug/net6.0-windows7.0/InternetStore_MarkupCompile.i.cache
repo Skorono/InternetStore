@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\astat\source\repos\InternetStore\marketplace\App.xaml
 201601007309
 
-41632007747
+421552767705
 236564651104
 Controls\BasketIcon.xaml;Controls\BasketItem.xaml;Controls\ChildCompositor.xaml;Controls\ChildControl.xaml;Controls\ElementField.xaml;Controls\ImageManager.xaml;Controls\Item.xaml;Controls\ItemsFraming.xaml;Controls\ProfileIcon.xaml;Controls\SearchBox.xaml;Controls\ToolBox.xaml;Controls\UserPersonalView.xaml;Controls\UserView.xaml;MainWindow.xaml;Pages\ProductBasket.xaml;Pages\Profile.xaml;Pages\ProfileEdit.xaml;Pages\Registration.xaml;Pages\SignUp.xaml;Pages\StoreMain.xaml;
 

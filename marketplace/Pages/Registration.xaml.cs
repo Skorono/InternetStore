@@ -110,8 +110,8 @@ namespace InternetStore.Pages
                 SqlParameter email = new SqlParameter("email", Email);
                 SqlParameter name = new SqlParameter("name", UserName);
                 SqlParameter password = new SqlParameter("password", ((WatermarkPasswordBox?)UIHelper.FindUid(this, "Password")).Password);
-                BaseControl.CallStoredProcedureByName("AddUser", email, password, name);
-                var userDTO = BaseControl.DbContext.UserViewDtos.ToList().Where(user => user.Email == email.Value.ToString()).First();
+                BaseProvider.CallStoredProcedureByName("AddUser", email, password, name);
+                var userDTO = BaseProvider.DbContext.UserViewDtos.ToList().Where(user => user.Email == email.Value.ToString()).First();
                 NavigationService.Navigate(new StoreMain(userDTO));
             //}
         }

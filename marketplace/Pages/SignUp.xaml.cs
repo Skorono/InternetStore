@@ -22,12 +22,12 @@ namespace InternetStore.Pages
             var login = (WatermarkTextBox?)UIHelper.FindUid(this, "LoginField");
             var password = (WatermarkPasswordBox?)UIHelper.FindUid(this, "PasswordField");
             
-            var User = BaseControl.DbContext.Users
+            var User = BaseProvider.DbContext.Users
                                 .Where(user => (login.Text == user.Email) && (password.Password == user.Password))
                                 .FirstOrDefault();
             if (User != null)
             {
-                var userDTO = BaseControl.DbContext.UserViewDtos.ToList().Where(user => user.Id == User.Id).First();
+                var userDTO = BaseProvider.DbContext.UserViewDtos.ToList().Where(user => user.Id == User.Id).First();
                 NavigationService.Navigate(new StoreMain(userDTO));
             }
             else

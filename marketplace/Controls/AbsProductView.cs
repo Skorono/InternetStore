@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Text.Json;
 using System.Collections.Generic;
 
 namespace InternetStore.Controls
@@ -27,7 +26,7 @@ namespace InternetStore.Controls
 
         #region [ Binding Properties ]
 
-        public virtual byte[] Image
+        public virtual byte[]? Image
         {
             get
             {
@@ -81,13 +80,21 @@ namespace InternetStore.Controls
 
         public Product ProductModel { get; protected set; }
 
+        public Dictionary<string, object> Properties { get; protected set; }
+
         public AbsProductView(Product model)
         {
             ProductModel = model;
             ItemName = ProductModel.ProductName;
-            /*PropertyImage = ItemModel.*/
-            //var Properties = JsonSerializer.Deserialize<Dictionary<string, string>>(ProductModel.Properties);
-            //Cost = float.TryParse(Properties?.cost, out PropertyCost);
+            ParsePropertiesFromModel();
+            Image = (byte[])Properties.GetValue("image"); 
+            Cost = float.Parse(Properties.GetValue("cost").ToString());
+        }
+
+        private void ParsePropertiesFromModel()
+        {
+            string jsonString = ProductModel.Properties;
+            Properties = jsonString.Parse<string, object>();
         }
 
         protected virtual void Navigate(object sender, RoutedEventArgs e)

@@ -11,7 +11,7 @@ namespace marketplace
     public partial class App : Application
     {
         public App() {
-            BaseControl.DbContext.Products.Count();
+            BaseProvider.DbContext.Products.Count();
         }
     }
 }
