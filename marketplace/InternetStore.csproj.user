@@ -7,7 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Controls\BasketIcon.xaml.cs">
+    <Compile Update="Controls\CategoryDetails.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Icons\BasketIcon.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\BasketItem.xaml.cs">
@@ -28,10 +31,13 @@
     <Compile Update="Controls\ItemsFraming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\ProfileIcon.xaml.cs">
+    <Compile Update="Controls\Icons\ProfileIcon.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\SearchBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\SideBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\UserPersonalView.xaml.cs">
@@ -63,7 +69,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Controls\BasketIcon.xaml">
+    <Page Update="Controls\CategoryDetails.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Icons\BasketIcon.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\BasketItem.xaml">
@@ -84,10 +93,13 @@
     <Page Update="Controls\ItemsFraming.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\ProfileIcon.xaml">
+    <Page Update="Controls\Icons\ProfileIcon.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\SearchBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\SideBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\UserPersonalView.xaml">
