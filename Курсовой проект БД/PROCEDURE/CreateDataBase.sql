@@ -60,6 +60,35 @@ AS
 				@name, @surname, @middle_name, @photo, @phone_number);
 GO
 
+USE InternetStore;
+
+GO
+CREATE PROCEDURE AddProductToBasket
+	@user_id INT,
+	@product_id INT,
+	@count INT
+AS
+	INSERT INTO Basket(user_id, product_id, count) 
+		VALUES(@user_id, @product_id, @count);
+GO
+
+USE InternetStore;
+
+GO
+
+CREATE PROCEDURE UpdateProductCountInBasket
+	@user_id INT,
+	@product_id INT,
+	@new_count INT
+AS
+	IF EXISTS(SELECT * FROM Basket WHERE user_id = @user_id AND product_id = @product_id)
+	BEGIN
+		UPDATE Basket
+			SET count = @new_count
+		WHERE user_id = @user_id AND product_id = @product_id
+	END
+GO
+
 GO
 CREATE PROCEDURE DropBasket
 AS
