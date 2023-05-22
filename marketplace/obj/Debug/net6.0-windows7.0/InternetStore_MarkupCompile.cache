@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\astat\source\repos\InternetStore\marketplace\App.xaml
-221558615155
+232134220836
 
-42-201760923
+43-1536693656
 236564651104
-Controls\BasketItem.xaml;Controls\CategoryDetails.xaml;Controls\ChildCompositor.xaml;Controls\ChildControl.xaml;Controls\ElementField.xaml;Controls\Icons\BasketIcon.xaml;Controls\Icons\ProfileIcon.xaml;Controls\ImageManager.xaml;Controls\Item.xaml;Controls\ItemsFraming.xaml;Controls\SearchBox.xaml;Controls\SideBar.xaml;Controls\ToolBox.xaml;Controls\UserPersonalView.xaml;Controls\UserView.xaml;MainWindow.xaml;Pages\ProductBasket.xaml;Pages\Profile.xaml;Pages\ProfileEdit.xaml;Pages\Registration.xaml;Pages\SignUp.xaml;Pages\StoreMain.xaml;
+Controls\ChildCompositor.xaml;Controls\ChildControl.xaml;Controls\ImageManager.xaml;Controls\UserPersonalView.xaml;Controls\UserView.xaml;Controls\XAMLControls\BasketItem.xaml;Controls\XAMLControls\CategoryDetails.xaml;Controls\XAMLControls\CostPicker.xaml;Controls\XAMLControls\ElementField.xaml;Controls\XAMLControls\Icons\BasketIcon.xaml;Controls\XAMLControls\Icons\ProfileIcon.xaml;Controls\XAMLControls\Item.xaml;Controls\XAMLControls\ItemsFraming.xaml;Controls\XAMLControls\SearchBox.xaml;Controls\XAMLControls\SideBar.xaml;Controls\XAMLControls\ToolBox.xaml;MainWindow.xaml;Pages\ProductBasket.xaml;Pages\Profile.xaml;Pages\ProfileEdit.xaml;Pages\Registration.xaml;Pages\SignUp.xaml;Pages\StoreMain.xaml;
 
 False
 

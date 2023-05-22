@@ -7,13 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Controls\CategoryDetails.xaml.cs">
+    <Compile Update="Controls\XAMLControls\CategoryDetails.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\Icons\BasketIcon.xaml.cs">
+    <Compile Update="Controls\XAMLControls\CostPicker.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\BasketItem.xaml.cs">
+    <Compile Update="Controls\XAMLControls\Icons\BasketIcon.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\XAMLControls\BasketItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\ChildCompositor.xaml.cs">
@@ -25,19 +28,19 @@
     <Compile Update="Controls\ImageManager.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\Item.xaml.cs">
+    <Compile Update="Controls\XAMLControls\Item.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\ItemsFraming.xaml.cs">
+    <Compile Update="Controls\XAMLControls\ItemsFraming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\Icons\ProfileIcon.xaml.cs">
+    <Compile Update="Controls\XAMLControls\Icons\ProfileIcon.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\SearchBox.xaml.cs">
+    <Compile Update="Controls\XAMLControls\SearchBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\SideBar.xaml.cs">
+    <Compile Update="Controls\XAMLControls\SideBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\UserPersonalView.xaml.cs">
@@ -55,7 +58,7 @@
     <Compile Update="Pages\Registration.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\ElementField.xaml.cs">
+    <Compile Update="Controls\XAMLControls\ElementField.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\SignUp.xaml.cs">
@@ -64,18 +67,21 @@
     <Compile Update="Pages\StoreMain.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\ToolBox.xaml.cs">
+    <Compile Update="Controls\XAMLControls\ToolBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Controls\CategoryDetails.xaml">
+    <Page Update="Controls\XAMLControls\CategoryDetails.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\Icons\BasketIcon.xaml">
+    <Page Update="Controls\XAMLControls\CostPicker.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\BasketItem.xaml">
+    <Page Update="Controls\XAMLControls\Icons\BasketIcon.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\XAMLControls\BasketItem.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ChildCompositor.xaml">
@@ -87,19 +93,19 @@
     <Page Update="Controls\ImageManager.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\Item.xaml">
+    <Page Update="Controls\XAMLControls\Item.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\ItemsFraming.xaml">
+    <Page Update="Controls\XAMLControls\ItemsFraming.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\Icons\ProfileIcon.xaml">
+    <Page Update="Controls\XAMLControls\Icons\ProfileIcon.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\SearchBox.xaml">
+    <Page Update="Controls\XAMLControls\SearchBox.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\SideBar.xaml">
+    <Page Update="Controls\XAMLControls\SideBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\UserPersonalView.xaml">
@@ -120,7 +126,7 @@
     <Page Update="Pages\Registration.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\ElementField.xaml">
+    <Page Update="Controls\XAMLControls\ElementField.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\SignUp.xaml">
@@ -129,7 +135,7 @@
     <Page Update="Pages\StoreMain.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\ToolBox.xaml">
+    <Page Update="Controls\XAMLControls\ToolBox.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

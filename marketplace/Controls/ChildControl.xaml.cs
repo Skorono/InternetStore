@@ -4,6 +4,7 @@
     /// </summary>
 using System.Windows;
 using System.Windows.Controls;
+using InternetStore.Controls.XAMLControls;
 
 namespace InternetStore.Controls
 {

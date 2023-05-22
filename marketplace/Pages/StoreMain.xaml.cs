@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using System.Windows.Controls;
 using System.Collections.Generic;
-using InternetStore.Controls;
 using System.Windows;
 using InternetStore.ModelDB;
+using InternetStore.Controls;
+using InternetStore.Controls.XAMLControls;
 
 namespace InternetStore.Pages
 {

@@ -1,17 +1,21 @@
-﻿
+﻿C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\GeneratedInternalTypeHelper.g.cs
 FC:\Users\astat\source\repos\InternetStore\marketplace\App.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\BasketItem.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\ChildCompositor.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\ChildControl.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\ElementField.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\ImageManager.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\Item.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\ItemsFraming.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\SearchBox.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\SideBar.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\ToolBox.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\UserPersonalView.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\UserView.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\BasketItem.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\CategoryDetails.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\CostPicker.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\ElementField.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\Icons\BasketIcon.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\Icons\ProfileIcon.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\Item.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\ItemsFraming.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\SearchBox.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\SideBar.xaml;;
+FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\XAMLControls\ToolBox.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\MainWindow.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Pages\ProductBasket.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Pages\Profile.xaml;;
@@ -19,7 +23,4 @@ FC:\Users\astat\source\repos\InternetStore\marketplace\Pages\ProfileEdit.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Pages\Registration.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Pages\SignUp.xaml;;
 FC:\Users\astat\source\repos\InternetStore\marketplace\Pages\StoreMain.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\CategoryDetails.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\Icons\BasketIcon.xaml;;
-FC:\Users\astat\source\repos\InternetStore\marketplace\Controls\Icons\ProfileIcon.xaml;;
 

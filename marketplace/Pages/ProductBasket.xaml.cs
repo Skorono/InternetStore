@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using InternetStore.Controls;
 using InternetStore.Controls.Interfaces;
-using InternetStore.ModelDB;
+using InternetStore.Controls.XAMLControls;
 using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace InternetStore.Pages
@@ -29,7 +26,7 @@ namespace InternetStore.Pages
             InitializeComponent();
             foreach (var basketProduct in BaseProvider.DbContext.Baskets
                                                     .ToList()
-                                                     .Where(userBasket => userBasket.UserId == UserId))
+                                                    .Where(userBasket => userBasket.UserId == UserId))
             {
                 // Добавить настройку вида продукта в билдере корзины 
                 Add(new BasketItem(
@@ -83,8 +80,16 @@ namespace InternetStore.Pages
         public void Remove(IBasketViewItem product)
         {
             product.Count--;
-            if (product.Count <= 0)
+            SqlParameter uid = new SqlParameter("user_id", UserId);
+            SqlParameter productId = new SqlParameter("product_id", product.ProductModel.Id);
+            SqlParameter count = new SqlParameter("count", product.Count);
+            if (product.Count <= 0) {
+                BaseProvider.DbContext.Baskets.Remove(BaseProvider.DbContext.Baskets.Single(basketProduct => (basketProduct.UserId == UserId) 
+                                                                                        && (basketProduct.ProductId == product.ProductModel.Id)));
                 Products.Remove(product);
+            }
+            else
+                BaseProvider.CallStoredProcedureByName("UpdateProductCountInBasket", uid, productId, count);
             NotifyBasketChange();
         }
     }
