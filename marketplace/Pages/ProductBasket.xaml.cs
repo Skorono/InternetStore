@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using InternetStore.Controls;
 using InternetStore.Controls.Interfaces;
 using InternetStore.ModelDB;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace InternetStore.Pages
@@ -25,6 +27,19 @@ namespace InternetStore.Pages
         {
             UserId = UID;
             InitializeComponent();
+            foreach (var basketProduct in BaseProvider.DbContext.Baskets
+                                                    .ToList()
+                                                     .Where(userBasket => userBasket.UserId == UserId))
+            {
+                // Добавить настройку вида продукта в билдере корзины 
+                Add(new BasketItem(
+                            BaseProvider.DbContext.Products
+                            .ToList()
+                            .Where(product => product.Id == basketProduct.ProductId)
+                            .First()
+                        )
+                    );
+            }
         }
 
         private void NotifyBasketChange()
@@ -37,21 +52,32 @@ namespace InternetStore.Pages
         {
             return !Products.Where(product => product.ProductModel.Id == ID).IsNullOrEmpty();
         }
-
-        public void Add(IBasketViewItem product)
-        {
-            if (inBasket(product.ProductModel.Id))
-                Products.Where(Bproduct => Bproduct.ProductModel.Id == product.ProductModel.Id).First()
-                    .Count++;
-            else
-                Products.Add(product);
-            //BaseControl.DbContext.Baskets.Add();
-            NotifyBasketChange();
-        }
-
+        
         private void CreateBasketEntitry()
         {
 
+        }
+
+        public void Add(IBasketViewItem product)
+        {
+            SqlParameter uid = new SqlParameter("user_id", UserId);
+            SqlParameter productId = new SqlParameter("product_id", product.ProductModel.Id);
+            SqlParameter count = new SqlParameter("count", product.Count);
+
+            if (inBasket(product.ProductModel.Id)) {
+                var ProductInBasket = Products.Where(Bproduct => Bproduct.ProductModel.Id == product.ProductModel.Id).First();
+                ProductInBasket.Count++;
+                count.Value = ProductInBasket.Count;
+                BaseProvider.CallStoredProcedureByName("UpdateProductCountInBasket", uid, productId, count);
+            }
+            else
+            { 
+                SqlParameter AddingDateTime = new SqlParameter("addDate", DateTime.Now);
+                BaseProvider.CallStoredProcedureByName("AddProductToBasket", uid, productId, count, AddingDateTime);
+                Products.Add(product);
+            }
+            //BaseControl.DbContext.Baskets.Add();
+            NotifyBasketChange();
         }
 
         public void Remove(IBasketViewItem product)
