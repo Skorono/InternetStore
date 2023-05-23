@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace InternetStore.Controls
 {
-    public abstract class AbsProductView : UserControl, IProductView, INotifyPropertyChanged
+    public abstract class AbsProductView : ChangeablePropertiesClass, IProductView, INotifyPropertyChanged
     {
         #region [ Binding Fields ]
 
@@ -101,13 +101,6 @@ namespace InternetStore.Controls
         {
             RoutedEventArgs args = new RoutedEventArgs(ClickEvent);
             RaiseEvent(args);
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

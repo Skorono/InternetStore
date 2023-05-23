@@ -9,7 +9,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
     /// <summary>
     /// Логика взаимодействия для BasketIcon.xaml
     /// </summary>
-    public partial class BasketIcon : UserControl, INotifyPropertyChanged
+    public partial class BasketIcon : ChangeablePropertiesClass
     {
         #region [ Binding Properties ]
         
@@ -49,12 +49,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
         }
         #endregion
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
 
         public BasketIcon()
         {

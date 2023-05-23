@@ -9,7 +9,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
     /// <summary>
     /// Логика взаимодействия для ProfileIcon.xaml
     /// </summary>
-    public partial class ProfileIcon : UserControl, INotifyPropertyChanged
+    public partial class ProfileIcon : ChangeablePropertiesClass
     {
         
         #region [ Binding Fields ]
@@ -46,13 +46,6 @@ namespace InternetStore.Controls.XAMLControls.Icons
         public ProfileIcon()
         {
            InitializeComponent();
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void Navigate(object sender, RoutedEventArgs e)

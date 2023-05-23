@@ -18,7 +18,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
+                
                 <local:CostPicker Grid.Row="0"></local:CostPicker>
+
                 <ListView Grid.Row="2" Width="450" x:Name="CategoryList">
                     
                 </ListView>

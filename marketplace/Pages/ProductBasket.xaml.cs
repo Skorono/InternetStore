@@ -29,7 +29,7 @@ namespace InternetStore.Pages
                                                     .Where(userBasket => userBasket.UserId == UserId))
             {
                 // Добавить настройку вида продукта в билдере корзины 
-                Add(new BasketItem(
+                Products.Add(new BasketItem(
                             BaseProvider.DbContext.Products
                             .ToList()
                             .Where(product => product.Id == basketProduct.ProductId)
