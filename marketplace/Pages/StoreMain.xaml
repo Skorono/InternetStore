@@ -30,22 +30,6 @@
 
         <ct:SideBar HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="1"></ct:SideBar>
 
-        <Border Padding="5" Background="#FF9F9FA2" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3" >
-            <ScrollViewer VerticalScrollBarVisibility="Visible">
-                <ListView x:Name="ListBox">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
-                                RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
-                                ItemWidth="{Binding (ListView.View).ItemWidth, 
-                                RelativeSource={RelativeSource AncestorType=ListView}}"
-                                MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
-                                ItemHeight="{Binding (ListView.View).ItemHeight, 
-                                RelativeSource={RelativeSource AncestorType=ListView}}" />      
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                </ListView>
-            </ScrollViewer>
-        </Border>
+        
     </Grid>
 </Page>

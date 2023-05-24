@@ -15,14 +15,12 @@ namespace InternetStore.Pages
     {
         private UserViewDto User = null!;
         public static ProductBasket Basket = null!;
-        public List<Item> ItemList = new List<Item>();
         public UserViewDto CurrentUser { get { return User; } }
 
         public StoreMain(UserViewDto userModel)
         {
             User = userModel;
             InitializeComponent();
-            LoadProducts();
             LoadBasketIcon();
             LoadProfileIcon();
             CreateBasket();
@@ -33,16 +31,7 @@ namespace InternetStore.Pages
             Basket = new ProductBasket(User.Id);
         }
 
-        private void LoadProducts()
-        {
-            foreach (var product in BaseProvider.DbContext.Products.ToList())
-            {
-                Item newItem = new Item(product);
-                newItem.Click += AddToBasket;
-                ItemList.Add(newItem);
-            }
-            ListBox.ItemsSource = ItemList;
-        }
+        
 
         private void LoadProfileIcon()
         {

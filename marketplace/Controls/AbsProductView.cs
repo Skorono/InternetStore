@@ -1,15 +1,11 @@
 ﻿using InternetStore.Controls.Interfaces;
 using InternetStore.ModelDB;
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Controls;
 using System.Collections.Generic;
 
 namespace InternetStore.Controls
 {
-    public abstract class AbsProductView : ChangeablePropertiesClass, IProductView, INotifyPropertyChanged
+    public abstract class AbsProductView : ChangeablePropertiesClass, IProductView
     {
         #region [ Binding Fields ]
 

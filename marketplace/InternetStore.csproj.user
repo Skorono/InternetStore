@@ -37,6 +37,9 @@
     <Compile Update="Controls\XAMLControls\Icons\ProfileIcon.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\XAMLControls\ProductArea.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\XAMLControls\SearchBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,6 +103,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\XAMLControls\Icons\ProfileIcon.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\XAMLControls\ProductArea.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\XAMLControls\SearchBox.xaml">

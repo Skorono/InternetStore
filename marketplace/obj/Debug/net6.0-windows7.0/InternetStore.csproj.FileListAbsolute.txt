@@ -140,3 +140,4 @@ C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\XAMLControls\Icons\ProfileIcon.baml
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\XAMLControls\CostPicker.g.cs
 C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\XAMLControls\CostPicker.baml
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Controls\XAMLControls\ProductArea.g.cs
