@@ -18,7 +18,8 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <local:SearchBox Grid.Row="0" Grid.Column="1" ></local:SearchBox>
+        
+        <local:SearchBox Grid.Row="0" Grid.Column="1" Margin="0 0 20 0" ></local:SearchBox>
         <ic:ProfileIcon x:Name="ProfileIcon" Grid.Column="2" Grid.Row="0" ></ic:ProfileIcon>
         <ic:BasketIcon x:Name="BasketIcon" Grid.Column="3" Grid.Row="0"></ic:BasketIcon>
     </Grid>

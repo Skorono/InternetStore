@@ -14,7 +14,7 @@ public partial class CategoryDetails : UserControl
 {
     public Category CategoryModel { get; private set; }
 
-    List<TextBlock> subcategoryList = new List<TextBlock>();
+    List<TextBlockButton> subcategoryList = new();
     public CategoryDetails(Category model)
     {
         InitializeComponent();
@@ -33,7 +33,7 @@ public partial class CategoryDetails : UserControl
                                                     .ToList()
                                                     .Where(subCat => subCat.CategoryId == CategoryModel.Id))
         {
-            TextBlock subCategoryTextBlock = new TextBlock();
+            TextBlockButton subCategoryTextBlock = new();
             subCategoryTextBlock.Text = subcategory.Name;
             subcategoryList.Add(subCategoryTextBlock);
         }

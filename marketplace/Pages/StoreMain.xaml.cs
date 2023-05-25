@@ -25,7 +25,9 @@ namespace InternetStore.Pages
             LoadProfileIcon();
             CreateBasket();
             ProductList.NotifyChangeHandler(AddToBasket);
-            ProductList.SortBySubCategory(1);
+            ProductList.SelectSubCategory(2);
+            ProductList.SortByCost(0, 3400);
+
         }
 
         private void CreateBasket()
@@ -56,6 +58,11 @@ namespace InternetStore.Pages
             BasketEl.Width = 525;
             Basket.Add(BasketEl);
             ToolPanel.BasketIcon.Count = Basket.ProductCount;
+        }
+
+        private void ShowSubCategory(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void ToBasket(object sender, RoutedEventArgs e)
