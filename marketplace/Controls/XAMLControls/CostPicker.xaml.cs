@@ -1,24 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Runtime.CompilerServices;
 
 namespace InternetStore.Controls.XAMLControls
 {
     /// <summary>
     /// Логика взаимодействия для CostPicker.xaml
     /// </summary>
-    public partial class CostPicker : UserControl
+    public partial class CostPicker : ViewControl
     {
         #region [ Binding Fields ]
 
@@ -42,6 +31,7 @@ namespace InternetStore.Controls.XAMLControls
                 set
                 {
                     SetValue(MinCostField, value);
+                    NotifyPropertyChanged(nameof(MinCost));
                 }
             }
 
@@ -55,22 +45,30 @@ namespace InternetStore.Controls.XAMLControls
                 set
                 {
                     SetValue(MaxCostField, value);
+                    NotifyPropertyChanged(nameof(MinCost));
                 }
-            }
+        }
         #endregion
 
         public CostPicker()
         {
             InitializeComponent();
             MinCost = 0;
-            MaxCost = 0;
-            CostSlider.Minimum = MinCost;
-            CostSlider.Maximum = MaxCost;
+            MaxCost = 1000000;
         }
 
         private void OnRangeChange(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MaxCost = (int)e.NewValue;
+        }
+
+        protected override void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            base.NotifyPropertyChanged(propertyName);
+            CostSlider.Minimum = MinCost;
+            CostSlider.Maximum = MaxCost;
+            CostSlider.SelectionStart = MinCost;
+            CostSlider.SelectionEnd = MaxCost;
         }
     }
 }

@@ -5,12 +5,10 @@ using System.Collections.Generic;
 
 namespace InternetStore.Controls
 {
-    public abstract class AbsProductView : ChangeablePropertiesClass, IProductView
+    public abstract class AbsProductView : ViewControl, IProductView
     {
         #region [ Binding Fields ]
 
-        public static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click",
-                RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(AbsProductView));
         public static DependencyProperty PropertyImage =
             DependencyProperty.Register("Image", typeof(byte[]), typeof(AbsProductView));
         public static DependencyProperty PropertyName =
@@ -62,18 +60,6 @@ namespace InternetStore.Controls
 
         #endregion
 
-        public event RoutedEventHandler Click
-        {
-            add
-            {
-                base.AddHandler(ClickEvent, value);
-            }
-            remove
-            {
-                base.RemoveHandler(ClickEvent, value);
-            }
-        }
-
         public Product ProductModel { get; protected set; }
 
         public Dictionary<string, object> Properties { get; protected set; }
@@ -91,12 +77,6 @@ namespace InternetStore.Controls
         {
             string jsonString = ProductModel.Properties;
             Properties = jsonString.Parse<string, object>();
-        }
-
-        protected virtual void Navigate(object sender, RoutedEventArgs e)
-        {
-            RoutedEventArgs args = new RoutedEventArgs(ClickEvent);
-            RaiseEvent(args);
         }
     }
 }

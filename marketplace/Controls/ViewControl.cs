@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace InternetStore.Controls
 {
-    abstract class ViewControl: UserControl, IClickable, IPropertyChangeable
+    public abstract class ViewControl: UserControl, IClickable, IPropertyChangeable
     {
         #region [ Event Fields ]
         
@@ -46,6 +46,8 @@ namespace InternetStore.Controls
             }
         }
 
+        #endregion
+
         protected virtual void Clicked(object sender, RoutedEventArgs e)
         {
             RoutedEventArgs args = new RoutedEventArgs(ClickEvent);
@@ -58,7 +60,7 @@ namespace InternetStore.Controls
             RaiseEvent(args);
         }
 
-        protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        protected virtual void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));

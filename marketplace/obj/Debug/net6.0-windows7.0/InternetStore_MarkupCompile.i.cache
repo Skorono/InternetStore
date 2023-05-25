@@ -16,5 +16,5 @@ C:\Users\astat\source\repos\InternetStore\marketplace\App.xaml
 236564651104
 Controls\ChildCompositor.xaml;Controls\ChildControl.xaml;Controls\ImageManager.xaml;Controls\UserPersonalView.xaml;Controls\UserView.xaml;Controls\XAMLControls\BasketItem.xaml;Controls\XAMLControls\CategoryDetails.xaml;Controls\XAMLControls\CostPicker.xaml;Controls\XAMLControls\ElementField.xaml;Controls\XAMLControls\Icons\BasketIcon.xaml;Controls\XAMLControls\Icons\ProfileIcon.xaml;Controls\XAMLControls\Item.xaml;Controls\XAMLControls\ItemsFraming.xaml;Controls\XAMLControls\ProductArea.xaml;Controls\XAMLControls\SearchBox.xaml;Controls\XAMLControls\SideBar.xaml;Controls\XAMLControls\ToolBox.xaml;MainWindow.xaml;Pages\ProductBasket.xaml;Pages\Profile.xaml;Pages\ProfileEdit.xaml;Pages\Registration.xaml;Pages\SignUp.xaml;Pages\StoreMain.xaml;
 
-False
+True
 

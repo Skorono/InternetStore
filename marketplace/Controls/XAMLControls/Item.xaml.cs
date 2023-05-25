@@ -14,5 +14,10 @@ namespace InternetStore.Controls.XAMLControls
         {
             InitializeComponent();
         }
+
+        public void UpdateHandler(RoutedEventHandler handler)
+        {
+            this.Click += handler;
+        }
     }
 }

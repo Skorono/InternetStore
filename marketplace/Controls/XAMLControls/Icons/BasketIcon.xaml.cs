@@ -9,15 +9,12 @@ namespace InternetStore.Controls.XAMLControls.Icons
     /// <summary>
     /// Логика взаимодействия для BasketIcon.xaml
     /// </summary>
-    public partial class BasketIcon : ChangeablePropertiesClass
+    public partial class BasketIcon : ViewControl
     {
         #region [ Binding Properties ]
         
         public static DependencyProperty PropertyCount =
             DependencyProperty.Register("Count", typeof(int), typeof(BasketIcon));
-
-        public static readonly RoutedEvent DoubleClickEvent = EventManager.RegisterRoutedEvent("DoubleClick",
-                RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(BasketIcon));
 
         #endregion
 
@@ -36,30 +33,11 @@ namespace InternetStore.Controls.XAMLControls.Icons
             }
         }
 
-        public event RoutedEventHandler DoubleClick
-        {
-            add
-            {
-                base.AddHandler(DoubleClickEvent, value);
-            }
-            remove
-            {
-                base.RemoveHandler(DoubleClickEvent, value);
-            }
-        }
         #endregion
-
-        
 
         public BasketIcon()
         {
             InitializeComponent();
-        }
-
-        private void Navigate(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            RoutedEventArgs args = new RoutedEventArgs(DoubleClickEvent);
-            RaiseEvent(args);
         }
     }
 }

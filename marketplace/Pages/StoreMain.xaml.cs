@@ -24,14 +24,14 @@ namespace InternetStore.Pages
             LoadBasketIcon();
             LoadProfileIcon();
             CreateBasket();
+            ProductList.NotifyChangeHandler(AddToBasket);
+            ProductList.SortBySubCategory("Процессоры");
         }
 
         private void CreateBasket()
         {
             Basket = new ProductBasket(User.Id);
         }
-
-        
 
         private void LoadProfileIcon()
         {
