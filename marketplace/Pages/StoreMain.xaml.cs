@@ -24,6 +24,7 @@ namespace InternetStore.Pages
             LoadBasketIcon();
             LoadProfileIcon();
             CreateBasket();
+            ToolPanel.SearchBox.SetSearchHandler(SearchProduct);
             ProductList.NotifyChangeHandler(AddToBasket);
             ProductList.SelectSubCategory(2);
             ProductList.SortByCost(0, 3400);
@@ -59,6 +60,12 @@ namespace InternetStore.Pages
             Basket.Add(BasketEl);
             ToolPanel.BasketIcon.Count = Basket.ProductCount;
         }
+
+        private void SearchProduct(object sender, RoutedEventArgs e)
+        {
+            ProductList.SearchByName(ToolPanel.SearchBox.InputText.Text);
+        }
+
 
         private void ShowSubCategory(object sender, RoutedEventArgs e)
         {

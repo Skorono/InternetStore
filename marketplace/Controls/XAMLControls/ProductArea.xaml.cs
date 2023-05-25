@@ -40,13 +40,19 @@ namespace InternetStore.Controls.XAMLControls
         {
             if (x != null) ItemList = ItemList.Where(x).ToList();
 
-            ItemList.Sort((previousProduct, currentProduct) => -previousProduct.Cost.CompareTo(currentProduct.Cost));
+            ItemList.Sort((previousProduct, currentProduct) => -currentProduct.Cost.CompareTo(previousProduct.Cost));
             ListBox.ItemsSource = ItemList;
         }
 
         public void SearchByName(string searchText)
         {
-            Sort(product => product.Name.Contains(searchText));
+            LoadProducts();
+            Sort(
+                product => product.ItemName
+                    .Split(" ")
+                    .Select(x => x.Trim().ToLower())
+                    .Contains(searchText.ToLower()) 
+                );
         }
 
         public void SortByCost(int minCost, int maxCost)

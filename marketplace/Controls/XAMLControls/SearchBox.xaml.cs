@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace InternetStore.Controls.XAMLControls
 {
@@ -10,6 +11,11 @@ namespace InternetStore.Controls.XAMLControls
         public SearchBox()
         {
             InitializeComponent();
+        }
+
+        public void SetSearchHandler(RoutedEventHandler handler)
+        {
+            this.Click += handler;
         }
     }
 }
