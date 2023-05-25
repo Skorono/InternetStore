@@ -25,7 +25,7 @@ namespace InternetStore.Pages
             LoadProfileIcon();
             CreateBasket();
             ProductList.NotifyChangeHandler(AddToBasket);
-            ProductList.SortBySubCategory("Процессоры");
+            ProductList.SortBySubCategory(1);
         }
 
         private void CreateBasket()

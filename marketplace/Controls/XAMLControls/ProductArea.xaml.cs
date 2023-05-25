@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using InternetStore.ModelDB;
+
 
 namespace InternetStore.Controls.XAMLControls
 {
@@ -29,12 +21,19 @@ namespace InternetStore.Controls.XAMLControls
             LoadProducts();
         }
 
-        public void LoadProducts()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        public void LoadProducts(Func<Product, bool> x = null!)
         {
-            foreach (var product in BaseProvider.DbContext.Products.ToList())
+            ItemList.Clear();
+            var Products = BaseProvider.DbContext.Products.ToList();
+            if (x != null) Products = Products.Where(x).ToList();
+
+            foreach (var product in Products)
             {
                 Item newItem = new Item(product);
-                //newItem.Click += AddToBasket;
                 ItemList.Add(newItem);
             }
             ListBox.ItemsSource = ItemList;
@@ -42,25 +41,12 @@ namespace InternetStore.Controls.XAMLControls
 
         public void SortByCost(int minCost, int maxCost)
         {
-            foreach (var item in ItemList)
-            {
-                if (!(Enumerable.Range(minCost, maxCost).Contains((int)item.Cost)))
-                    item.Visibility = Visibility.Collapsed;
-            }
+            LoadProducts(product => Enumerable.Range(minCost, maxCost).Contains((int)(new Item(product).Cost)));
         }
 
-        public void SortBySubCategory(string name)
+        public void SortBySubCategory(int SubCategoryID)
         {
-            foreach (var item in ItemList)
-            {
-                if (BaseProvider.DbContext.SubCategories.Single(subcat => subcat.Id == item.ProductModel.SubcategoryId)?.Name.Normalize() != name.Normalize())
-                    item.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        public void ChangeVisibility()
-        {
-
+            LoadProducts(product => product.SubcategoryId == SubCategoryID);
         }
 
         public void NotifyChangeHandler(RoutedEventHandler handler)
