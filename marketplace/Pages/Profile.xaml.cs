@@ -34,11 +34,21 @@ namespace InternetStore.Pages
         #endregion
 
         #region [ Binding Properties ]
-        public string UserName { get { return (string)GetValue(name); }  set { SetValue(name, value); } }
-        public string Email { get { return (string)GetValue(email); } set { SetValue(email, value); } }
-        public string? Surname { get { return (string)GetValue(surname); } set { SetValue(surname, value); } }
-        public string? MiddleName { get { return (string)GetValue(middleName); } set { SetValue(middleName, value); } }
-        public byte[]? Photo { get { return (byte[])GetValue(photo); } set { SetValue(photo, value); } }
+        public string UserName { get => (string)GetValue(name);
+            set => SetValue(name, value);
+        }
+        public string Email { get => (string)GetValue(email);
+            set => SetValue(email, value);
+        }
+        public string? Surname { get => (string)GetValue(surname);
+            set => SetValue(surname, value);
+        }
+        public string? MiddleName { get => (string)GetValue(middleName);
+            set => SetValue(middleName, value);
+        }
+        public byte[]? Photo { get => (byte[])GetValue(photo);
+            set => SetValue(photo, value);
+        }
         #endregion
 
         private Profile(UserViewDto user)

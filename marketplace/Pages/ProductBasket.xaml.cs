@@ -18,7 +18,7 @@ namespace InternetStore.Pages
         private int UserId;
         private List<IBasketViewItem> Products = new List<IBasketViewItem>();
 
-        public int ProductCount { get { return Products.Count; } }
+        public int ProductCount => Products.Count;
 
         public ProductBasket(int UID)
         {

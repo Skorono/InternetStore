@@ -22,40 +22,22 @@ namespace InternetStore.Controls
 
         public virtual byte[]? Image
         {
-            get
-            {
-                return (byte[])GetValue(PropertyImage);
-            }
+            get => (byte[])GetValue(PropertyImage);
 
-            set
-            {
-                SetValue(PropertyImage, value);
-            }
+            set => SetValue(PropertyImage, value);
         }
 
         public virtual string? ItemName
         {
-            get
-            {
-                return (string)GetValue(PropertyName);
-            }
-            set
-            {
-                SetValue(PropertyName, value);
-            }
+            get => (string)GetValue(PropertyName);
+            set => SetValue(PropertyName, value);
         }
 
         public virtual float Cost
         {
-            get
-            {
-                return (float)GetValue(PropertyCost);
-            }
+            get => (float)GetValue(PropertyCost);
 
-            set
-            {
-                SetValue(PropertyCost, value);
-            }
+            set => SetValue(PropertyCost, value);
         }
 
         #endregion

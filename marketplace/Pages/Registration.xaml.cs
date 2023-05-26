@@ -19,8 +19,8 @@ namespace InternetStore.Pages
     public partial class Registration : Page
     {
         private BitmapImage UsrAvatar {
-            get { return UsrAvatar; }
-            set { UsrAvatar = value; }
+            get => UsrAvatar;
+            set => UsrAvatar = value;
         }
 
         #region [ Binding Fields]
@@ -39,23 +39,27 @@ namespace InternetStore.Pages
 
         #region [ Binding Properties ]
         [Required(AllowEmptyStrings = false)]
-        public string UserName { private get { return (string)GetValue(username); } 
-                                 set { SetValue(username, value); } }
+        public string UserName { private get => (string)GetValue(username);
+            set => SetValue(username, value);
+        }
 
         [Required(AllowEmptyStrings = false)]
         [EmailAddress(ErrorMessage = "Невалидная почта!")]
-        public string Email { private get { return (string)GetValue(email); } 
-                              set { SetValue(email, value); } }
+        public string Email { private get => (string)GetValue(email);
+            set => SetValue(email, value);
+        }
 
         [Required(AllowEmptyStrings = false)]
         [PasswordPropertyText]
-        public string Password { private get { return (string)GetValue(password); } 
-                                 set { SetValue(password, value); } }
+        public string Password { private get => (string)GetValue(password);
+            set => SetValue(password, value);
+        }
         
         [Required(AllowEmptyStrings = false)]
         [Compare("Password")]
-        public string RepeatedPassword { private get { return (string)GetValue(repeatpassword); }
-                                         set { SetValue(repeatpassword, value); } }
+        public string RepeatedPassword { private get => (string)GetValue(repeatpassword);
+            set => SetValue(repeatpassword, value);
+        }
         #endregion
 
         public Registration()

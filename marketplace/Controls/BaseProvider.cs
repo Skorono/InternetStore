@@ -11,10 +11,7 @@ namespace InternetStore.Controls
         private static InternetStoreContext dbContext = null!;
 
         public static InternetStoreContext DbContext {
-            get
-            {
-                return dbContext;
-            }
+            get => dbContext;
 
             private set { }
         }

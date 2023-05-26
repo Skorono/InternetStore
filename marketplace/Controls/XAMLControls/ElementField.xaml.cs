@@ -30,8 +30,8 @@ namespace InternetStore.Controls.XAMLControls
 
         public UIElement Children
         {
-            get { return (UIElement)GetValue(ChildProperty); }
-            set { SetValue(ChildProperty, value); }
+            get => (UIElement)GetValue(ChildProperty);
+            set => SetValue(ChildProperty, value);
         }
     }
 }

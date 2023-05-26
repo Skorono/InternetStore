@@ -15,9 +15,8 @@ namespace InternetStore.Controls
 
         public static object? GetValue(this Dictionary<string, object> dict, string keyName)
         {
-            object? value;
-            dict.TryGetValue(keyName, out value);
-            return (value != null) ? value : null;
+            dict.TryGetValue(keyName, out var value);
+            return value;
         }
     }
 }
