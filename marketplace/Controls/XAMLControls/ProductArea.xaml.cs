@@ -30,8 +30,7 @@ namespace InternetStore.Controls.XAMLControls
             ItemList.Clear();
             foreach (var product in BaseProvider.DbContext.Products.ToList())
             {
-                Item newItem = new Item(product);
-                ItemList.Add(newItem);
+                ItemList.Add(new Item(product));
             }
             ListBox.ItemsSource = ItemList;
         }

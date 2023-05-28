@@ -26,9 +26,8 @@ namespace InternetStore.Pages
             CreateBasket();
             ToolPanel.SearchBox.SetSearchHandler(SearchProduct);
             ProductList.NotifyChangeHandler(AddToBasket);
-            ProductList.SelectSubCategory(2);
-            ProductList.SortByCost(0, 3400);
-
+            //ProductList.SelectSubCategory(2);
+            //ProductList.SortByCost(0, 3400);
         }
 
         private void CreateBasket()

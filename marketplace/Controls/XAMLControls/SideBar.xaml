@@ -19,7 +19,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 
-                <local:CostPicker MinCost="0" MaxCost="1000000" Grid.Row="0"></local:CostPicker>
+                <local:CostPicker x:Name="CostPicker" MinCost="0" MaxCost="1000000" Grid.Row="0"></local:CostPicker>
 
                 <ListView Grid.Row="2" Width="450" x:Name="CategoryList">
                     
