@@ -21,8 +21,8 @@ namespace InternetStore.Controls.XAMLControls
     public partial class TextBlockButton : ViewControl
     {
         public string Text {
-            get { return InnerBlock.Text; }
-            set { InnerBlock.Text = value; } 
+            get => InnerBlock.Text;
+            set => InnerBlock.Text = value;
         }
 
         public TextBlockButton()

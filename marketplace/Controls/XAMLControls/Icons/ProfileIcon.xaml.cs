@@ -21,9 +21,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
 
         #region [ Binding Properties ]
         public string UserName {
-                get{
-                    return (string)GetValue(usrName);    
-                }
+                get => (string)GetValue(usrName);
 
                 set{
                     SetValue(usrName, value);

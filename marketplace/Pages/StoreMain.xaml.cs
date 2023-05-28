@@ -15,7 +15,7 @@ namespace InternetStore.Pages
     {
         private UserViewDto User = null!;
         public static ProductBasket Basket = null!;
-        public UserViewDto CurrentUser { get { return User; } }
+        public UserViewDto CurrentUser => User;
 
         public StoreMain(UserViewDto userModel)
         {

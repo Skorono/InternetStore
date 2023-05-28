@@ -21,10 +21,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
         #region [ Binding Fields ]
         public virtual int Count
         {
-            get
-            {
-                return (int)GetValue(PropertyCount);
-            }
+            get => (int)GetValue(PropertyCount);
 
             set
             {

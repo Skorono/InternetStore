@@ -22,15 +22,9 @@ namespace InternetStore.Controls
 
         public virtual int Count
         {
-            get
-            {
-                return (int)GetValue(PropertyCount);
-            }
+            get => (int)GetValue(PropertyCount);
 
-            set
-            {
-                SetValue(PropertyCount, value);
-            }
+            set => SetValue(PropertyCount, value);
         }
 
         #endregion

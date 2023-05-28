@@ -23,11 +23,8 @@ namespace InternetStore.Controls.XAMLControls
 
             public int MinCost
             {
-                get
-                {
-                  return (int)GetValue(MinCostField);
-                }
-            
+                get => (int)GetValue(MinCostField);
+
                 set
                 {
                     SetValue(MinCostField, value);
@@ -37,10 +34,7 @@ namespace InternetStore.Controls.XAMLControls
 
             public int MaxCost
             {
-                get
-                {
-                    return (int)GetValue(MaxCostField);
-                }
+                get => (int)GetValue(MaxCostField);
 
                 set
                 {

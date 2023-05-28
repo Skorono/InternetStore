@@ -26,9 +26,12 @@ namespace InternetStore.Controls
         #endregion
 
         #region [ Binding Properties ]
-        public string UserName { get { return (string)GetValue(name); } set { SetValue(name, value); NotifyPropertyChanged("UserName"); } }
-        public string Email { get { return (string)GetValue(email); } set { SetValue(email, value); NotifyPropertyChanged("Email"); } }
-        public string Password { get { return (string)GetValue(password); } set { SetValue(password, value); NotifyPropertyChanged("Password"); } }
+        public string UserName { get => (string)GetValue(name);
+            set { SetValue(name, value); NotifyPropertyChanged("UserName"); } }
+        public string Email { get => (string)GetValue(email);
+            set { SetValue(email, value); NotifyPropertyChanged("Email"); } }
+        public string Password { get => (string)GetValue(password);
+            set { SetValue(password, value); NotifyPropertyChanged("Password"); } }
         #endregion
 
         public UserView(User model)

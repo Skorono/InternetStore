@@ -24,26 +24,14 @@ namespace InternetStore.Controls
         #region [ Event Handlers ]
         public event RoutedEventHandler Click
         {
-            add
-            {
-                base.AddHandler(ClickEvent, value);
-            }
-            remove
-            {
-                base.RemoveHandler(ClickEvent, value);
-            }
+            add => base.AddHandler(ClickEvent, value);
+            remove => base.RemoveHandler(ClickEvent, value);
         }
 
         public event RoutedEventHandler DoubleClick
         {
-            add
-            {
-                base.AddHandler(DoubleClickEvent, value);
-            }
-            remove
-            {
-                base.RemoveHandler(DoubleClickEvent, value);
-            }
+            add => base.AddHandler(DoubleClickEvent, value);
+            remove => base.RemoveHandler(DoubleClickEvent, value);
         }
 
         #endregion
