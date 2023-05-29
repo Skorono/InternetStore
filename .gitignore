@@ -6,3 +6,5 @@
 ./idea
 ./vs
 ./marketplace/.vs
+./marketplace/bin
+./marketplace/obj
