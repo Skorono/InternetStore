@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IraEtgp14W/nT9DKOABAUqg1cjoI2U0A+Y6QZiVVENAP6H78O2GUpgplT88V1kz5v1jxtE+Shf/qfusMd71Mnw==",
+  "dgSpecHash": "fsk+XGICAIe+AT7EW8GXXFJRsmagpzKaEqz95c9dkL29RENYLZe6dWkjqwO9lgGkzMSRFJPPgSkWdATI/YhWPQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\astat\\RiderProjects\\InternetStore\\marketplace\\InternetStore.csproj",
+  "projectFilePath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\astat\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\astat\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

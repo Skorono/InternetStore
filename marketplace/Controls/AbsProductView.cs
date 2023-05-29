@@ -60,5 +60,11 @@ namespace InternetStore.Controls
             string jsonString = ProductModel.Properties;
             Properties = jsonString.Parse<string, object>();
         }
+
+        public virtual void UpdateHandler(RoutedEventHandler handler)
+        {
+            //this.Click = null;
+            this.Click += handler;
+        }
     }
 }

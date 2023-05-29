@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using InternetStore.Controls.Interfaces;
 using InternetStore.ModelDB;
 
 
@@ -13,7 +14,8 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class ProductArea : UserControl
     {
-        public List<Item> ItemList = new();
+        private RoutedEventHandler _itemHandler = null!;
+        public List<AbsProductView> ItemList = new();
 
         public ProductArea()
         {
@@ -30,12 +32,15 @@ namespace InternetStore.Controls.XAMLControls
             ItemList.Clear();
             foreach (var product in BaseProvider.DbContext.Products.ToList())
             {
-                ItemList.Add(new Item(product));
+                AbsProductView newItem = new Item(product);
+
+                if (_itemHandler != null) newItem.Click += _itemHandler;
+                ItemList.Add(newItem);
             }
             ListBox.ItemsSource = ItemList;
         }
 
-        public void Sort(Func<Item, bool> x = null!)
+        public void Sort(Func<AbsProductView, bool> x = null!)
         {
             if (x != null) ItemList = ItemList.Where(x).ToList();
 
@@ -69,6 +74,7 @@ namespace InternetStore.Controls.XAMLControls
         {
             foreach (var item in ItemList)
             {
+                _itemHandler = handler;
                 item.UpdateHandler(handler);
             }
         }

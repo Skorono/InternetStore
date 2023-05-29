@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\astat\\RiderProjects\\InternetStore\\marketplace\\InternetStore.csproj": {}
+    "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\astat\\RiderProjects\\InternetStore\\marketplace\\InternetStore.csproj": {
+    "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\astat\\RiderProjects\\InternetStore\\marketplace\\InternetStore.csproj",
+        "projectUniqueName": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
         "projectName": "InternetStore",
-        "projectPath": "C:\\Users\\astat\\RiderProjects\\InternetStore\\marketplace\\InternetStore.csproj",
+        "projectPath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\InternetStore.csproj",
         "packagesPath": "C:\\Users\\astat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\astat\\RiderProjects\\InternetStore\\marketplace\\obj\\",
+        "outputPath": "C:\\Users\\astat\\source\\repos\\InternetStore\\marketplace\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Visual Studio SDK\\NuGetPackages"

@@ -72,7 +72,7 @@ namespace InternetStore.Controls.XAMLControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/InternetStore;V1.0.0.0;component/controls/xamlcontrols/elementfield.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/InternetStore;component/controls/xamlcontrols/elementfield.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Controls\XAMLControls\ElementField.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -53,7 +53,7 @@ namespace InternetStore.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/InternetStore;V1.0.0.0;component/controls/childcompositor.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/InternetStore;component/controls/childcompositor.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\ChildCompositor.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

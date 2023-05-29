@@ -288,3 +288,5 @@ C:\Users\astat\RiderProjects\InternetStore\marketplace\obj\Debug\net6.0-windows7
 C:\Users\astat\RiderProjects\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\InternetStore.pdb
 C:\Users\astat\RiderProjects\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\InternetStore.genruntimeconfig.cache
 C:\Users\astat\RiderProjects\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\ref\InternetStore.dll
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Pages\ProductPage.g.cs
+C:\Users\astat\source\repos\InternetStore\marketplace\obj\Debug\net6.0-windows7.0\Pages\ProductPage.baml
