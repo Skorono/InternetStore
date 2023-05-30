@@ -53,6 +53,7 @@ namespace InternetStore.Controls.Builders
                 {
                     TextBoxBase? uiElement = (TextBoxBase?)field.GetValue(Item);
                     if (uiElement != null) uiElement.FontSize = size;
+                    field.SetValue(Item, uiElement);
                 }
             }
             return this;
@@ -68,6 +69,7 @@ namespace InternetStore.Controls.Builders
                 {
                     TextBoxBase? uiElement = (TextBoxBase?)field.GetValue(Item);
                     if (uiElement != null) uiElement.FontWeight = widthOption;
+                    field.SetValue(Item, uiElement);
                 }
             }
             return this;
@@ -83,6 +85,7 @@ namespace InternetStore.Controls.Builders
                 {
                     UIElement? uiElement = (UIElement?)field.GetValue(Item);
                     if (uiElement != null) uiElement.Visibility = visibilityOption;
+                    field.SetValue(Item, uiElement);
                 }
             }
             return this;
