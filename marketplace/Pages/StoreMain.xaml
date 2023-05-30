@@ -30,6 +30,6 @@
 
         <ct:SideBar HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="1"></ct:SideBar>
 
-        <ct:ProductArea x:Name="ProductList" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3"></ct:ProductArea>
+        <!-- <ct:ProductArea x:Name="ProductList" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3"></ct:ProductArea> -->
     </Grid>
 </Page>

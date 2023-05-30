@@ -45,10 +45,10 @@
                         <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=Image, TargetNullValue=./Assets/Images/camera_200.png}"></Image>
                     </Border>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock x:Name="CostText" Grid.Row="1" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}" FontSize="12" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"  Margin="2"></TextBlock>
-                    <Button Grid.Row="3" Grid.Column="0" Margin="25 0" Click="Clicked" Style="{DynamicResource MaterialDesignRaisedDarkButton}">В корзину</Button>
+                    <TextBlock x:Name="DescriptionText" Grid.Row="2" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}" FontSize="12" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"  Margin="2"></TextBlock>
+                    <Button x:Name="HandledButton" Grid.Row="3" Grid.Column="0" Margin="25 0" Click="Clicked" Style="{DynamicResource MaterialDesignRaisedDarkButton}">В корзину</Button>
                 </Grid>
             </Border>
         </materialDesign:Card>

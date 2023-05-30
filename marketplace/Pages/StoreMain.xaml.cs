@@ -5,6 +5,8 @@ using System.Windows;
 using InternetStore.ModelDB;
 using InternetStore.Controls;
 using InternetStore.Controls.XAMLControls;
+using InternetStore.Controls.Resources;
+using InternetStore.Controls.Builders;
 
 namespace InternetStore.Pages
 {
@@ -15,8 +17,9 @@ namespace InternetStore.Pages
     {
         private UserViewDto User = null!;
         public static ProductBasket Basket = null!;
+        public ProductArea ProductList = null!;
+
         public UserViewDto CurrentUser => User;
-        
 
         public StoreMain(UserViewDto userModel)
         {
@@ -24,11 +27,17 @@ namespace InternetStore.Pages
             InitializeComponent();
             LoadBasketIcon();
             LoadProfileIcon();
+            LoadProductArea();
             CreateBasket();
             ToolPanel.SearchBox.SetSearchHandler(SearchProduct);
-            ProductList.NotifyChangeHandler(AddToBasket);
             //ProductList.SelectSubCategory(2);
             //ProductList.SortByCost(0, 3400);
+            Grid.SetColumn(ProductList, 1);
+            Grid.SetRow(ProductList, 1);
+            Grid.SetColumnSpan(ProductList, 3);
+            Grid.SetRowSpan(ProductList, 3);
+            grid.Children.Add(ProductList);
+            grid.UpdateLayout();
         }
 
         private void CreateBasket()
@@ -41,6 +50,17 @@ namespace InternetStore.Pages
             ToolPanel.ProfileIcon.Click += ProfileNavigate;
             ToolPanel.ProfileIcon.UserName = BaseProvider.DbContext.UserPersonalInfs.ToList()
                                          .Where(row => row.Id == User.Id).First().Name;
+        }
+
+        private void LoadProductArea()
+        {
+            ProductContainerBuilder ContainerBuilder = new ProductContainerBuilder();
+
+            ContainerBuilder.SetProductHandler(AddToBasket);
+            if (string.Join(" ", UserType.Adminstrator, UserType.Rentail).Split(" ").Contains(CurrentUser.RoleId))
+                ContainerBuilder.EditionalAccept();
+            ProductList = ContainerBuilder.Build();
+            ProductList.LoadProducts();
         }
 
         private void LoadBasketIcon()

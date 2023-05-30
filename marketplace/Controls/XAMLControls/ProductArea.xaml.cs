@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Spreadsheet;
 using InternetStore.Controls.Interfaces;
 using InternetStore.ModelDB;
 
@@ -14,30 +16,51 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class ProductArea : UserControl
     {
-        private RoutedEventHandler _itemHandler = null!;
+        public bool EditionAccept = false;
+        public RoutedEventHandler ItemHandler = null!;
         public List<AbsProductView> ItemList = new();
 
         public ProductArea()
         {
             InitializeComponent();
-            LoadProducts();
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="x"></param>
+        /// 
+
         public void LoadProducts()
         {
             ItemList.Clear();
+
+            if (EditionAccept)
+            {
+                CreateAdditionalCard();
+            }
+
             foreach (var product in BaseProvider.DbContext.Products.ToList())
             {
                 AbsProductView newItem = new Item(product);
-
-                if (_itemHandler != null) newItem.Click += _itemHandler;
+                
+                if (ItemHandler != null) newItem.Click += ItemHandler;
                 ItemList.Add(newItem);
             }
             ListBox.ItemsSource = ItemList;
+        }
+
+        public void CreateAdditionalCard()
+        {
+            Product model = new();
+            model.ProductName = "Добавить товар";
+            Item additonalCard = new Item(model);
+            additonalCard.Image = ImageManager.Upload(@"C:\Users\astat\source\repos\InternetStore\marketplace\Assets\Images\additem.png");
+            additonalCard.HandledButton.Visibility = Visibility.Collapsed;
+            additonalCard.CostText.Visibility = Visibility.Collapsed;
+            additonalCard.DescriptionText.FontSize = 16;
+            additonalCard.DescriptionText.FontWeight = FontWeights.Bold;
+            ItemList.Add(additonalCard);
         }
 
         public void Sort(Func<AbsProductView, bool> x = null!)
@@ -74,7 +97,7 @@ namespace InternetStore.Controls.XAMLControls
         {
             foreach (var item in ItemList)
             {
-                _itemHandler = handler;
+                ItemHandler = handler;
                 item.UpdateHandler(handler);
             }
         }

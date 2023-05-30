@@ -51,8 +51,10 @@ namespace InternetStore.Controls
             ProductModel = model;
             ItemName = ProductModel.ProductName;
             ParsePropertiesFromModel();
+            float cost = 0.0f;
             Image = (byte[])Properties.GetValue("image"); 
-            Cost = float.Parse(Properties.GetValue("cost").ToString());
+            float.TryParse(Properties.GetValue("cost")?.ToString(), out cost);
+            Cost = cost;
         }
 
         private void ParsePropertiesFromModel()
