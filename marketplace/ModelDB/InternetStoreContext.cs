@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using InternetStore.ModelDB;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace InternetStore.ModelDB;
 
@@ -13,12 +10,12 @@ public partial class InternetStoreContext : DbContext
 
     /*private static InternetStoreContext? _context;*/
 
-   /* public static InternetStoreContext getInstance()
-    {
-        if (_context == null)
-            _context = new InternetStoreContext();
-        return _context;
-    }*/
+    /* public static InternetStoreContext getInstance()
+     {
+         if (_context == null)
+             _context = new InternetStoreContext();
+         return _context;
+     }*/
 
     public InternetStoreContext(DbContextOptions<InternetStoreContext> options)
         : base(options)

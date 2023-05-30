@@ -1,16 +1,16 @@
-﻿using System;
+﻿using InternetStore.Controls.Interfaces;
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.ComponentModel;
-using InternetStore.Controls.Interfaces;
-using System.Runtime.CompilerServices;
 
 namespace InternetStore.Controls
 {
-    public abstract class ViewControl: UserControl, IClickable, IPropertyChangeable
+    public abstract class ViewControl : UserControl, IClickable, IPropertyChangeable
     {
         #region [ Event Fields ]
-        
+
         public static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click",
                 RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ViewControl));
 

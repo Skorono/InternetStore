@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace InternetStore.Controls.XAMLControls
 {
@@ -11,36 +11,36 @@ namespace InternetStore.Controls.XAMLControls
     {
         #region [ Binding Fields ]
 
-            private DependencyProperty MinCostField = DependencyProperty
-                .Register("MinCost", typeof(int), typeof(CostPicker));
+        private DependencyProperty MinCostField = DependencyProperty
+            .Register("MinCost", typeof(int), typeof(CostPicker));
 
-            private DependencyProperty MaxCostField = DependencyProperty
-                .Register("MaxCost", typeof(int), typeof(CostPicker));
+        private DependencyProperty MaxCostField = DependencyProperty
+            .Register("MaxCost", typeof(int), typeof(CostPicker));
 
         #endregion
 
         #region [ Binding Properties ]
 
-            public int MinCost
-            {
-                get => (int)GetValue(MinCostField);
+        public int MinCost
+        {
+            get => (int)GetValue(MinCostField);
 
-                set
-                {
-                    SetValue(MinCostField, value);
-                    NotifyPropertyChanged(nameof(MinCost));
-                }
+            set
+            {
+                SetValue(MinCostField, value);
+                NotifyPropertyChanged(nameof(MinCost));
             }
+        }
 
-            public int MaxCost
+        public int MaxCost
+        {
+            get => (int)GetValue(MaxCostField);
+
+            set
             {
-                get => (int)GetValue(MaxCostField);
-
-                set
-                {
-                    SetValue(MaxCostField, value);
-                    NotifyPropertyChanged(nameof(MinCost));
-                }
+                SetValue(MaxCostField, value);
+                NotifyPropertyChanged(nameof(MinCost));
+            }
         }
         #endregion
 

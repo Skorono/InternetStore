@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace InternetStore.ModelDB;
+﻿namespace InternetStore.ModelDB;
 
 public partial class UserPersonalInf
 {

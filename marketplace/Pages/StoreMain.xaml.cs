@@ -1,12 +1,11 @@
-﻿using System.Linq;
-using System.Windows.Controls;
-using System.Collections.Generic;
-using System.Windows;
-using InternetStore.ModelDB;
-using InternetStore.Controls;
-using InternetStore.Controls.XAMLControls;
-using InternetStore.Controls.Resources;
+﻿using InternetStore.Controls;
 using InternetStore.Controls.Builders;
+using InternetStore.Controls.Resources;
+using InternetStore.Controls.XAMLControls;
+using InternetStore.ModelDB;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace InternetStore.Pages
 {

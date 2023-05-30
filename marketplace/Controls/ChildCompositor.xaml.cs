@@ -8,7 +8,7 @@ namespace InternetStore.Controls
     /// <summary>
     /// Логика взаимодействия для ChildCompositor.xaml
     /// </summary>
-    public partial class ChildCompositor: UserControl
+    public partial class ChildCompositor : UserControl
     {
         static private UserControl? T;
         delegate void OnChildChange(DependencyObject d, DependencyPropertyChangedEventArgs e);

@@ -1,8 +1,4 @@
-﻿using DocumentFormat.OpenXml.Office2013.Drawing.Chart;
-using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
-using System.Runtime.Intrinsics.X86;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.Text.Json;
 
 namespace InternetStore.Controls

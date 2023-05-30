@@ -1,17 +1,17 @@
 ﻿
-    /// <summary>
-    /// Логика взаимодействия для ChildControl.xaml
-    /// </summary>
+using InternetStore.Controls.XAMLControls;
+/// <summary>
+/// Логика взаимодействия для ChildControl.xaml
+/// </summary>
 using System.Windows;
 using System.Windows.Controls;
-using InternetStore.Controls.XAMLControls;
 
 namespace InternetStore.Controls
 {
     /// <summary>
     /// Логика взаимодействия для ChildControl.xaml
     /// </summary>
-    public partial class ChildControl: UserControl
+    public partial class ChildControl : UserControl
     {
         static private ChildCompositor? Compositor;
         static private DependencyProperty? ChildProperty;

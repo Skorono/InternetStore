@@ -1,13 +1,10 @@
-﻿using System;
+﻿using InternetStore.Controls.Builders;
+using InternetStore.ModelDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Spreadsheet;
-using InternetStore.Controls.Interfaces;
-using InternetStore.ModelDB;
-
 
 namespace InternetStore.Controls.XAMLControls
 {
@@ -42,10 +39,11 @@ namespace InternetStore.Controls.XAMLControls
 
             foreach (var product in BaseProvider.DbContext.Products.ToList())
             {
-                AbsProductView newItem = new Item(product);
-                
-                if (ItemHandler != null) newItem.Click += ItemHandler;
-                ItemList.Add(newItem);
+                ItemBuilder builder = new(product);
+                builder.isChangeable().isSortable();
+
+                if (ItemHandler != null) NotifyChangeHandler(ItemHandler);
+                ItemList.Add(builder.Build());
             }
             ListBox.ItemsSource = ItemList;
         }
@@ -54,13 +52,13 @@ namespace InternetStore.Controls.XAMLControls
         {
             Product model = new();
             model.ProductName = "Добавить товар";
-            Item additonalCard = new Item(model);
-            additonalCard.Image = ImageManager.Upload(@"C:\Users\astat\source\repos\InternetStore\marketplace\Assets\Images\additem.png");
-            additonalCard.HandledButton.Visibility = Visibility.Collapsed;
-            additonalCard.CostText.Visibility = Visibility.Collapsed;
-            additonalCard.DescriptionText.FontSize = 16;
-            additonalCard.DescriptionText.FontWeight = FontWeights.Bold;
-            ItemList.Add(additonalCard);
+            ItemBuilder CardBuilder = new(model);
+            CardBuilder.SetFontSize("DescriptionText", 16).SetFontWidth("DescriptionText", FontWeights.Bold);
+            CardBuilder.SetVisibility("HandledButton", Visibility.Collapsed);
+            CardBuilder.SetVisibility("CostText", Visibility.Collapsed);
+            //additonalCard.Image = ImageManager.Upload(@"C:\Users\astat\source\repos\InternetStore\marketplace\Assets\Images\additem.png");
+
+            ItemList.Add(CardBuilder.Build());
         }
 
         public void Sort(Func<AbsProductView, bool> x = null!)
@@ -78,7 +76,7 @@ namespace InternetStore.Controls.XAMLControls
                 product => product.ItemName
                     .Split(" ")
                     .Select(x => x.Trim().ToLower())
-                    .Contains(searchText.ToLower()) 
+                    .Contains(searchText.ToLower())
                 );
         }
 

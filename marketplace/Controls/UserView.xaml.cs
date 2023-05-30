@@ -1,9 +1,9 @@
-﻿using System;
+﻿using InternetStore.ModelDB;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using InternetStore.ModelDB;
 
 namespace InternetStore.Controls
 {
@@ -26,12 +26,21 @@ namespace InternetStore.Controls
         #endregion
 
         #region [ Binding Properties ]
-        public string UserName { get => (string)GetValue(name);
-            set { SetValue(name, value); NotifyPropertyChanged("UserName"); } }
-        public string Email { get => (string)GetValue(email);
-            set { SetValue(email, value); NotifyPropertyChanged("Email"); } }
-        public string Password { get => (string)GetValue(password);
-            set { SetValue(password, value); NotifyPropertyChanged("Password"); } }
+        public string UserName
+        {
+            get => (string)GetValue(name);
+            set { SetValue(name, value); NotifyPropertyChanged("UserName"); }
+        }
+        public string Email
+        {
+            get => (string)GetValue(email);
+            set { SetValue(email, value); NotifyPropertyChanged("Email"); }
+        }
+        public string Password
+        {
+            get => (string)GetValue(password);
+            set { SetValue(password, value); NotifyPropertyChanged("Password"); }
+        }
         #endregion
 
         public UserView(User model)

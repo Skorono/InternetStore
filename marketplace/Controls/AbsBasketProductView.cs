@@ -1,15 +1,10 @@
 ﻿using InternetStore.Controls.Interfaces;
 using InternetStore.ModelDB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace InternetStore.Controls
 {
-    public class AbsBasketProductView: AbsProductView, IBasketViewItem
+    public class AbsBasketProductView : AbsProductView, IBasketViewItem
     {
         #region [ Binding Fields ]
 
@@ -29,7 +24,8 @@ namespace InternetStore.Controls
 
         #endregion
 
-        public AbsBasketProductView(Product model) : base(model) {
+        public AbsBasketProductView(Product model) : base(model)
+        {
             Count = 0;
         }
     }

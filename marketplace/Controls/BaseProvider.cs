@@ -10,7 +10,8 @@ namespace InternetStore.Controls
     {
         private static InternetStoreContext dbContext = null!;
 
-        public static InternetStoreContext DbContext {
+        public static InternetStoreContext DbContext
+        {
             get => dbContext;
 
             private set { }
@@ -30,7 +31,7 @@ namespace InternetStore.Controls
         public static int CallStoredProcedureByName(string procedure, params SqlParameter[] parameters)
         {
             StringBuilder sqlRequest = new StringBuilder($"EXEC ").AppendFormat(@"{0} ", procedure);
-            foreach ( SqlParameter parameter in parameters )
+            foreach (SqlParameter parameter in parameters)
             {
                 sqlRequest.AppendFormat("@{0}", parameter.ParameterName);
                 if (parameters.LastOrDefault() != parameter)

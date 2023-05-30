@@ -7,7 +7,7 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class BasketItem : AbsBasketProductView
     {
-        public BasketItem(Product model): base(model) 
+        public BasketItem(Product model) : base(model)
         {
             Count = 1;
             InitializeComponent();

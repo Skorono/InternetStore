@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Reflection;
 using System.Windows;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Windows.Media;
 
 namespace InternetStore.Controls
 {
-    class UIHelper    
+    class UIHelper
     {
 
         public static UIElement? FindUid(DependencyObject parent, string uid)
@@ -27,6 +21,19 @@ namespace InternetStore.Controls
                     el = FindUid(el, uid);
                     if (el != null) return el;
                 }
+            }
+            return null;
+        }
+
+        public static FieldInfo? FindField<T>(string fieldName) where T : class
+        {
+            var field = typeof(T).GetField(fieldName, BindingFlags.Public |
+                                                      BindingFlags.NonPublic |
+                                                      BindingFlags.Instance
+                                                      );
+            if (field != null)
+            {
+                return field;
             }
             return null;
         }

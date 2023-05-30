@@ -1,7 +1,7 @@
 ﻿using InternetStore.Controls.Interfaces;
 using InternetStore.ModelDB;
-using System.Windows;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace InternetStore.Controls
 {
@@ -15,7 +15,7 @@ namespace InternetStore.Controls
             DependencyProperty.Register("itemName", typeof(string), typeof(AbsProductView));
         public static DependencyProperty PropertyCost =
             DependencyProperty.Register("Cost", typeof(float), typeof(AbsProductView));
-        
+
         #endregion
 
         #region [ Binding Properties ]
@@ -43,8 +43,10 @@ namespace InternetStore.Controls
         #endregion
 
         public Product ProductModel { get; protected set; }
-
         public Dictionary<string, object> Properties { get; protected set; }
+
+        public bool isSortable = false;
+        public bool isChangeable = false;
 
         public AbsProductView(Product model)
         {
@@ -52,7 +54,7 @@ namespace InternetStore.Controls
             ItemName = ProductModel.ProductName;
             ParsePropertiesFromModel();
             float cost = 0.0f;
-            Image = (byte[])Properties.GetValue("image"); 
+            Image = (byte[])Properties.GetValue("image");
             float.TryParse(Properties.GetValue("cost")?.ToString(), out cost);
             Cost = cost;
         }

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using InternetStore.Controls;
+using InternetStore.ModelDB;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using InternetStore.Controls;
-using InternetStore.ModelDB;
 
 namespace InternetStore.Pages
 {
@@ -34,19 +34,29 @@ namespace InternetStore.Pages
         #endregion
 
         #region [ Binding Properties ]
-        public string UserName { get => (string)GetValue(name);
+        public string UserName
+        {
+            get => (string)GetValue(name);
             set => SetValue(name, value);
         }
-        public string Email { get => (string)GetValue(email);
+        public string Email
+        {
+            get => (string)GetValue(email);
             set => SetValue(email, value);
         }
-        public string? Surname { get => (string)GetValue(surname);
+        public string? Surname
+        {
+            get => (string)GetValue(surname);
             set => SetValue(surname, value);
         }
-        public string? MiddleName { get => (string)GetValue(middleName);
+        public string? MiddleName
+        {
+            get => (string)GetValue(middleName);
             set => SetValue(middleName, value);
         }
-        public byte[]? Photo { get => (byte[])GetValue(photo);
+        public byte[]? Photo
+        {
+            get => (byte[])GetValue(photo);
             set => SetValue(photo, value);
         }
         #endregion

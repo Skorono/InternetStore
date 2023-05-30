@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using InternetStore.Pages;
+using System.Windows;
 using System.Windows.Controls;
-using InternetStore.Pages;
 
 namespace InternetStore
 {

@@ -1,7 +1,6 @@
-﻿using System.Linq;
+﻿using InternetStore.Controls;
+using System.Linq;
 using System.Windows;
-using InternetStore.Controls;
-using Microsoft.EntityFrameworkCore;
 
 namespace marketplace
 {
@@ -10,7 +9,8 @@ namespace marketplace
     /// </summary>
     public partial class App : Application
     {
-        public App() {
+        public App()
+        {
             BaseProvider.DbContext.Products.Count();
         }
     }

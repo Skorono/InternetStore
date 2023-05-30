@@ -1,15 +1,15 @@
-﻿using Microsoft.Win32;
+﻿using InternetStore.Controls;
+using Microsoft.Data.SqlClient;
+using Microsoft.Win32;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Microsoft.Data.SqlClient;
-using Xceed.Wpf.Toolkit;
 using System.Windows.Navigation;
-using InternetStore.Controls;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Collections.Generic;
-using System.Linq;
+using Xceed.Wpf.Toolkit;
 
 namespace InternetStore.Pages
 {
@@ -18,7 +18,8 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class Registration : Page
     {
-        private BitmapImage UsrAvatar {
+        private BitmapImage UsrAvatar
+        {
             get => UsrAvatar;
             set => UsrAvatar = value;
         }
@@ -39,25 +40,33 @@ namespace InternetStore.Pages
 
         #region [ Binding Properties ]
         [Required(AllowEmptyStrings = false)]
-        public string UserName { private get => (string)GetValue(username);
+        public string UserName
+        {
+            private get => (string)GetValue(username);
             set => SetValue(username, value);
         }
 
         [Required(AllowEmptyStrings = false)]
         [EmailAddress(ErrorMessage = "Невалидная почта!")]
-        public string Email { private get => (string)GetValue(email);
+        public string Email
+        {
+            private get => (string)GetValue(email);
             set => SetValue(email, value);
         }
 
         [Required(AllowEmptyStrings = false)]
         [PasswordPropertyText]
-        public string Password { private get => (string)GetValue(password);
+        public string Password
+        {
+            private get => (string)GetValue(password);
             set => SetValue(password, value);
         }
-        
+
         [Required(AllowEmptyStrings = false)]
         [Compare("Password")]
-        public string RepeatedPassword { private get => (string)GetValue(repeatpassword);
+        public string RepeatedPassword
+        {
+            private get => (string)GetValue(repeatpassword);
             set => SetValue(repeatpassword, value);
         }
         #endregion
@@ -67,10 +76,11 @@ namespace InternetStore.Pages
             InitializeComponent();
         }
 
-        public void SelectImageCommand(object sender, DragEventArgs e) {
+        public void SelectImageCommand(object sender, DragEventArgs e)
+        {
             var dlg = new OpenFileDialog();
             //if (dlg.ShowDialog() == true)
-                //UsrAvatar = new Image().Upload();
+            //UsrAvatar = new Image().Upload();
         }
 
         private bool IsValidEmail(string email)
@@ -111,12 +121,12 @@ namespace InternetStore.Pages
         {
             //if (IsValidPassword())
             //{
-                SqlParameter email = new SqlParameter("email", Email);
-                SqlParameter name = new SqlParameter("name", UserName);
-                SqlParameter password = new SqlParameter("password", ((WatermarkPasswordBox?)UIHelper.FindUid(this, "Password")).Password);
-                BaseProvider.CallStoredProcedureByName("AddUser", email, password, name);
-                var userDTO = BaseProvider.DbContext.UserViewDtos.ToList().Where(user => user.Email == email.Value.ToString()).First();
-                NavigationService.Navigate(new StoreMain(userDTO));
+            SqlParameter email = new SqlParameter("email", Email);
+            SqlParameter name = new SqlParameter("name", UserName);
+            SqlParameter password = new SqlParameter("password", ((WatermarkPasswordBox?)UIHelper.FindUid(this, "Password")).Password);
+            BaseProvider.CallStoredProcedureByName("AddUser", email, password, name);
+            var userDTO = BaseProvider.DbContext.UserViewDtos.ToList().Where(user => user.Email == email.Value.ToString()).First();
+            NavigationService.Navigate(new StoreMain(userDTO));
             //}
         }
     }

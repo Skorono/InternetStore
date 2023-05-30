@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Controls;
-using InternetStore.Controls;
+﻿using InternetStore.Controls;
 using InternetStore.Controls.Interfaces;
 using InternetStore.Controls.XAMLControls;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Controls;
 
 namespace InternetStore.Pages
 {
@@ -49,7 +49,7 @@ namespace InternetStore.Pages
         {
             return !Products.Where(product => product.ProductModel.Id == ID).IsNullOrEmpty();
         }
-        
+
         private void CreateBasketEntitry()
         {
 
@@ -61,14 +61,15 @@ namespace InternetStore.Pages
             SqlParameter productId = new SqlParameter("product_id", product.ProductModel.Id);
             SqlParameter count = new SqlParameter("count", product.Count);
 
-            if (inBasket(product.ProductModel.Id)) {
+            if (inBasket(product.ProductModel.Id))
+            {
                 var ProductInBasket = Products.Where(Bproduct => Bproduct.ProductModel.Id == product.ProductModel.Id).First();
                 ProductInBasket.Count++;
                 count.Value = ProductInBasket.Count;
                 BaseProvider.CallStoredProcedureByName("UpdateProductCountInBasket", uid, productId, count);
             }
             else
-            { 
+            {
                 SqlParameter AddingDateTime = new SqlParameter("addDate", DateTime.Now);
                 BaseProvider.CallStoredProcedureByName("AddProductToBasket", uid, productId, count, AddingDateTime);
                 Products.Add(product);
@@ -83,8 +84,9 @@ namespace InternetStore.Pages
             SqlParameter uid = new SqlParameter("user_id", UserId);
             SqlParameter productId = new SqlParameter("product_id", product.ProductModel.Id);
             SqlParameter count = new SqlParameter("count", product.Count);
-            if (product.Count <= 0) {
-                BaseProvider.DbContext.Baskets.Remove(BaseProvider.DbContext.Baskets.Single(basketProduct => (basketProduct.UserId == UserId) 
+            if (product.Count <= 0)
+            {
+                BaseProvider.DbContext.Baskets.Remove(BaseProvider.DbContext.Baskets.Single(basketProduct => (basketProduct.UserId == UserId)
                                                                                         && (basketProduct.ProductId == product.ProductModel.Id)));
                 Products.Remove(product);
             }

@@ -21,7 +21,7 @@ namespace InternetStore.Pages
         {
             var login = (WatermarkTextBox?)UIHelper.FindUid(this, "LoginField");
             var password = (WatermarkPasswordBox?)UIHelper.FindUid(this, "PasswordField");
-            
+
             var User = BaseProvider.DbContext.Users
                                 .Where(user => (login.Text == user.Email) && (password.Password == user.Password))
                                 .FirstOrDefault();

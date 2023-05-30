@@ -1,5 +1,4 @@
 ﻿using InternetStore.ModelDB;
-using System.Windows;
 
 
 
@@ -10,7 +9,7 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class Item : AbsProductView
     {
-        public Item(Product model): base(model)
+        public Item(Product model) : base(model)
         {
             InitializeComponent();
         }

@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using InternetStore.ModelDB;
+using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Controls;
-using InternetStore.ModelDB;
 
 
 namespace InternetStore.Controls.XAMLControls;
@@ -18,10 +17,10 @@ public partial class CategoryDetails : UserControl
     public CategoryDetails(Category model)
     {
         InitializeComponent();
-        
+
         CategoryModel = model;
         CategoryDropDown.Header = CategoryModel.CategoryName;
-        
+
         UpdateSubcategory();
         if (subcategoryList != null)
             SubcategoryList.ItemsSource = subcategoryList;

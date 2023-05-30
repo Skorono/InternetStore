@@ -1,5 +1,4 @@
 ﻿using InternetStore.Controls.XAMLControls;
-using System.ComponentModel;
 using System.Windows;
 
 namespace InternetStore.Controls.Builders
@@ -25,7 +24,8 @@ namespace InternetStore.Controls.Builders
             return this;
         }
 
-        public ProductContainerBuilder EditionalAccept() {
+        public ProductContainerBuilder EditionalAccept()
+        {
             container.EditionAccept = true;
             return this;
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
 namespace InternetStore.Controls.XAMLControls.Icons
 {
@@ -11,7 +7,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
     /// </summary>
     public partial class ProfileIcon : ViewControl
     {
-        
+
         #region [ Binding Fields ]
 
         private DependencyProperty usrName =
@@ -20,20 +16,22 @@ namespace InternetStore.Controls.XAMLControls.Icons
         #endregion
 
         #region [ Binding Properties ]
-        public string UserName {
-                get => (string)GetValue(usrName);
+        public string UserName
+        {
+            get => (string)GetValue(usrName);
 
-                set{
-                    SetValue(usrName, value);
-                    NotifyPropertyChanged("UserName");           
-                } 
+            set
+            {
+                SetValue(usrName, value);
+                NotifyPropertyChanged("UserName");
             }
+        }
 
         #endregion
 
         public ProfileIcon()
         {
-           InitializeComponent();
+            InitializeComponent();
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
 namespace InternetStore.Controls.XAMLControls.Icons
 {
@@ -12,7 +8,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
     public partial class BasketIcon : ViewControl
     {
         #region [ Binding Properties ]
-        
+
         public static DependencyProperty PropertyCount =
             DependencyProperty.Register("Count", typeof(int), typeof(BasketIcon));
 
