@@ -12,10 +12,10 @@ namespace InternetStore.Controls
         #region [ Event Fields ]
 
         public static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click",
-                RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ViewControl));
+                RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(ViewControl));
 
         public static readonly RoutedEvent DoubleClickEvent = EventManager.RegisterRoutedEvent("DoubleClick",
-                RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ViewControl));
+                RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(ViewControl));
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

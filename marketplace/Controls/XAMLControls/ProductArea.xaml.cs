@@ -53,17 +53,20 @@ namespace InternetStore.Controls.XAMLControls
             Product model = new();
             model.ProductName = "Добавить товар";
             ItemBuilder CardBuilder = new(model);
+            CardBuilder.SetImage(@"C:\Users\astat\source\repos\InternetStore\marketplace\Assets\Images\additem.png");
             CardBuilder.SetFontSize("DescriptionText", 16).SetFontWidth("DescriptionText", FontWeights.Bold);
             CardBuilder.SetVisibility("HandledButton", Visibility.Collapsed);
             CardBuilder.SetVisibility("CostText", Visibility.Collapsed);
-            //additonalCard.Image = ImageManager.Upload(@"C:\Users\astat\source\repos\InternetStore\marketplace\Assets\Images\additem.png");
 
             ItemList.Add(CardBuilder.Build());
         }
 
         public void Sort(Func<AbsProductView, bool> x = null!)
-        {
-            if (x != null) ItemList = ItemList.Where(x).ToList();
+        { 
+            if (x != null) ItemList = ItemList
+                                        .Where(x)
+                                        .Union(ItemList.Where(item => !item.isSortable))
+                                        .ToList();
 
             ItemList.Sort((previousProduct, currentProduct) => -currentProduct.Cost.CompareTo(previousProduct.Cost));
             ListBox.ItemsSource = ItemList;
@@ -93,9 +96,9 @@ namespace InternetStore.Controls.XAMLControls
 
         public void NotifyChangeHandler(RoutedEventHandler handler)
         {
+            ItemHandler = handler;
             foreach (var item in ItemList)
             {
-                ItemHandler = handler;
                 item.UpdateHandler(handler);
             }
         }

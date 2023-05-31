@@ -1,4 +1,5 @@
-﻿using InternetStore.Controls.XAMLControls;
+﻿using DocumentFormat.OpenXml.Drawing;
+using InternetStore.Controls.XAMLControls;
 using InternetStore.ModelDB;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -43,17 +44,26 @@ namespace InternetStore.Controls.Builders
             return this;
         }
 
+        public ItemBuilder SetImage(string path)
+        {
+            Item.Image = ImageManager.Upload(path);
+            return this;
+        }
+
         public ItemBuilder SetFontSize(string UIName, int size)
         {
             var field = UIHelper.FindField<Item>(UIName);
 
             if (field != null)
             {
-                if (field.GetType() == typeof(TextBoxBase))
+                if (field.GetType().IsAssignableTo(typeof(TextBoxBase)))
                 {
                     TextBoxBase? uiElement = (TextBoxBase?)field.GetValue(Item);
-                    if (uiElement != null) uiElement.FontSize = size;
-                    field.SetValue(Item, uiElement);
+                    if (uiElement != null)
+                    {
+                        uiElement.FontSize = size;
+                        field.SetValue(Item, uiElement);
+                    }
                 }
             }
             return this;
@@ -65,11 +75,14 @@ namespace InternetStore.Controls.Builders
 
             if (field != null)
             {
-                if (field.GetType() == typeof(TextBoxBase))
+                if (typeof(FrameworkElement).IsAssignableTo(field.GetType()))
                 {
                     TextBoxBase? uiElement = (TextBoxBase?)field.GetValue(Item);
-                    if (uiElement != null) uiElement.FontWeight = widthOption;
-                    field.SetValue(Item, uiElement);
+                    if (uiElement != null)
+                    {
+                        uiElement.FontWeight = widthOption;
+                        field.SetValue(Item, uiElement);
+                    }
                 }
             }
             return this;
@@ -81,15 +94,17 @@ namespace InternetStore.Controls.Builders
 
             if (field != null)
             {
-                if (field.GetType() == typeof(UIElement))
+                if (typeof(UIElement).IsAssignableFrom(field.GetType().BaseType))
                 {
                     UIElement? uiElement = (UIElement?)field.GetValue(Item);
-                    if (uiElement != null) uiElement.Visibility = visibilityOption;
-                    field.SetValue(Item, uiElement);
+                    if (uiElement != null)
+                    {
+                        uiElement.Visibility = visibilityOption;
+                        field.SetValue(Item, uiElement);
+                    }
                 }
             }
             return this;
         }
-
     }
 }

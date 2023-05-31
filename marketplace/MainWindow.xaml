@@ -27,7 +27,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ef:ElementField Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3">
+        <ef:ElementField Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Background="#FF5A5959">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>

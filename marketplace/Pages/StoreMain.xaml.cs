@@ -24,10 +24,10 @@ namespace InternetStore.Pages
         {
             User = userModel;
             InitializeComponent();
+            CreateBasket();
             LoadBasketIcon();
             LoadProfileIcon();
             LoadProductArea();
-            CreateBasket();
             ToolPanel.SearchBox.SetSearchHandler(SearchProduct);
             //ProductList.SelectSubCategory(2);
             //ProductList.SortByCost(0, 3400);
@@ -49,6 +49,7 @@ namespace InternetStore.Pages
             ToolPanel.ProfileIcon.Click += ProfileNavigate;
             ToolPanel.ProfileIcon.UserName = BaseProvider.DbContext.UserPersonalInfs.ToList()
                                          .Where(row => row.Id == User.Id).First().Name;
+            ToolPanel.BasketIcon.Count = Basket.ProductCount;
         }
 
         private void LoadProductArea()

@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         
         <local:SearchBox x:Name="SearchBox" Grid.Row="0" Grid.Column="1" Margin="0 0 20 0" ></local:SearchBox>
-        <ic:ProfileIcon x:Name="ProfileIcon" Grid.Column="2" Grid.Row="0" ></ic:ProfileIcon>
-        <ic:BasketIcon x:Name="BasketIcon" Grid.Column="3" Grid.Row="0"></ic:BasketIcon>
+        <ic:ProfileIcon x:Name="ProfileIcon" Grid.Column="2" Grid.Row="0" Margin="5 1"></ic:ProfileIcon>
+        <ic:BasketIcon x:Name="BasketIcon" Grid.Column="3" Grid.Row="0" Margin="5 1"></ic:BasketIcon>
     </Grid>
 </UserControl>
