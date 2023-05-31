@@ -5,8 +5,16 @@
 /marketplace/obj/Debug/net6.0-windows
 ./idea
 ./vs
+./vs/*
+./idea/*
 ./marketplace/.vs
 ./marketplace/bin
 ./marketplace/obj
+./marketplace/.vs/*
+./marketplace/bin/*
+./marketplace/obj/*
 /.vs/marketplace/FileContentIndex
 /marketplace/bin/Debug/net6.0-windows7.0/cs-CZ
+/.vs
+/marketplace/bin/Debug/net6.0-windows7.0
+/marketplace/obj
