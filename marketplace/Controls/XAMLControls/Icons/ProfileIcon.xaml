@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <materialDesign:Card BorderThickness="1" BorderBrush="Gray" >
+        <materialDesign:Card BorderThickness="1" BorderBrush="Gray" MaxWidth="220">
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center"> 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.15*"></ColumnDefinition>

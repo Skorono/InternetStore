@@ -10,6 +10,9 @@
     <Compile Update="Controls\XAMLControls\CategoryDetails.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\XAMLControls\CategoryList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\XAMLControls\CostPicker.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\XAMLControls\CategoryDetails.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\XAMLControls\CategoryList.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\XAMLControls\CostPicker.xaml">

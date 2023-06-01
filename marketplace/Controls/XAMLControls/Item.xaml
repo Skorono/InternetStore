@@ -42,7 +42,7 @@
                     </Grid.ColumnDefinitions>
                     
                     <Border BorderThickness="1" BorderBrush="#FF868686" CornerRadius="5">
-                        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=Image, TargetNullValue=./Assets/Images/camera_200.png}"></Image>
+                        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Source="{Binding Path=Image, TargetNullValue=./Assets/Images/camera_200.png}"></Image>
                     </Border>
 
                     <TextBlock x:Name="CostText" Grid.Row="1" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>

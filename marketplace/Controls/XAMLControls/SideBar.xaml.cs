@@ -10,16 +10,9 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class SideBar : UserControl
     {
-        List<CategoryDetails> categoriesList = new();
         public SideBar()
         {
             InitializeComponent();
-            foreach (var category in BaseProvider.DbContext.Categories.ToList())
-            {
-                CategoryDetails categoryTextBlock = new CategoryDetails(category);
-                categoriesList.Add(categoryTextBlock);
-            }
-            CategoryList.ItemsSource = categoriesList;
         }
 
     }

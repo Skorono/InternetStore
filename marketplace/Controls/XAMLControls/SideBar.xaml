@@ -8,22 +8,18 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Expander ExpandDirection="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-            <Grid>
+            <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
-                    
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                
-                <local:CostPicker x:Name="CostPicker" MinCost="0" MaxCost="1000000" Grid.Row="0"></local:CostPicker>
 
-                <ListView Grid.Row="2" Width="450" x:Name="CategoryList">
-                    
-                </ListView>
+                <local:CostPicker x:Name="CostPicker" MinCost="0" MaxCost="1000000" Margin="0 20" Grid.Row="0" Grid.Column="0"/>
+                <local:CategoryList Grid.Row="2" Grid.Column="0"/>
             </Grid>
         </Expander>
     </Grid>

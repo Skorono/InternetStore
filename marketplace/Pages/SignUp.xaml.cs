@@ -23,7 +23,8 @@ namespace InternetStore.Pages
             var password = (WatermarkPasswordBox?)UIHelper.FindUid(this, "PasswordField");
 
             var User = BaseProvider.DbContext.Users
-                                .Where(user => (login.Text == user.Email) && (password.Password == user.Password))
+                                .ToList()
+                                .Where(user => (login.Text == user.Email) && (password.Password == user.Password.Decrypt()))
                                 .FirstOrDefault();
             if (User != null)
             {

@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <materialDesign:Card MouseDoubleClick="DoubleClicked" MaxWidth="500" MaxHeight="55">
+        <materialDesign:Card MouseDoubleClick="DoubleClicked" MaxWidth="220" MaxHeight="55">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.45*"></ColumnDefinition>

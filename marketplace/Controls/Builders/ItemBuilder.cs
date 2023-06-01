@@ -2,6 +2,7 @@
 using InternetStore.Controls.XAMLControls;
 using InternetStore.ModelDB;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
 namespace InternetStore.Controls.Builders
@@ -56,9 +57,9 @@ namespace InternetStore.Controls.Builders
 
             if (field != null)
             {
-                if (field.GetType().IsAssignableTo(typeof(TextBoxBase)))
+                if (field.FieldType.IsAssignableTo(typeof(TextBlock)))
                 {
-                    TextBoxBase? uiElement = (TextBoxBase?)field.GetValue(Item);
+                    TextBlock? uiElement = (TextBlock?)field.GetValue(Item);
                     if (uiElement != null)
                     {
                         uiElement.FontSize = size;
@@ -75,9 +76,9 @@ namespace InternetStore.Controls.Builders
 
             if (field != null)
             {
-                if (typeof(FrameworkElement).IsAssignableTo(field.GetType()))
+                if (field.FieldType.IsAssignableTo(typeof(TextBlock)))
                 {
-                    TextBoxBase? uiElement = (TextBoxBase?)field.GetValue(Item);
+                    TextBlock? uiElement = (TextBlock?)field.GetValue(Item);
                     if (uiElement != null)
                     {
                         uiElement.FontWeight = widthOption;
@@ -94,7 +95,7 @@ namespace InternetStore.Controls.Builders
 
             if (field != null)
             {
-                if (typeof(UIElement).IsAssignableFrom(field.GetType().BaseType))
+                if (field.FieldType.IsAssignableTo(typeof(UIElement)))
                 {
                     UIElement? uiElement = (UIElement?)field.GetValue(Item);
                     if (uiElement != null)

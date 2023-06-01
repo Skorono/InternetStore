@@ -1,5 +1,4 @@
-﻿using InternetStore.Controls;
-using System.Linq;
+﻿using System;
 using System.Windows;
 
 namespace marketplace
@@ -11,7 +10,8 @@ namespace marketplace
     {
         public App()
         {
-            BaseProvider.DbContext.Products.Count();
+            Environment.SetEnvironmentVariable("Images", "../../../Assets/Images/");
+            //BaseProvider.DbContext.Products.Count();
         }
     }
 }

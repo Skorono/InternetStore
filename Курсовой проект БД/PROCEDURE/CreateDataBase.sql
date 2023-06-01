@@ -318,4 +318,65 @@ BEGIN
 	INSERT INTO Role(id, role_name) VALUES('R', 'Retailer');
 END
 
+GO
+SET IDENTITY_INSERT [dbo].[Category] ON 
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (1, N'Комплектующие для ПК')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (2, N'Бытовая техника')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (3, N'Инструмент и стройка')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (4, N'ПК, ноутбуки, периферия')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (5, N'Офис и мебель')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (6, N'Отдых и развлечения')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (7, N'Инструмент и стройка')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (8, N'Садовая техника')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (9, N'Дом, декор и посуда')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (10, N'Автотовары')
+GO
+INSERT [dbo].[Category] ([id], [category_name]) VALUES (11, N'Аксессуары и услуги
+')
+GO
+SET IDENTITY_INSERT [dbo].[Category] OFF
+GO
+SET IDENTITY_INSERT [dbo].[SubCategories] ON 
+GO
+INSERT [dbo].[SubCategories] ([id], [category_id], [name], [attributes]) VALUES (1, 1, N'Процессоры ', N'{}')
+GO
+INSERT [dbo].[SubCategories] ([id], [category_id], [name], [attributes]) VALUES (2, 1, N'Видеокарты', N'{}')
+GO
+INSERT [dbo].[SubCategories] ([id], [category_id], [name], [attributes]) VALUES (3, 1, N'Материнские платы', N'{}')
+GO
+SET IDENTITY_INSERT [dbo].[SubCategories] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Product] ON 
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (1, 1, N'Процессор AMD Ryzen 5 4600G, SocketAM4, BOX [100-100000147box]', N'{"count":100, "cost": 10990}')
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (2, 1, N'Процессор Intel Core i7 9700, LGA 1151v2, OEM', N'{"count":99, "cost": 27990}')
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (8, 2, N'Видеокарта KFA2 GeForce 210 [21GGF4HI00NK] [PCI-E 2.0 1 ГБ GDDR3, 64 бит, DVI-D, HDMI, VGA (D-Sub), GPU 520 МГц]', N'{"count":250, "cost": 2699}')
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (9, 2, N'Видеокарта KFA2 GeForce GT 710 [71GPF4HI00GK] [PCI-E 2.0 2 ГБ GDDR3, 64 бит, DVI-D, HDMI, VGA (D-Sub), GPU 954 МГц]', N'{"count":350, "cost": 3399}')
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (10, 2, N'Видеокарта MSI GeForce 210 [N210-1GD3/LP] [PCI-E 2.0 1 ГБ GDDR3, 64 бит, DVI-I, HDMI, VGA (D-Sub), GPU 460 МГц]', N'{"count":550, "cost": 4199}')
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (11, 2, N'Видеокарта KFA2 GeForce GT 730 [73GQF8HX00HK] [PCI-E 2.0 4 ГБ DDR3, 128 бит, DVI-I, HDMI, VGA (D-Sub), GPU 700 МГц]', N'{"count":10, "cost": 4299}')
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (12, 2, N'Видеокарта GIGABYTE GeForce GT 710 Silent LP [GV-N710D5SL-2GL] [PCI-E 2.0 2 ГБ GDDR5, 64 бит, DVI-I, HDMI, GPU 954 МГц]', N'{"count":199, "cost": 4999}')
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (13, 2, N'Видеокарта MSI GeForce GT 730 [N730K-4GD3/OCV1] [PCI-E 2.0 4 ГБ GDDR3, 64 бит, DVI-D, HDMI, VGA (D-Sub), GPU 902 МГц]', N'{"count":99, "cost": 7799}')
+GO
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (14, 3, N'Материнская плата Esonic G41CPL3 [LGA 775, Intel G41, 2xDDR3-1066 МГц, 1xPCI-Ex16, Micro-ATX]', N'{"count":1500, "cost": 2999}')
+GO
+SET IDENTITY_INSERT [dbo].[Product] OFF
+GO
+
 -- -------------------------

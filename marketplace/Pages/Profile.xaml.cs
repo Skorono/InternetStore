@@ -1,7 +1,9 @@
 ﻿using InternetStore.Controls;
 using InternetStore.ModelDB;
 using System;
+using System.IO;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -70,7 +72,7 @@ namespace InternetStore.Pages
             Photo = User.Photo;
             if (Photo == null)
             {
-                Photo = ImageManager.Upload(@"C:\Users\astat\source\repos\InternetStore\marketplace\Assets\Images\camera_200.png");
+                Photo = ImageManager.Upload(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "camera_200.png"));
             }
 
             InitializeComponent();

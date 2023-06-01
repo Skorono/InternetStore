@@ -1,8 +1,10 @@
 ﻿using InternetStore.Controls.Builders;
 using InternetStore.ModelDB;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -53,7 +55,7 @@ namespace InternetStore.Controls.XAMLControls
             Product model = new();
             model.ProductName = "Добавить товар";
             ItemBuilder CardBuilder = new(model);
-            CardBuilder.SetImage(@"C:\Users\astat\source\repos\InternetStore\marketplace\Assets\Images\additem.png");
+            CardBuilder.SetImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "additem.png"));
             CardBuilder.SetFontSize("DescriptionText", 16).SetFontWidth("DescriptionText", FontWeights.Bold);
             CardBuilder.SetVisibility("HandledButton", Visibility.Collapsed);
             CardBuilder.SetVisibility("CostText", Visibility.Collapsed);
