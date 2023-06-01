@@ -25,18 +25,24 @@
                     <ColumnDefinition Width="0.35*"></ColumnDefinition>
                     <ColumnDefinition Width="0.4*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".15*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
                 
-                <CheckBox Grid.Column="0" VerticalAlignment="Center"></CheckBox>
-                <Border Grid.Column="1" BorderBrush="#FF868686" BorderThickness="1" CornerRadius="5" Margin="3">
-                    <Image MaxHeight="100" MaxWidth="150" Source="{Binding Path=Image}"></Image>
+                <CheckBox Grid.Column="0" Grid.RowSpan="2"  VerticalAlignment="Center"></CheckBox>
+                <Border Grid.Column="1"   Grid.RowSpan="2" BorderBrush="#FF868686" BorderThickness="1" CornerRadius="5" Margin="3">
+                    <Image MaxHeight="100" MaxWidth="150" Source="{Binding Path=Image, TargetNullValue=../../../Assets/Images/emptyProduct.png}"></Image>
                 </Border>
-                <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding Path=ItemName}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
-                <UniformGrid Grid.Column="4" Columns="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" Grid.Column="2" Grid.RowSpan="2" Text="{Binding Path=ItemName}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
+                <UniformGrid Grid.Column="4" Columns="3" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Width="15" Height="15" Margin="0" Padding="0">-</Button>
                     <TextBlock VerticalAlignment="Center" Width="45" Text="{Binding Path=Count, UpdateSourceTrigger=PropertyChanged}" Margin="1 0 1 0" TextTrimming="CharacterEllipsis"></TextBlock>
                     <Button HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"  Width="15" Height="15" Margin="0" Padding="0">+</Button>
                 </UniformGrid>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5" FontSize="12" FontWeight="Bold" Text="{Binding Path=Cost}"></TextBlock>
+                <TextBlock VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Column="5" FontSize="12" FontWeight="Bold" Text="{Binding Path=Cost}"></TextBlock>
+                <Button x:Name="DeleteBtn" Width="15" Height="15" Grid.Column="5" HorizontalAlignment="Right" Background="Red"></Button>
             </Grid>
         </materialDesign:Card>
     </Grid>

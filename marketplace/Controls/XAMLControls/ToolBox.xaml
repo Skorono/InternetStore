@@ -11,8 +11,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"></ColumnDefinition>
             <ColumnDefinition Width="0.7*" MaxWidth="750"></ColumnDefinition>
-            <ColumnDefinition Width="0.2*" MaxWidth="250"></ColumnDefinition>
             <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*" MaxWidth="250"></ColumnDefinition>
             <ColumnDefinition Width="0.2*" MaxWidth="250"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         

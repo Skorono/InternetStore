@@ -1,11 +1,13 @@
 ﻿using InternetStore.Controls;
 using InternetStore.Controls.Interfaces;
 using InternetStore.Controls.XAMLControls;
+using InternetStore.ModelDB;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace InternetStore.Pages
@@ -28,14 +30,15 @@ namespace InternetStore.Pages
                                                     .ToList()
                                                     .Where(userBasket => userBasket.UserId == UserId))
             {
-                // Добавить настройку вида продукта в билдере корзины 
-                Products.Add(new BasketItem(
-                            BaseProvider.DbContext.Products
+                // Добавить настройку вида продукта в билдере корзины
+                Product model = BaseProvider.DbContext.Products
                             .ToList()
                             .Where(product => product.Id == basketProduct.ProductId)
-                            .First()
-                        )
-                    );
+                            .First();
+
+                BasketItem basketItem = new(model);
+                //basketItem.DeleteBtn.Click += RemoveItem;
+                Products.Add(basketItem);
                 NotifyBasketChange();
             }
         }
@@ -94,6 +97,11 @@ namespace InternetStore.Pages
             else
                 BaseProvider.CallStoredProcedureByName("UpdateProductCountInBasket", uid, productId, count);
             NotifyBasketChange();
+        }
+
+        public void RemoveItem(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

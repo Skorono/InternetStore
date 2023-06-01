@@ -107,5 +107,19 @@ namespace InternetStore.Controls.Builders
             }
             return this;
         }
+
+        public ItemBuilder isEdittable()
+        {
+            Item.ManipulationPanel.Visibility = Visibility.Visible;
+            TextBlockButton ActionBlock = new();
+            ActionBlock.Text = "Изменить";
+            ActionBlock.Width = 100;
+            ActionBlock.Height = 30;
+            Item.ManipulationPanel.AcceptableActionList.Add(ActionBlock);
+            Item.ManipulationPanel.UpdateActionList();
+            return this;
+        }
+
+
     }
 }

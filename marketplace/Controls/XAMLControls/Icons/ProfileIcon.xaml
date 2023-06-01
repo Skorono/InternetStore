@@ -12,16 +12,18 @@
         <materialDesign:Card BorderThickness="1" BorderBrush="Gray" MaxWidth="220">
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center"> 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.35*"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 
                 <Border Width="25" Height="25" CornerRadius="20" BorderBrush="White" Grid.Column="0" BorderThickness="1">
-                    <Image></Image>
+                    <Image x:Name="userIcon"></Image>
                 </Border>
-                <TextBlock VerticalAlignment="Center" Width="100" Foreground="Black" Background="White" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Column="1" ></TextBlock>
-                <Button Width="25" Height="25" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Click="Clicked" Grid.Column="2"></Button>
+                <TextBlock VerticalAlignment="Center" Width="100" Foreground="Black" Background="White" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="15" Grid.Column="1" ></TextBlock>
+                <Button Width="25" Height="25" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Click="Clicked" Grid.Column="2">
+                    <Image x:Name="IconSettings"></Image>
+                </Button>
             </Grid>
         </materialDesign:Card>
     </Grid>

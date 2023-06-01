@@ -57,8 +57,17 @@ namespace InternetStore.Pages
             ProductContainerBuilder ContainerBuilder = new ProductContainerBuilder();
 
             ContainerBuilder.SetProductHandler(AddToBasket);
-            if (string.Join(" ", UserType.Adminstrator, UserType.Rentail).Split(" ").Contains(CurrentUser.RoleId))
-                ContainerBuilder.EditionalAccept();
+
+            switch (CurrentUser.RoleId)
+            {
+                case UserType.Rentail:
+                    ContainerBuilder.RentalPermissions();
+                    break;
+
+                case UserType.Adminstrator:
+                    ContainerBuilder.AdministratorPermissions();
+                    break;
+            }
             ProductList = ContainerBuilder.Build();
             ProductList.LoadProducts();
         }

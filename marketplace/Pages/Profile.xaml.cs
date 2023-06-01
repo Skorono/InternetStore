@@ -71,9 +71,7 @@ namespace InternetStore.Pages
             MiddleName = User.MiddleName;
             Photo = User.Photo;
             if (Photo == null)
-            {
                 Photo = ImageManager.Upload(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "camera_200.png"));
-            }
 
             InitializeComponent();
         }

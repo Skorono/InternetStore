@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:InternetStore.Controls"
+             xmlns:con="clr-namespace:InternetStore.Controls.XAMLControls"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
              TextElement.FontSize="13"
@@ -31,6 +32,7 @@
                 </Border.OpacityMask>
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="0.25*"></RowDefinition>
                         <RowDefinition Height="3*"></RowDefinition>
                         <RowDefinition Height="0.35*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
@@ -40,15 +42,17 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    
-                    <Border BorderThickness="1" BorderBrush="#FF868686" CornerRadius="5">
-                        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Source="{Binding Path=Image, TargetNullValue=./Assets/Images/camera_200.png}"></Image>
+
+                    <con:ItemAcceptableActions x:Name="ManipulationPanel" HorizontalAlignment="Right" Grid.Row="0" Visibility="Collapsed"></con:ItemAcceptableActions>
+
+                    <Border BorderThickness="1" BorderBrush="#FF868686" CornerRadius="5" Grid.Row="0" Grid.RowSpan="2">
+                        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Source="{Binding Path=Image, TargetNullValue=../../../Assets/Images/emptyProduct.png}"></Image>
                     </Border>
 
-                    <TextBlock x:Name="CostText" Grid.Row="1" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock x:Name="CostText" Grid.Row="2" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
 
-                    <TextBlock x:Name="DescriptionText" Grid.Row="2" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}" FontSize="12" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"  Margin="2"></TextBlock>
-                    <Button x:Name="HandledButton" Grid.Row="3" Grid.Column="0" Margin="25 0" Click="Clicked" Style="{DynamicResource MaterialDesignRaisedDarkButton}">В корзину</Button>
+                    <TextBlock x:Name="DescriptionText" Grid.Row="3" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}" FontSize="12" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"  Margin="2"></TextBlock>
+                    <Button x:Name="HandledButton" Grid.Row="4" Grid.Column="0" Margin="25 0" Click="Clicked" Style="{DynamicResource MaterialDesignRaisedDarkButton}">В корзину</Button>
                 </Grid>
             </Border>
         </materialDesign:Card>

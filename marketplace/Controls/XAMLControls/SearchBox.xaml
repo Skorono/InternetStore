@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Border BorderThickness="1" BorderBrush="#FF6469B1">
+        <Border BorderThickness="1" BorderBrush="Gray">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.85*"></ColumnDefinition>
@@ -20,7 +20,9 @@
                 </Grid.RowDefinitions>
                 
                 <xctk:WatermarkTextBox x:Name="InputText" Grid.Column="0" FontWeight="DemiBold" FontSize="16" Width="auto" Height="auto" Watermark="Поиск..." TextWrapping="NoWrap" Margin="0"></xctk:WatermarkTextBox>
-                <Button Grid.Row="0" Grid.Column="1" Click="Clicked"></Button>
+                <Button x:Name="SearchBtn" Grid.Row="0" Grid.Column="1" Click="Clicked" Background="#FF6F7572" BorderBrush="#FF3C3C3C">
+                    <Image HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="SearchBtnImage"></Image>
+                </Button>
             </Grid>
         </Border>
     </Grid>

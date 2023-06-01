@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace InternetStore.Controls.XAMLControls
 {
@@ -10,6 +13,7 @@ namespace InternetStore.Controls.XAMLControls
         public SearchBox()
         {
             InitializeComponent();
+            SearchBtnImage.Source = new BitmapImage(new Uri(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "searchIcon.png"), UriKind.Relative));
         }
 
         public void SetSearchHandler(RoutedEventHandler handler)

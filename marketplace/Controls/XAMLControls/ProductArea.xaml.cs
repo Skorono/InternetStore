@@ -15,6 +15,7 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class ProductArea : UserControl
     {
+        public bool AddingAccept = false;
         public bool EditionAccept = false;
         public RoutedEventHandler ItemHandler = null!;
         public List<AbsProductView> ItemList = new();
@@ -34,7 +35,7 @@ namespace InternetStore.Controls.XAMLControls
         {
             ItemList.Clear();
 
-            if (EditionAccept)
+            if (AddingAccept)
             {
                 CreateAdditionalCard();
             }
@@ -43,6 +44,11 @@ namespace InternetStore.Controls.XAMLControls
             {
                 ItemBuilder builder = new(product);
                 builder.isChangeable().isSortable();
+
+                if (EditionAccept)
+                {
+                    builder.isEdittable();
+                }
 
                 if (ItemHandler != null) NotifyChangeHandler(ItemHandler);
                 ItemList.Add(builder.Build());

@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace InternetStore.Controls.XAMLControls.Icons
 {
@@ -32,6 +35,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
         public ProfileIcon()
         {
             InitializeComponent();
+            IconSettings.Source = new BitmapImage(new Uri(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "settingIcon.png"), UriKind.Relative));
         }
     }
 }

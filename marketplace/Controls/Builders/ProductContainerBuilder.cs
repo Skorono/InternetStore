@@ -24,8 +24,15 @@ namespace InternetStore.Controls.Builders
             return this;
         }
 
-        public ProductContainerBuilder EditionalAccept()
+        public ProductContainerBuilder RentalPermissions()
         {
+            container.AddingAccept = true;
+            return this;
+        }
+
+        public ProductContainerBuilder AdministratorPermissions()
+        {
+            RentalPermissions();
             container.EditionAccept = true;
             return this;
         }

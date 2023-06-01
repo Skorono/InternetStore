@@ -34,6 +34,9 @@
     <Compile Update="Controls\XAMLControls\Item.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\XAMLControls\ItemAcceptableActions.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\XAMLControls\ItemsFraming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -106,6 +109,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\XAMLControls\Item.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\XAMLControls\ItemAcceptableActions.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\XAMLControls\ItemsFraming.xaml">
