@@ -65,6 +65,7 @@
             </Canvas>
 
             <Button Width="140" Height="30"  Grid.Column="1" Grid.Row="1" BorderThickness="0" Button.Name="Confirm" Content="Зарегистрироваться" Padding="0" Click="Registrastration" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 10"></Button>
+            <Button Width="140" Height="30"  Grid.Column="0" Grid.Row="1" BorderThickness="0" Button.Name="Back" Content="Назад" Padding="0" Click="ReturnToMainPage" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="25 0 0 10"></Button>
         </Grid>
     </ef:ElementField>
 </Page>

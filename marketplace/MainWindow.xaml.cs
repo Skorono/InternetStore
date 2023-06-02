@@ -17,12 +17,12 @@ namespace InternetStore
 
         private void RegistrationNavigate(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(new Registration());
+            Frame.Navigate(Registration.GetInstance());
         }
 
         private void SignUpNavigate(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(new SignUp());
+            Frame.Navigate(SignUp.GetInstance());
         }
     }
 }

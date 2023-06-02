@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using InternetStore.Controls;
+using Microsoft.EntityFrameworkCore;
 
 namespace marketplace
 {
@@ -11,7 +13,7 @@ namespace marketplace
         public App()
         {
             Environment.SetEnvironmentVariable("Images", "../../../Assets/Images/");
-            //BaseProvider.DbContext.Products.Count();
+            BaseProvider.DbContext.Database.OpenConnection();
         }
     }
 }

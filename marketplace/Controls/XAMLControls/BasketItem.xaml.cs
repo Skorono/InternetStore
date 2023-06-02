@@ -1,4 +1,5 @@
 ﻿using InternetStore.ModelDB;
+using System.Linq;
 
 namespace InternetStore.Controls.XAMLControls
 {
@@ -12,5 +13,19 @@ namespace InternetStore.Controls.XAMLControls
             Count = 1;
             InitializeComponent();
         }
+
+        private void Inc(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Count++;
+        }
+
+        private void Dec(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (Count != 1)
+            {
+                Count--;
+            }
+        }
+
     }
 }

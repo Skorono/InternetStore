@@ -12,9 +12,19 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class SignUp : Page
     {
-        public SignUp()
+        private static SignUp _context = null!;
+        
+        private SignUp()
         {
             InitializeComponent();
+        }
+
+        public static SignUp GetInstance()
+        {
+            if (_context == null) {
+                _context = new SignUp();
+            }
+            return _context;
         }
 
         private void OnSignUp(object sender, RoutedEventArgs e)
@@ -33,6 +43,11 @@ namespace InternetStore.Pages
             }
             else
                 Xceed.Wpf.Toolkit.MessageBox.Show("Неверный логин или пароль");
+        }
+
+        private void ReturnToMainPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(null);
         }
     }
 }

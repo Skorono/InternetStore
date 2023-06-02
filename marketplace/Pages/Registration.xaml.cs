@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Xceed.Wpf.Toolkit;
+using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace InternetStore.Pages
 {
@@ -71,9 +72,20 @@ namespace InternetStore.Pages
         }
         #endregion
 
-        public Registration()
+        private static Registration _context = null!;
+
+        private Registration()
         {
             InitializeComponent();
+        }
+
+        public static Registration GetInstance()
+        {
+            if (_context == null)
+            {
+                _context = new Registration();
+            }
+            return _context;
         }
 
         public void SelectImageCommand(object sender, DragEventArgs e)
@@ -115,6 +127,11 @@ namespace InternetStore.Pages
                 Xceed.Wpf.Toolkit.MessageBox.Show("Пароли не совпадают!");
             }
             return true;
+        }
+
+        private void ReturnToMainPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(null);
         }
 
         private void Registrastration(object sender, RoutedEventArgs e)

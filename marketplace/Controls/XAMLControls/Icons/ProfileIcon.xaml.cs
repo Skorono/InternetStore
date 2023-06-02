@@ -36,6 +36,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
         {
             InitializeComponent();
             IconSettings.Source = new BitmapImage(new Uri(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "settingIcon.png"), UriKind.Relative));
+            IconSettings.UpdateLayout();
         }
     }
 }

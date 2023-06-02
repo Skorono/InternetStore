@@ -37,6 +37,7 @@ namespace InternetStore.Pages
                             .First();
 
                 BasketItem basketItem = new(model);
+                basketItem.Width = 525;
                 //basketItem.DeleteBtn.Click += RemoveItem;
                 Products.Add(basketItem);
                 NotifyBasketChange();
