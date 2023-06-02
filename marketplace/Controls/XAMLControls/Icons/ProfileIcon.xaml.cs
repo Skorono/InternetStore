@@ -15,7 +15,6 @@ namespace InternetStore.Controls.XAMLControls.Icons
 
         private DependencyProperty usrName =
             DependencyProperty.Register("usrName", typeof(string), typeof(ProfileIcon));
-
         #endregion
 
         #region [ Binding Properties ]

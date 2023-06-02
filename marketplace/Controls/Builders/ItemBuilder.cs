@@ -1,9 +1,7 @@
-﻿using DocumentFormat.OpenXml.Drawing;
-using InternetStore.Controls.XAMLControls;
+﻿using InternetStore.Controls.XAMLControls;
 using InternetStore.ModelDB;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace InternetStore.Controls.Builders
 {
@@ -11,15 +9,26 @@ namespace InternetStore.Controls.Builders
     {
         private Item Item = null!;
 
-        public ItemBuilder(Product model)
+        public string? ItemName { get => Item.ItemName; }
+        public float ItemCost { get => Item.Cost; }
+        public int ItemCount { get => Item.Count; }
+
+        public ItemBuilder(Product model, bool AllowSync = true)
         {
             Item = new(model);
+            Item.AllowSync = AllowSync;
         }
 
         public Item Build()
         {
             return Item;
         }
+
+        /*public ItemBuilder NotAllowSync()
+        {
+            Item.AllowSync = false;
+            return this;
+        }*/
 
         public ItemBuilder isChangeable()
         {

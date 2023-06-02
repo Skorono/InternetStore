@@ -13,7 +13,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:local="clr-namespace:InternetStore"
         mc:Ignorable="d"
-        Title="InternetStore" Height="715" Width="998">
+        Title="InternetStore" MinHeight="715" MinWidth="998">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>

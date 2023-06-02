@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace InternetStore.Controls
 {
@@ -46,6 +48,29 @@ namespace InternetStore.Controls
         public void Save()
         {
 
+        }
+
+        public static BitmapImage LoadImage(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new BitmapImage();
+            using (var mem = new MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
+        }
+
+        public static BitmapImage LoadImage(string Path)
+        {
+            return new BitmapImage(new System.Uri(Path, System.UriKind.Relative));
         }
     }
 }

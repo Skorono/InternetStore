@@ -18,8 +18,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                
-                <xctk:WatermarkTextBox x:Name="InputText" Grid.Column="0" FontWeight="DemiBold" FontSize="16" Width="auto" Height="auto" Watermark="Поиск..." TextWrapping="NoWrap" Margin="0"></xctk:WatermarkTextBox>
+
+                <xctk:WatermarkTextBox x:Name="InputText" Grid.Column="0" FontWeight="DemiBold" FontSize="16" Width="auto" Height="auto" Watermark="Поиск..." TextWrapping="NoWrap" Margin="0" KeyDown="OnKeyDown"></xctk:WatermarkTextBox>
                 <Button x:Name="SearchBtn" Grid.Row="0" Grid.Column="1" Click="Clicked" Background="#FF6F7572" BorderBrush="#FF3C3C3C">
                     <Image HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="SearchBtnImage"></Image>
                 </Button>

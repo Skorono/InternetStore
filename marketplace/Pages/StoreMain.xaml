@@ -11,7 +11,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StoreMain">
 
-    <Grid x:Name="grid" Background="#FFDCDCDE">
+    <Grid x:Name="grid" Background="#FF8A8A90">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>

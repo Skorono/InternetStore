@@ -1,10 +1,10 @@
 ﻿using InternetStore.Controls.Builders;
 using InternetStore.ModelDB;
+using Microsoft.IdentityModel.Tokens;
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,9 +15,12 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class ProductArea : UserControl
     {
+        private LoadDecorator LoadDecorator = new LoadDecorator();
+
         public bool AddingAccept = false;
         public bool EditionAccept = false;
-        public RoutedEventHandler ItemHandler = null!;
+        public RoutedEventHandler ItemClickHandler = null!;
+        public RoutedEventHandler ItemDoubleClickHandler = null!;
         public List<AbsProductView> ItemList = new();
 
         public ProductArea()
@@ -31,7 +34,12 @@ namespace InternetStore.Controls.XAMLControls
         /// <param name="x"></param>
         /// 
 
-        public void LoadProducts()
+        public void Load()
+        {
+            LoadDecorator.Load<Grid>(grid, LoadProducts);
+        }
+
+        private void LoadProducts()
         {
             ItemList.Clear();
 
@@ -50,7 +58,13 @@ namespace InternetStore.Controls.XAMLControls
                     builder.isEdittable();
                 }
 
-                if (ItemHandler != null) NotifyChangeHandler(ItemHandler);
+                if (builder.ItemCount == 0)
+                {
+                    builder.SetImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "outOfStock.png"));
+                    builder.SetVisibility("HandledButton", Visibility.Collapsed);
+                }
+                if (ItemClickHandler != null) NotifyChangeClickHandler(ItemClickHandler);
+                if (ItemDoubleClickHandler != null) NotifyChangeDoubleClickHandler(ItemDoubleClickHandler);
                 ItemList.Add(builder.Build());
             }
             ListBox.ItemsSource = ItemList;
@@ -60,7 +74,7 @@ namespace InternetStore.Controls.XAMLControls
         {
             Product model = new();
             model.ProductName = "Добавить товар";
-            ItemBuilder CardBuilder = new(model);
+            ItemBuilder CardBuilder = new(model, false);
             CardBuilder.SetImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "additem.png"));
             CardBuilder.SetFontSize("DescriptionText", 16).SetFontWidth("DescriptionText", FontWeights.Bold);
             CardBuilder.SetVisibility("HandledButton", Visibility.Collapsed);
@@ -69,8 +83,8 @@ namespace InternetStore.Controls.XAMLControls
             ItemList.Add(CardBuilder.Build());
         }
 
-        public void Sort(Func<AbsProductView, bool> x = null!)
-        { 
+        private void SortParam(Func<AbsProductView, bool> x = null!)
+        {
             if (x != null) ItemList = ItemList
                                         .Where(x)
                                         .Union(ItemList.Where(item => !item.isSortable))
@@ -80,34 +94,61 @@ namespace InternetStore.Controls.XAMLControls
             ListBox.ItemsSource = ItemList;
         }
 
-        public void SearchByName(string searchText)
+        public void Sort(string searchString)
         {
-            LoadProducts();
-            Sort(
-                product => product.ItemName
-                    .Split(" ")
-                    .Select(x => x.Trim().ToLower())
-                    .Contains(searchText.ToLower())
-                );
+            LoadDecorator.Load<Grid>(grid, SearchByName, searchString);
         }
 
-        public void SortByCost(int minCost, int maxCost)
+        public void Sort(int minCost, int maxCost)
         {
-            Sort(product => Enumerable.Range(minCost, maxCost).Contains((int)(product.Cost)));
+            LoadDecorator.Load<Grid>(grid, SortByCost, minCost, maxCost);
         }
 
-        public void SelectSubCategory(int SubCategoryID)
+        public void Sort(int SubCategoryID)
         {
-            LoadProducts();
-            Sort(product => product.ProductModel.SubcategoryId == SubCategoryID);
+            LoadDecorator.Load<Grid>(grid, SelectSubCategory, SubCategoryID);
         }
 
-        public void NotifyChangeHandler(RoutedEventHandler handler)
+
+        private void SearchByName(string searchText)
         {
-            ItemHandler = handler;
+            Load();
+
+            if (!searchText.IsNullOrEmpty())
+                SortParam(
+                    product => product.ItemName
+                        .Split(" ")
+                        .Select(x => x.Trim().ToLower())
+                        .Contains(searchText.ToLower())
+                    );
+        }
+
+        private void SortByCost(int minCost, int maxCost)
+        {
+            SortParam(product => Enumerable.Range(minCost, maxCost).Contains((int)(product.Cost)));
+        }
+
+        private void SelectSubCategory(int SubCategoryID)
+        {
+            Load();
+            SortParam(product => product.ProductModel.SubcategoryId == SubCategoryID);
+        }
+
+        public void NotifyChangeClickHandler(RoutedEventHandler handler)
+        {
+            ItemClickHandler = handler;
             foreach (var item in ItemList)
             {
-                item.UpdateHandler(handler);
+                item.UpdateClickHandler(handler);
+            }
+        }
+
+        public void NotifyChangeDoubleClickHandler(RoutedEventHandler handler)
+        {
+            ItemDoubleClickHandler = handler;
+            foreach (var item in ItemList)
+            {
+                item.UpdateDoubleClickHandler(handler);
             }
         }
     }

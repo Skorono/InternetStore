@@ -16,7 +16,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <materialDesign:Card>
+        <materialDesign:Card Background="White">
             <Border BorderThickness="1" BorderBrush="Black" CornerRadius="5" Width="175" Height="275" Padding="5">
                 <Border.OpacityMask>
                     <VisualBrush>
@@ -51,7 +51,7 @@
 
                     <TextBlock x:Name="CostText" Grid.Row="2" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
 
-                    <TextBlock x:Name="DescriptionText" Grid.Row="3" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}" FontSize="12" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"  Margin="2"></TextBlock>
+                    <TextBlock x:Name="DescriptionText" Grid.Row="3" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}" FontSize="12" FontFamily="GTEestiPro" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"  Margin="2"></TextBlock>
                     <Button x:Name="HandledButton" Grid.Row="4" Grid.Column="0" Margin="25 0" Click="Clicked" Style="{DynamicResource MaterialDesignRaisedDarkButton}">В корзину</Button>
                 </Grid>
             </Border>

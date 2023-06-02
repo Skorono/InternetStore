@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows;
-using InternetStore.Controls;
+﻿using InternetStore.Controls;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Windows;
 
 namespace marketplace
 {

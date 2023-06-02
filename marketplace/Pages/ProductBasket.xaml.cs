@@ -102,7 +102,7 @@ namespace InternetStore.Pages
 
         public void RemoveItem(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

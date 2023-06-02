@@ -1,12 +1,28 @@
 ﻿using InternetStore.Controls.Interfaces;
 using InternetStore.ModelDB;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows;
 
 namespace InternetStore.Controls
 {
     public abstract class AbsProductView : ViewControl, IProductView
     {
+        public bool AllowSync = false;
+
+        private int count;
+
+        public int Count
+        {
+            get => count;
+
+            set
+            {
+                count = value;
+                SyncModel();
+            }
+        }
+
         #region [ Binding Fields ]
 
         public static DependencyProperty PropertyImage =
@@ -24,20 +40,32 @@ namespace InternetStore.Controls
         {
             get => (byte[])GetValue(PropertyImage);
 
-            set => SetValue(PropertyImage, value);
+            set
+            {
+                SetValue(PropertyImage, value);
+                SyncModel();
+            }
         }
 
         public virtual string? ItemName
         {
             get => (string)GetValue(PropertyName);
-            set => SetValue(PropertyName, value);
+            set
+            {
+                SetValue(PropertyName, value);
+                SyncModel();
+            }
         }
 
         public virtual float Cost
         {
             get => (float)GetValue(PropertyCost);
 
-            set => SetValue(PropertyCost, value);
+            set
+            {
+                SetValue(PropertyCost, value);
+                SyncModel();
+            }
         }
 
         #endregion
@@ -54,9 +82,19 @@ namespace InternetStore.Controls
             ItemName = ProductModel.ProductName;
             ParsePropertiesFromModel();
             float cost = 0.0f;
-            Image = (byte[])Properties.GetValue("image");
+            int count = 0;
             float.TryParse(Properties.GetValue("cost")?.ToString(), out cost);
+            int.TryParse(Properties.GetValue("count")?.ToString(), out count);
+            object? imageData = Properties.GetValue("image");
+            if (imageData != null)
+            {
+                byte[]? image = Encoding.ASCII.GetBytes(imageData.ToString());
+                Image = image;
+            }
+            else
+                Image = null;
             Cost = cost;
+            Count = count;
         }
 
         private void ParsePropertiesFromModel()
@@ -65,10 +103,24 @@ namespace InternetStore.Controls
             Properties = jsonString.Parse<string, object>();
         }
 
-        public virtual void UpdateHandler(RoutedEventHandler handler)
+        public virtual void UpdateClickHandler(RoutedEventHandler handler)
         {
             //this.Click = null;
             this.Click += handler;
+        }
+
+        public virtual void UpdateDoubleClickHandler(RoutedEventHandler handler)
+        {
+            //this.Click = null;
+            this.DoubleClick += handler;
+        }
+
+        private void SyncModel()
+        {
+            if (AllowSync)
+            {
+                BaseProvider.DbContext.Products.Update(ProductModel);
+            }
         }
     }
 }

@@ -10,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Xceed.Wpf.Toolkit;
-using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace InternetStore.Pages
 {

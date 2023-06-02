@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace InternetStore.Controls.XAMLControls
@@ -13,12 +15,20 @@ namespace InternetStore.Controls.XAMLControls
         public SearchBox()
         {
             InitializeComponent();
-            SearchBtnImage.Source = new BitmapImage(new Uri(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "searchIcon.png"), UriKind.Relative));
+            SearchBtnImage.Source = new BitmapImage(new Uri(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "searchIcon2.png"), UriKind.Relative));
         }
 
         public void SetSearchHandler(RoutedEventHandler handler)
         {
-            this.Click += handler;
+            SearchBtn.Click += handler;
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SearchBtn.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
         }
     }
 }

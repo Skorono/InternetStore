@@ -3,6 +3,8 @@ using InternetStore.Controls.Builders;
 using InternetStore.Controls.Resources;
 using InternetStore.Controls.XAMLControls;
 using InternetStore.ModelDB;
+using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,12 +33,7 @@ namespace InternetStore.Pages
             ToolPanel.SearchBox.SetSearchHandler(SearchProduct);
             //ProductList.SelectSubCategory(2);
             //ProductList.SortByCost(0, 3400);
-            Grid.SetColumn(ProductList, 1);
-            Grid.SetRow(ProductList, 1);
-            Grid.SetColumnSpan(ProductList, 3);
-            Grid.SetRowSpan(ProductList, 3);
-            grid.Children.Add(ProductList);
-            grid.UpdateLayout();
+
         }
 
         private void CreateBasket()
@@ -47,6 +44,11 @@ namespace InternetStore.Pages
         private void LoadProfileIcon()
         {
             ToolPanel.ProfileIcon.Click += ProfileNavigate;
+            if (CurrentUser.Photo != null)
+                ToolPanel.ProfileIcon.UserIcon.Source = ImageManager.LoadImage(CurrentUser.Photo);
+            else
+                ToolPanel.ProfileIcon.UserIcon.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "camera_200.png"));
+
             ToolPanel.ProfileIcon.UserName = BaseProvider.DbContext.UserPersonalInfs.ToList()
                                          .Where(row => row.Id == User.Id).First().Name;
             ToolPanel.BasketIcon.Count = Basket.ProductCount;
@@ -54,9 +56,12 @@ namespace InternetStore.Pages
 
         private void LoadProductArea()
         {
+
+
             ProductContainerBuilder ContainerBuilder = new ProductContainerBuilder();
 
-            ContainerBuilder.SetProductHandler(AddToBasket);
+            ContainerBuilder.SetProductClickHandler(AddToBasket);
+            ContainerBuilder.SetProductDoubleClickHandler(ToProductPage);
 
             switch (CurrentUser.RoleId)
             {
@@ -69,7 +74,15 @@ namespace InternetStore.Pages
                     break;
             }
             ProductList = ContainerBuilder.Build();
-            ProductList.LoadProducts();
+
+            Grid.SetColumn(ProductList, 1);
+            Grid.SetRow(ProductList, 1);
+            Grid.SetColumnSpan(ProductList, 3);
+            Grid.SetRowSpan(ProductList, 3);
+            grid.Children.Add(ProductList);
+            grid.UpdateLayout();
+
+            ProductList.Load();
         }
 
         private void LoadBasketIcon()
@@ -90,9 +103,14 @@ namespace InternetStore.Pages
             ToolPanel.BasketIcon.Count = Basket.ProductCount;
         }
 
+        private void ToProductPage(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(ProductPage.getInstance());
+        }
+
         private void SearchProduct(object sender, RoutedEventArgs e)
         {
-            ProductList.SearchByName(ToolPanel.SearchBox.InputText.Text);
+            ProductList.Sort(ToolPanel.SearchBox.InputText.Text);
         }
 
 

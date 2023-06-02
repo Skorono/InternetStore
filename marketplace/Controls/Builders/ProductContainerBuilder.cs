@@ -18,9 +18,15 @@ namespace InternetStore.Controls.Builders
             return container;
         }
 
-        public ProductContainerBuilder SetProductHandler(RoutedEventHandler handler)
+        public ProductContainerBuilder SetProductClickHandler(RoutedEventHandler handler)
         {
-            container.NotifyChangeHandler(handler);
+            container.NotifyChangeClickHandler(handler);
+            return this;
+        }
+
+        public ProductContainerBuilder SetProductDoubleClickHandler(RoutedEventHandler handler)
+        {
+            container.NotifyChangeDoubleClickHandler(handler);
             return this;
         }
 

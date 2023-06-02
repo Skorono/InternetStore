@@ -13,7 +13,7 @@ namespace InternetStore.Pages
     public partial class SignUp : Page
     {
         private static SignUp _context = null!;
-        
+
         private SignUp()
         {
             InitializeComponent();
@@ -21,7 +21,8 @@ namespace InternetStore.Pages
 
         public static SignUp GetInstance()
         {
-            if (_context == null) {
+            if (_context == null)
+            {
                 _context = new SignUp();
             }
             return _context;

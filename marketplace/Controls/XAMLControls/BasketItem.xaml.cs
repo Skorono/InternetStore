@@ -1,5 +1,4 @@
 ﻿using InternetStore.ModelDB;
-using System.Linq;
 
 namespace InternetStore.Controls.XAMLControls
 {

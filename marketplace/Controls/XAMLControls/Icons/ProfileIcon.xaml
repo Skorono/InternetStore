@@ -9,19 +9,32 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <materialDesign:Card BorderThickness="1" BorderBrush="Gray" MaxWidth="220">
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Center"> 
+        <materialDesign:Card BorderThickness="1" BorderBrush="Gray" MaxWidth="220" HorizontalAlignment="Stretch" Padding="0">
+            <Grid> 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 
-                <Border Width="25" Height="25" CornerRadius="20" BorderBrush="White" Grid.Column="0" BorderThickness="1">
-                    <Image x:Name="userIcon"></Image>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" CornerRadius="20" Background="White" BorderBrush="White" Grid.Column="0" BorderThickness="1">
+                    <Border.OpacityMask>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Border
+                                    Background="Black"
+                                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                                    Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                                    Height="{Binding ActualHeight, RelativeSource={RelativeSource FindAncestor, AncestorType=Border}}"
+                                    />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Border.OpacityMask>
+                    <Image x:Name="UserIcon"></Image>
                 </Border>
-                <TextBlock VerticalAlignment="Center" Width="100" Foreground="Black" Background="White" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="15" Grid.Column="1" ></TextBlock>
-                <Button Width="25" Height="25" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Click="Clicked" Grid.Column="2">
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Background="White" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" TextTrimming="CharacterEllipsis" FontSize="16" Grid.Column="2" ></TextBlock>
+                <Button Width="25" Height="25" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" BorderBrush="White" Background="White" Click="Clicked" Grid.Column="3">
                     <Image x:Name="IconSettings"></Image>
                 </Button>
             </Grid>
