@@ -6,7 +6,8 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:InternetStore.Pages"
       mc:Ignorable="d"
-      Title="ProductPage" Height="450" Width="800">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductPage">
     <Grid Background="#FFDCDCDE">
        <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -24,7 +25,7 @@
             
         </materialDesign:Card>
         
-        <materialDesign:Card Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Margin="4">
+        <materialDesign:Card Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Margin="4" Padding="0 10 0 0">
             <ScrollViewer x:Name="PropertyViewer">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -44,28 +45,29 @@
                         <Image x:Name="ProductImage" Width="auto" Height="auto"></Image>
                     </Border>
                     <materialDesign:Card Grid.Row="1" Grid.Column="2" Background="LightGray" Margin="7 0 0 0">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.7*"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
+                        <materialDesign:Card Margin="15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="0">Название товара:</TextBlock>
+                                <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="1">Категория:</TextBlock>
+                                <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="2">Количество в наличии:</TextBlock>
 
-                            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="0">Название товара:</TextBlock>
-                            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="1">Категория:</TextBlock>
-                            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="2">Количество в наличии:</TextBlock>
-
-                            <TextBlock x:Name="ProductName" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
-                            <TextBlock x:Name="CategoryName" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
-                            <TextBlock x:Name="ProductCount" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
-                        </Grid>
+                                <TextBlock x:Name="ProductName" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
+                                <TextBlock x:Name="CategoryName" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
+                                <TextBlock x:Name="ProductCount" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
+                            </Grid>
+                        </materialDesign:Card>
                     </materialDesign:Card>
 
                     <Border Grid.Row="2" Grid.Column="1" Margin="0 20 0 0" BorderThickness="3" BorderBrush="DimGray" CornerRadius="5" Height="Auto">

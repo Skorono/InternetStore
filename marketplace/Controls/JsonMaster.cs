@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Unicode;
 
 namespace InternetStore.Controls
 {
@@ -8,7 +10,11 @@ namespace InternetStore.Controls
     {
         public static Dictionary<V, K>? Parse<V, K>(this string jsonString)
         {
-            return IsValidJson(jsonString) ? JsonSerializer.Deserialize<Dictionary<V, K>>(jsonString) : null;
+            JsonSerializerOptions options = new JsonSerializerOptions()
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+            };
+            return IsValidJson(jsonString) ? JsonSerializer.Deserialize<Dictionary<V, K>>(jsonString, options) : null;
         }
 
         public static object? GetValue(this Dictionary<string, object> dict, string keyName)

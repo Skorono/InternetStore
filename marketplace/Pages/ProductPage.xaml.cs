@@ -1,8 +1,11 @@
+using DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using InternetStore.Controls;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace InternetStore.Pages;
@@ -28,7 +31,26 @@ public partial class ProductPage : Page
     private void GenerateProperties()
     {
         StringBuilder stringBuilder= new StringBuilder();
-        PropertyList.ItemsSource = Product.Properties.ToList().Select((dict) => (new TextBlock()).Text = $"{dict.Key}: {dict.Value}");
+        var SubCategory = BaseProvider.DbContext.SubCategories.Single(subcat => subcat.Id == Product.ProductModel.SubcategoryId);
+        Dictionary<string, object> SubCategoryAttributes = SubCategory.Attributes.Parse<string, object>();
+        if (SubCategoryAttributes != null && Product.Properties != null)
+        {
+            var prop = Product.Properties
+            .Where(dict => SubCategoryAttributes.GetValue(dict.Key) != null);
+            PropertyList.ItemsSource = prop
+                .Select(dict => CreateProperty(dict.Key, dict.Value));
+        }
+    }
+
+    private TextBlock CreateProperty(string key, object value)
+    {
+        TextBlock Property = new TextBlock();
+        Property.Inlines.Add($"{key}: ");
+        Property.Inlines.Add($"{value}");
+
+        Property.Inlines.FirstInline.FontWeight = FontWeights.Bold;
+
+        return Property;
     }
 
     private void ToMainPage(object sender, System.Windows.RoutedEventArgs e)
