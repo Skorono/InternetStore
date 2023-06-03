@@ -1,9 +1,12 @@
-﻿using InternetStore.Controls;
+﻿using DocumentFormat.OpenXml.InkML;
+using InternetStore.Controls;
 using InternetStore.Controls.Builders;
 using InternetStore.Controls.Resources;
 using InternetStore.Controls.XAMLControls;
+using InternetStore.Controls.XAMLControls.Icons;
 using InternetStore.ModelDB;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -19,6 +22,7 @@ namespace InternetStore.Pages
         private UserViewDto User = null!;
         public static ProductBasket Basket = null!;
         public ProductArea ProductList = null!;
+        private ToolBox ToolPanel = null!;
 
         public UserViewDto CurrentUser => User;
 
@@ -41,8 +45,19 @@ namespace InternetStore.Pages
             Basket = new ProductBasket(User.Id);
         }
 
+        private void InitToolPanel()
+        {
+            ToolPanel = ToolBox.GetInstance();
+            Grid.SetRow(ToolPanel, 0);
+            Grid.SetColumn(ToolPanel, 0);
+            Grid.SetRowSpan(ToolPanel, 4);
+            ToolPanel.Margin = new Thickness(0, 0, 0, 1);
+            ToolPanel.Background = Brushes.;
+        }
+
         private void LoadProfileIcon()
         {
+            //ProfileIcon ProfileIcon = (ProfileIcon)FindName("ProfileIcon");
             ToolPanel.ProfileIcon.Click += ProfileNavigate;
             if (CurrentUser.Photo != null)
                 ToolPanel.ProfileIcon.UserIcon.Source = ImageManager.LoadImage(CurrentUser.Photo);

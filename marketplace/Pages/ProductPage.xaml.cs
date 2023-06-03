@@ -35,8 +35,7 @@ public partial class ProductPage : Page
         Dictionary<string, object> SubCategoryAttributes = SubCategory.Attributes.Parse<string, object>();
         if (SubCategoryAttributes != null && Product.Properties != null)
         {
-            var prop = Product.Properties
-            .Where(dict => SubCategoryAttributes.GetValue(dict.Key) != null);
+            var prop = Product.Properties.ToList().Where(dict => SubCategoryAttributes.ContainsKey(dict.Key));
             PropertyList.ItemsSource = prop
                 .Select(dict => CreateProperty(dict.Key, dict.Value));
         }

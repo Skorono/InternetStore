@@ -30,12 +30,21 @@ namespace InternetStore.Controls.XAMLControls.Icons
         }
 
         #endregion
-
-        public ProfileIcon()
+        private static ProfileIcon _context = null!;
+        private ProfileIcon()
         {
             InitializeComponent();
             IconSettings.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "settingIcon.png"));
             IconSettings.UpdateLayout();
+        }
+
+        public static ProfileIcon GetInstance()
+        {
+            if (_context == null)
+            {
+                _context = new ProfileIcon();
+            }
+            return _context;
         }
     }
 }

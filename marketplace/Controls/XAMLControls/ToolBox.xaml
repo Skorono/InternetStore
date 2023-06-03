@@ -7,7 +7,7 @@
              xmlns:ic="clr-namespace:InternetStore.Controls.XAMLControls.Icons"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"></ColumnDefinition>
             <ColumnDefinition Width="0.7*" MaxWidth="750"></ColumnDefinition>
@@ -21,7 +21,6 @@
         </Grid.RowDefinitions>
 
         <local:SearchBox x:Name="SearchBox"    Grid.Column="1" Grid.Row="0" Margin="0 0 20 0" ></local:SearchBox>
-        <ic:ProfileIcon  x:Name="ProfileIcon"  Grid.Column="3" Grid.Row="0" Margin="5 1"></ic:ProfileIcon>
         <ic:BasketIcon   x:Name="BasketIcon"   Grid.Column="4" Grid.Row="0" Margin="5 1"></ic:BasketIcon>
     </Grid>
 </UserControl>
