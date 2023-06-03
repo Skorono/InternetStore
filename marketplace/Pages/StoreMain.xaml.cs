@@ -30,6 +30,7 @@ namespace InternetStore.Pages
         {
             User = userModel;
             InitializeComponent();
+            InitToolPanel();
             CreateBasket();
             LoadBasketIcon();
             LoadProfileIcon();
@@ -50,9 +51,10 @@ namespace InternetStore.Pages
             ToolPanel = ToolBox.GetInstance();
             Grid.SetRow(ToolPanel, 0);
             Grid.SetColumn(ToolPanel, 0);
-            Grid.SetRowSpan(ToolPanel, 4);
+            Grid.SetColumnSpan(ToolPanel, 4);
             ToolPanel.Margin = new Thickness(0, 0, 0, 1);
-            ToolPanel.Background = Brushes.;
+            //ToolPanel.Background = Brushes.;
+            grid.Children.Add(ToolPanel);
         }
 
         private void LoadProfileIcon()

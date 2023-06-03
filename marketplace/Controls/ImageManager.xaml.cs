@@ -1,9 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DocumentFormat.OpenXml.Drawing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace InternetStore.Controls
@@ -71,6 +77,38 @@ namespace InternetStore.Controls
         public static BitmapImage LoadImage(string Path)
         {
             return new BitmapImage(new System.Uri(Path, System.UriKind.Relative));
+        }
+
+        public static BitmapImage? LoadImageFromFileDialog()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.DefaultExt = ".png";
+            dialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            Nullable<bool> result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                return LoadImage(dialog.FileName);
+            }
+            return null;
+        }
+
+        public static byte[] ImageSourceToBytes(BitmapEncoder encoder, ImageSource imageSource)
+        {
+            byte[] bytes = null;
+            var bitmapSource = imageSource as BitmapSource;
+
+            if (bitmapSource != null)
+            {
+                encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+
+                using (var stream = new MemoryStream())
+                {
+                    encoder.Save(stream);
+                    bytes = stream.ToArray();
+                }
+            }
+            return bytes;
         }
     }
 }

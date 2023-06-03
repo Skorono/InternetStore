@@ -1,5 +1,7 @@
-﻿using InternetStore.Controls;
+﻿using DocumentFormat.OpenXml.EMMA;
+using InternetStore.Controls;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,23 +20,18 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class Registration : Page
     {
-        private BitmapImage UsrAvatar
-        {
-            get => UsrAvatar;
-            set => UsrAvatar = value;
-        }
 
         #region [ Binding Fields]
-        private DependencyProperty username =
+        private DependencyProperty userNameField =
               DependencyProperty.Register("UserName", typeof(string), typeof(Registration));
 
-        private DependencyProperty email =
+        private DependencyProperty emailField =
               DependencyProperty.Register("Email", typeof(string), typeof(Registration));
 
-        private DependencyProperty password =
+        private DependencyProperty passwordField =
               DependencyProperty.Register("Password", typeof(string), typeof(Registration));
 
-        private DependencyProperty repeatpassword =
+        private DependencyProperty repeatPasswordField =
               DependencyProperty.Register("RepeatPassword", typeof(string), typeof(Registration));
         #endregion
 
@@ -42,32 +39,32 @@ namespace InternetStore.Pages
         [Required(AllowEmptyStrings = false)]
         public string UserName
         {
-            private get => (string)GetValue(username);
-            set => SetValue(username, value);
+            get => (string)GetValue(userNameField);
+            set => SetValue(userNameField, value);
         }
 
         [Required(AllowEmptyStrings = false)]
         [EmailAddress(ErrorMessage = "Невалидная почта!")]
         public string Email
         {
-            private get => (string)GetValue(email);
-            set => SetValue(email, value);
+            get => (string)GetValue(emailField);
+            set => SetValue(emailField, value);
         }
 
-        [Required(AllowEmptyStrings = false)]
+        //[Required(AllowEmptyStrings = false)]
         [PasswordPropertyText]
         public string Password
         {
-            private get => (string)GetValue(password);
-            set => SetValue(password, value);
+            get => (string)GetValue(passwordField);
+            set => SetValue(passwordField, value);
         }
 
         [Required(AllowEmptyStrings = false)]
         [Compare("Password")]
         public string RepeatedPassword
         {
-            private get => (string)GetValue(repeatpassword);
-            set => SetValue(repeatpassword, value);
+            get => (string)GetValue(repeatPasswordField);
+            set => SetValue(repeatPasswordField, value);
         }
         #endregion
 
@@ -87,45 +84,55 @@ namespace InternetStore.Pages
             return _context;
         }
 
-        public void SelectImageCommand(object sender, DragEventArgs e)
+        private bool isValid(object property, string propertyName)
         {
-            var dlg = new OpenFileDialog();
-            //if (dlg.ShowDialog() == true)
-            //UsrAvatar = new Image().Upload();
+            var errors = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+
+            Validator.TryValidateProperty(property, new ValidationContext(this, null, null) { MemberName = propertyName }, errors);
+
+            return errors.IsNullOrEmpty();
         }
 
-        private bool IsValidEmail(string email)
+        private bool IsValidEmail()
         {
-            var trimmedEmail = email.Trim();
+            bool result = isValid(Email, nameof(Email));
+            if (!result)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Некорректный адрес электронной почты!");
+            }
 
-            if (trimmedEmail.EndsWith("."))
-            {
-                return false;
-            }
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == trimmedEmail;
-            }
-            catch
-            {
-                return false;
-            }
+            return result;
         }
+
+        private bool IsValiUserName()
+        {
+            bool result = isValid(UserName, nameof(UserName));
+            if (!result)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Некорректное имя пользователя!");
+            }
+
+            return result;
+        }
+
 
         private bool IsValidPassword()
         {
-            var context = new ValidationContext(this);
-            var errors = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
-            if (!Validator.TryValidateProperty(Password, context, errors))
+            
+            if (!isValid(Password, nameof(Password)))
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("Слишком простой пароль!");
+                Xceed.Wpf.Toolkit.MessageBox.Show("Слишком простой пароль!"); return false;
             }
-            if (!Validator.TryValidateProperty(RepeatedPassword, context, errors))
+            else if (!isValid(RepeatedPassword, nameof(RepeatedPassword)))
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("Пароли не совпадают!");
+                Xceed.Wpf.Toolkit.MessageBox.Show("Пароли не совпадают!"); return false;
             }
             return true;
+        }
+
+        private bool Validate()
+        {
+            return (IsValiUserName() && IsValidEmail() && IsValidPassword());
         }
 
         private void ReturnToMainPage(object sender, RoutedEventArgs e)
@@ -133,17 +140,37 @@ namespace InternetStore.Pages
             NavigationService.Navigate(null);
         }
 
+        private bool UserNotExists()
+        {
+            if (Email != null)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Пользователь с такой почтой уже существует");
+                return BaseProvider.DbContext.Users.Where(user => user.Email == Email).IsNullOrEmpty();
+            }
+            return false;
+        }
+
         private void Registrastration(object sender, RoutedEventArgs e)
         {
-            //if (IsValidPassword())
-            //{
-            SqlParameter email = new SqlParameter("email", Email);
-            SqlParameter name = new SqlParameter("name", UserName);
-            SqlParameter password = new SqlParameter("password", ((WatermarkPasswordBox?)UIHelper.FindUid(this, "Password")).Password.Encrypt());
-            BaseProvider.CallStoredProcedureByName("AddUser", email, password, name);
-            var userDTO = BaseProvider.DbContext.UserViewDtos.ToList().Where(user => user.Email == email.Value.ToString()).First();
-            NavigationService.Navigate(new StoreMain(userDTO));
-            //}
+            Password = ((WatermarkPasswordBox?)UIHelper.FindUid(this, "Password"))!.Password;
+            RepeatedPassword = ((WatermarkPasswordBox?)UIHelper.FindUid(this, "Password"))!.Password;
+
+            if (Validate() && UserNotExists())
+            {
+                SqlParameter email = new SqlParameter("email", Email);
+                SqlParameter name = new SqlParameter("name", UserName);
+                SqlParameter password = new SqlParameter("password", Password.Encrypt());
+                BaseProvider.CallStoredProcedureByName("AddUser", email, password, name);
+
+                var userDTO = BaseProvider.DbContext.UserViewDtos.ToList().Where(user => user.Email == Email).First();
+                userDTO.Photo = ImageManager.ImageSourceToBytes(new TiffBitmapEncoder(), UserIcon.Source);
+                NavigationService.Navigate(new StoreMain(userDTO));
+            }
+        }
+
+        private void LoadImage(object sender, RoutedEventArgs e)
+        {
+            UserIcon.Source = ImageManager.LoadImageFromFileDialog();
         }
     }
 }
