@@ -105,7 +105,7 @@ namespace InternetStore.Pages
 
         private void ToProductPage(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(ProductPage.getInstance());
+            NavigationService.Navigate(new ProductPage((AbsProductView)sender));
         }
 
         private void SearchProduct(object sender, RoutedEventArgs e)

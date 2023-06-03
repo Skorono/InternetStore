@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="Assets\Images\camera_200.png" />
+    <None Remove="Assets\Images\emptyProduct.png" />
     <None Remove="Assets\Images\loading.gif" />
     <None Remove="Assets\Images\notSealed.png" />
     <None Remove="Assets\Images\outOfStock.png" />
@@ -25,6 +26,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\Images\camera_200.png" />
+    <Resource Include="Assets\Images\emptyProduct.png" />
     <Resource Include="Assets\Images\loading.gif" />
     <Resource Include="Assets\Images\outOfStock.png" />
     <Resource Include="Assets\Images\searchIcon.png" />

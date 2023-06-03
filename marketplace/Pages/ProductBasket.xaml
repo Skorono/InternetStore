@@ -39,5 +39,7 @@
                 </ListView>
             </ScrollViewer>
         </Border>
+
+        <Button Grid.Column="4" Grid.Row="2" Background="LimeGreen" Click="ToMainPage">Назад</Button>
     </Grid>
 </Page>

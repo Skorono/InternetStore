@@ -34,7 +34,7 @@ namespace InternetStore.Controls.XAMLControls.Icons
         public ProfileIcon()
         {
             InitializeComponent();
-            IconSettings.Source = new BitmapImage(new Uri(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "settingIcon.png"), UriKind.Relative));
+            IconSettings.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "settingIcon.png"));
             IconSettings.UpdateLayout();
         }
     }

@@ -104,5 +104,10 @@ namespace InternetStore.Pages
         {
 
         }
+
+        private void ToMainPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

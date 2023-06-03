@@ -16,7 +16,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <materialDesign:Card Background="White">
+        <materialDesign:Card Background="White" MouseDoubleClick="DoubleClicked"> 
             <Border BorderThickness="1" BorderBrush="Black" CornerRadius="5" Width="175" Height="275" Padding="5">
                 <Border.OpacityMask>
                     <VisualBrush>

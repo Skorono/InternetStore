@@ -15,7 +15,7 @@ namespace InternetStore.Controls.XAMLControls
         public SearchBox()
         {
             InitializeComponent();
-            SearchBtnImage.Source = new BitmapImage(new Uri(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "searchIcon2.png"), UriKind.Relative));
+            SearchBtnImage.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "searchIcon2.png"));
         }
 
         public void SetSearchHandler(RoutedEventHandler handler)
