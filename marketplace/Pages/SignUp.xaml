@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:InternetStore.Pages"
       xmlns:ef="clr-namespace:InternetStore.Controls.XAMLControls"
       mc:Ignorable="d" 
@@ -11,31 +12,33 @@
       Title="SignUp">
 
     <Grid>
-        <ef:ElementField>
-            <Grid>
-                <Border BorderBrush="#FF822BAD" Background="#FF6F2096" BorderThickness="2" Height="250" Width="300">
-                    <Grid Width="auto">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+        <materialDesign:Card Margin="4" Background="SlateGray">
+            <materialDesign:Card Margin="25">
+                <Grid>
+                    <Border BorderBrush="#FF822BAD" Background="#FF6F2096" BorderThickness="2" Height="250" Width="300">
+                        <Grid Width="auto">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="0.3*"></RowDefinition>
-                            <RowDefinition Height="0.3*"></RowDefinition>
-                            <RowDefinition Height="0.6*"></RowDefinition>
-                            <RowDefinition Height="0.25*"></RowDefinition>
-                        </Grid.RowDefinitions>                            
-                        <xctk:WatermarkTextBox Grid.Column="1" Grid.Row="1" Uid="LoginField" Watermark="Почта/Номер телефона*"></xctk:WatermarkTextBox>
-                        <xctk:WatermarkPasswordBox Grid.Column="1" Grid.Row="2" Uid="PasswordField" Watermark="Пароль..."></xctk:WatermarkPasswordBox>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="0.3*"></RowDefinition>
+                                <RowDefinition Height="0.3*"></RowDefinition>
+                                <RowDefinition Height="0.6*"></RowDefinition>
+                                <RowDefinition Height="0.25*"></RowDefinition>
+                            </Grid.RowDefinitions>                            
+                            <xctk:WatermarkTextBox Grid.Column="1" Grid.Row="1" Uid="LoginField" Watermark="Почта/Номер телефона*"></xctk:WatermarkTextBox>
+                            <xctk:WatermarkPasswordBox Grid.Column="1" Grid.Row="2" Uid="PasswordField" Watermark="Пароль..."></xctk:WatermarkPasswordBox>
 
-                        <Button Grid.Column="2" Grid.Row="4" Width="75" Height="25" BorderThickness="0" Padding="0" Click="OnSignUp" Margin="1">Войти</Button>   
-                    </Grid>
-                </Border>
-                <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Height="25" Content="Назад" Click="ReturnToMainPage" Margin="25 0"></Button>
-            </Grid>
-        </ef:ElementField>
+                            <Button Grid.Column="2" Grid.Row="4" Width="75" Height="25" BorderThickness="0" Padding="0" Click="OnSignUp" Margin="1">Войти</Button>   
+                        </Grid>
+                    </Border>
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Height="25" Content="Назад" Click="ReturnToMainPage" Margin="25 0"></Button>
+                </Grid>
+            </materialDesign:Card>
+        </materialDesign:Card>
     </Grid>
 </Page>

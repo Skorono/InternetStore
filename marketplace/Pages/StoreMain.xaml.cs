@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace InternetStore.Pages
 {
@@ -53,7 +54,8 @@ namespace InternetStore.Pages
             Grid.SetColumn(ToolPanel, 0);
             Grid.SetColumnSpan(ToolPanel, 4);
             ToolPanel.Margin = new Thickness(0, 0, 0, 1);
-            //ToolPanel.Background = Brushes.;
+            ToolPanel.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2F2F2F")!;
+            ToolPanel.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF1F1E1E")!;
             grid.Children.Add(ToolPanel);
         }
 
