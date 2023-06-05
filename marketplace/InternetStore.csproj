@@ -14,6 +14,9 @@
     <None Remove="Assets\Images\edit.png" />
     <None Remove="Assets\Images\emptyProduct.png" />
     <None Remove="Assets\Images\loading.gif" />
+    <None Remove="Assets\Images\loading2.gif" />
+    <None Remove="Assets\Images\loading3.gif" />
+    <None Remove="Assets\Images\loading3gif.gif" />
     <None Remove="Assets\Images\notSealed.png" />
     <None Remove="Assets\Images\outOfStock.png" />
     <None Remove="Assets\Images\searchIcon.png" />
@@ -30,6 +33,8 @@
     <Resource Include="Assets\Images\edit.png" />
     <Resource Include="Assets\Images\emptyProduct.png" />
     <Resource Include="Assets\Images\loading.gif" />
+    <Resource Include="Assets\Images\loading2.gif" />
+    <Resource Include="Assets\Images\loading3.gif" />
     <Resource Include="Assets\Images\outOfStock.png" />
     <Resource Include="Assets\Images\searchIcon.png" />
     <Resource Include="Assets\Images\searchIcon2.png" />
