@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace InternetStore.Controls.XAMLControls
 {
@@ -58,13 +59,13 @@ namespace InternetStore.Controls.XAMLControls
                     builder.isEdittable();
                 }
 
+                if (ItemClickHandler != null) NotifyChangeClickHandler(ItemClickHandler);
+                if (ItemDoubleClickHandler != null) NotifyChangeDoubleClickHandler(ItemDoubleClickHandler);
                 if (builder.ItemCount == 0)
                 {
                     builder.SetImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "outOfStock.png"));
                     builder.SetVisibility("HandledButton", Visibility.Collapsed);
                 }
-                if (ItemClickHandler != null) NotifyChangeClickHandler(ItemClickHandler);
-                if (ItemDoubleClickHandler != null) NotifyChangeDoubleClickHandler(ItemDoubleClickHandler);
                 ItemList.Add(builder.Build());
             }
             ListBox.ItemsSource = ItemList;
@@ -79,6 +80,7 @@ namespace InternetStore.Controls.XAMLControls
             CardBuilder.SetFontSize("DescriptionText", 16).SetFontWidth("DescriptionText", FontWeights.Bold);
             CardBuilder.SetVisibility("HandledButton", Visibility.Collapsed);
             CardBuilder.SetVisibility("CostText", Visibility.Collapsed);
+            CardBuilder.SetDoubleClickHandler(ToAdddingPage);
 
             ItemList.Add(CardBuilder.Build());
         }
@@ -134,12 +136,18 @@ namespace InternetStore.Controls.XAMLControls
             SortParam(product => product.ProductModel.SubcategoryId == SubCategoryID);
         }
 
+        private void ToAdddingPage(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new );
+        }
+
         public void NotifyChangeClickHandler(RoutedEventHandler handler)
         {
             ItemClickHandler = handler;
             foreach (var item in ItemList)
             {
-                item.UpdateClickHandler(handler);
+                if (item.AllowSync)
+                    item.UpdateClickHandler(handler);
             }
         }
 
@@ -148,7 +156,8 @@ namespace InternetStore.Controls.XAMLControls
             ItemDoubleClickHandler = handler;
             foreach (var item in ItemList)
             {
-                item.UpdateDoubleClickHandler(handler);
+                if (item.AllowSync)
+                    item.UpdateDoubleClickHandler(handler);
             }
         }
     }

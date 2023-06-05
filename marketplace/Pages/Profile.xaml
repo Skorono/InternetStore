@@ -18,16 +18,25 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FF46B7D4">
-            <Button Width="75" Margin="5 0 0 0" Click="OnMainPage">На главную</Button>
-        </Canvas>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FF46B7D4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Stretch" Grid.Column="0"  Click="OnMainPage">На главную</Button>
+        </Grid>
 
         <Image HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" Source="{Binding Path=Photo}"></Image>
         <TextBlock Grid.Column="0" Grid.Row="3">

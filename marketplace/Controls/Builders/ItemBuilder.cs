@@ -120,15 +120,21 @@ namespace InternetStore.Controls.Builders
         public ItemBuilder isEdittable()
         {
             Item.ManipulationPanel.Visibility = Visibility.Visible;
-            TextBlockButton ActionBlock = new();
-            ActionBlock.Text = "Изменить";
-            ActionBlock.Width = 100;
-            ActionBlock.Height = 30;
-            Item.ManipulationPanel.AcceptableActionList.Add(ActionBlock);
+            Item.ManipulationPanel.Width = 75;
+            Item.ManipulationPanel.Width = 25;
+            Item.ManipulationPanel.DeletePermissions = true;
             Item.ManipulationPanel.UpdateActionList();
             return this;
         }
 
+        public void SetClickHandler(RoutedEventHandler handler)
+        {
+            Item.UpdateClickHandler(handler);
+        }
 
+        public void SetDoubleClickHandler(RoutedEventHandler handler)
+        {
+            Item.UpdateDoubleClickHandler(handler);
+        }
     }
 }

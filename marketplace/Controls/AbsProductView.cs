@@ -3,12 +3,16 @@ using InternetStore.ModelDB;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Text.Json;
+using System.CodeDom;
 
 namespace InternetStore.Controls
 {
     public abstract class AbsProductView : ViewControl, IProductView
     {
         public bool AllowSync = false;
+        private RoutedEventHandler _itemClickHandler = null!;
+        private RoutedEventHandler _itemDoubleClickHandler = null!;
 
         private int count;
 
@@ -70,6 +74,8 @@ namespace InternetStore.Controls
 
         #endregion
 
+        private Dictionary<string, object> properties;
+
         public Product ProductModel { get; protected set; }
         public Dictionary<string, object> Properties { get; protected set; }
 
@@ -105,21 +111,35 @@ namespace InternetStore.Controls
 
         public virtual void UpdateClickHandler(RoutedEventHandler handler)
         {
-            //this.Click = null;
+            this.Click -= _itemClickHandler;
             this.Click += handler;
+            _itemClickHandler = handler;
         }
 
         public virtual void UpdateDoubleClickHandler(RoutedEventHandler handler)
         {
-            //this.Click = null;
+            this.DoubleClick -= _itemDoubleClickHandler;
             this.DoubleClick += handler;
+            _itemDoubleClickHandler = handler;
+        }
+
+        public virtual void SetProperty(string key, object value)
+        {
+            if (Properties.ContainsKey(key))
+            {
+                Properties[key] = value;
+                SyncModel();
+            }
         }
 
         private void SyncModel()
         {
             if (AllowSync)
             {
+                if (Properties != null)
+                    ProductModel.Properties = JsonSerializer.Serialize<Dictionary<string, object>>(Properties);
                 BaseProvider.DbContext.Products.Update(ProductModel);
+                BaseProvider.DbContext.SaveChangesAsync();
             }
         }
     }

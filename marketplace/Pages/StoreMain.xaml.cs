@@ -124,7 +124,8 @@ namespace InternetStore.Pages
 
         private void ToProductPage(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ProductPage((AbsProductView)sender));
+            bool editPermissions = (CurrentUser.RoleId == UserType.Adminstrator);
+            NavigationService.Navigate(new ProductPage((AbsProductView)sender, editPermissions));
         }
 
         private void SearchProduct(object sender, RoutedEventArgs e)
