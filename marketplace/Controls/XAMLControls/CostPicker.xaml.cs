@@ -9,6 +9,7 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class CostPicker : ViewControl
     {
+        private static CostPicker _context = null!;
         #region [ Binding Fields ]
 
         private DependencyProperty MinCostField = DependencyProperty
@@ -44,11 +45,18 @@ namespace InternetStore.Controls.XAMLControls
         }
         #endregion
 
-        public CostPicker()
+        private CostPicker()
         {
             InitializeComponent();
             MinCost = 0;
             MaxCost = 1000000;
+        }
+
+        public static CostPicker GetInstance()
+        {
+            if (_context == null)
+                _context = new CostPicker();
+            return _context;
         }
 
         private void OnRangeChange(object sender, RoutedPropertyChangedEventArgs<double> e)

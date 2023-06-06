@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 
 namespace InternetStore.Pages
@@ -29,9 +30,12 @@ namespace InternetStore.Pages
                 ProductImage.Source = ImageManager.LoadImage(product.Image!);
             else
                 ProductImage.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "emptyProduct.png"));
-            if (EditPermission)    
+            if (EditPermission)
+            {
+                ProductPhoto.Visibility = Visibility.Visible;
                 foreach (var editButton in UIHelper.FindAllUid(descriptionGrid, "EditButton")!)
                     ((Button)editButton).Visibility = Visibility.Visible;
+            }
             
             ProductName.Text = product.ProductModel.ProductName;
             CategoryName.Text = BaseProvider.DbContext.SubCategories.Single(category => category.Id == product.ProductModel.SubcategoryId).Name;
@@ -106,6 +110,11 @@ namespace InternetStore.Pages
                     }
                 }
             }
+        }
+
+        private void ChangeImage(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Product.Image = ImageManager.ImageSourceToBytes(new TiffBitmapEncoder(), ImageManager.LoadImageFromFileDialog());
         }
     }
 }

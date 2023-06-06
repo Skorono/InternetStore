@@ -39,11 +39,11 @@
         </Grid>
 
         <Image HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" Source="{Binding Path=Photo}"></Image>
-        <TextBlock Grid.Column="0" Grid.Row="3">
-            <Hyperlink Click="Hyperlink_EditProfile">
-                Изменить профиль        
-            </Hyperlink>
-        </TextBlock>
+
+        <Button Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF91E00E" BorderBrush="#FF58FB00" Click="ChangePhoto">
+            Изменить фото
+        </Button>
+        
         <StackPanel Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Margin="160,2,2,2" Grid.ColumnSpan="2">
             <StackPanel.Style>
                 <Style>
@@ -74,5 +74,9 @@
                 </DockPanel>
             </Border>
         </StackPanel>
+
+        <Button Width="155" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Hyperlink_EditProfile" Background="#FFE81212" BorderBrush="#FFFF4600">
+            Выйти из аккаунта
+        </Button>
     </Grid>
 </Page>

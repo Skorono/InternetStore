@@ -28,7 +28,7 @@
         
         <!-- <ct:ToolBox x:Name="ToolPanel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="0 0 0 1" Background="#FF2F2F2F" BorderBrush="#FF1F1E1E"></ct:ToolBox> -->
 
-        <ct:SideBar HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="1"></ct:SideBar>
+        <!-- <ct:SideBar HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="1"></ct:SideBar> -->
 
         <!-- <ct:ProductArea x:Name="ProductList" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3"></ct:ProductArea> -->
     </Grid>

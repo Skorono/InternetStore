@@ -20,31 +20,62 @@ namespace InternetStore.Pages
     /// </summary>
     public partial class StoreMain : Page
     {
-        private UserViewDto User = null!;
-        public static ProductBasket Basket = null!;
-        public ProductArea ProductList = null!;
-        private ToolBox ToolPanel = null!;
+        private static StoreMain _context = null!;
+        private static UserViewDto User = null!;
+        public static  ProductBasket Basket = null!;
+        public static  ProductArea ProductList = null!;
+        private static ToolBox ToolPanel = null!;
+        private static SideBar SidePanel = null!;
 
-        public UserViewDto CurrentUser => User;
+        public static UserViewDto CurrentUser => User;
 
-        public StoreMain(UserViewDto userModel)
+        private StoreMain(UserViewDto userModel)
         {
             User = userModel;
             InitializeComponent();
+            Init();
+            //ProductList.SelectSubCategory(2);
+            //ProductList.SortByCost(0, 3400);
+        }
+
+        private void Init()
+        {
             InitToolPanel();
+            InitSideBar();
             CreateBasket();
             LoadBasketIcon();
             LoadProfileIcon();
             LoadProductArea();
             ToolPanel.SearchBox.SetSearchHandler(SearchProduct);
-            //ProductList.SelectSubCategory(2);
-            //ProductList.SortByCost(0, 3400);
+        }
 
+        public static StoreMain GetInstance(UserViewDto userModel)
+        {
+            if (_context == null)
+                _context = new StoreMain(userModel);
+            User = userModel;
+            if (CurrentUser.Photo != null)
+                ToolPanel.ProfileIcon.UserIcon.Source = ImageManager.LoadImage(CurrentUser.Photo);
+            else
+                ToolPanel.ProfileIcon.UserIcon.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "camera_200.png"));
+            ToolPanel.ProfileIcon.UserName = BaseProvider.DbContext.UserPersonalInfs.ToList()
+                                         .Where(row => row.Id == User.Id).First().Name;
+            ToolPanel.BasketIcon.Count = Basket.ProductCount;
+            return _context;
         }
 
         private void CreateBasket()
         {
             Basket = new ProductBasket(User.Id);
+        }
+
+        private void InitSideBar()
+        {
+            SidePanel = SideBar.GetInstance();
+            Grid.SetRow(SidePanel, 1);
+            Grid.SetColumn(SidePanel, 0);
+            Grid.SetRowSpan(SidePanel, 4);
+            grid.Children.Add(SidePanel);
         }
 
         private void InitToolPanel()

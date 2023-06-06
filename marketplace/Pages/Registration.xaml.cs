@@ -164,7 +164,7 @@ namespace InternetStore.Pages
 
                 var userDTO = BaseProvider.DbContext.UserViewDtos.ToList().Where(user => user.Email == Email).First();
                 userDTO.Photo = ImageManager.ImageSourceToBytes(new TiffBitmapEncoder(), UserIcon.Source);
-                NavigationService.Navigate(new StoreMain(userDTO));
+                NavigationService.Navigate(StoreMain.GetInstance(userDTO));
             }
         }
 

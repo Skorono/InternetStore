@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace InternetStore.Pages
 {
@@ -87,6 +88,11 @@ namespace InternetStore.Pages
         private void OnMainPage(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void ChangePhoto(object sender, RoutedEventArgs e)
+        {
+            Photo = ImageManager.ImageSourceToBytes(new TiffBitmapEncoder(), ImageManager.LoadImageFromFileDialog());
         }
 
         private void Hyperlink_EditProfile(object sender, RoutedEventArgs e)

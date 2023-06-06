@@ -40,7 +40,7 @@ namespace InternetStore.Pages
             if (User != null)
             {
                 var userDTO = BaseProvider.DbContext.UserViewDtos.ToList().Where(user => user.Id == User.Id).First();
-                NavigationService.Navigate(new StoreMain(userDTO));
+                NavigationService.Navigate(StoreMain.GetInstance(userDTO));
             }
             else
                 Xceed.Wpf.Toolkit.MessageBox.Show("Неверный логин или пароль");

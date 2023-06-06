@@ -80,7 +80,7 @@ namespace InternetStore.Controls.XAMLControls
             CardBuilder.SetFontSize("DescriptionText", 16).SetFontWidth("DescriptionText", FontWeights.Bold);
             CardBuilder.SetVisibility("HandledButton", Visibility.Collapsed);
             CardBuilder.SetVisibility("CostText", Visibility.Collapsed);
-            CardBuilder.SetDoubleClickHandler(ToAdddingPage);
+            CardBuilder.SetDoubleClickHandler(ItemDoubleClickHandler);
 
             ItemList.Add(CardBuilder.Build());
         }
