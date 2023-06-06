@@ -18,7 +18,7 @@ namespace InternetStore.Pages
     public partial class ProductBasket : Page
     {
         private int UserId;
-        private List<IBasketViewItem> Products = new List<IBasketViewItem>();
+        private List<BasketItem> Products = new List<BasketItem>();
 
         public int ProductCount => Products.Count;
 
@@ -38,7 +38,7 @@ namespace InternetStore.Pages
 
                 BasketItem basketItem = new(model);
                 basketItem.Width = 525;
-                //basketItem.DeleteBtn.Click += RemoveItem;
+                basketItem.DeleteBtn.Click += RemoveItem;
                 Products.Add(basketItem);
                 NotifyBasketChange();
             }
@@ -60,7 +60,7 @@ namespace InternetStore.Pages
 
         }
 
-        public void Add(IBasketViewItem product)
+        public void Add(BasketItem product)
         {
             SqlParameter uid = new SqlParameter("user_id", UserId);
             SqlParameter productId = new SqlParameter("product_id", product.ProductModel.Id);
@@ -83,7 +83,7 @@ namespace InternetStore.Pages
             NotifyBasketChange();
         }
 
-        public void Remove(IBasketViewItem product)
+        public void Remove(BasketItem product)
         {
             product.Count--;
             SqlParameter uid = new SqlParameter("user_id", UserId);
@@ -100,9 +100,41 @@ namespace InternetStore.Pages
             NotifyBasketChange();
         }
 
+        private void FormOrder(object sender, RoutedEventArgs e)
+        {
+            List<BasketItem> orderDetailsList = new();
+            orderDetailsList.AddRange(Products.Where(product => product.IsSelected.IsEnabled == true));
+            
+            foreach (var product in orderDetailsList)
+            {
+                Products.Remove(product);
+            }
+            NotifyBasketChange();
+
+            Order order = new Order();
+            order.UserId = UserId;
+            order.DatetimeOfForm = DateTime.Now;
+            order.Paid = false;
+
+            BaseProvider.DbContext.Orders.Add(order);
+            BaseProvider.DbContext.SaveChanges();
+
+            foreach (var line in orderDetailsList)
+            {
+                var orderLine = new OrderDetail();
+                orderLine.Order = order;
+                orderLine.OrderId = order.OrderId;
+                orderLine.ProductId = line.ProductModel.Id;
+                BaseProvider.DbContext.OrderDetails.Add(orderLine);
+            }
+            BaseProvider.DbContext.SaveChangesAsync();
+        }
+
         public void RemoveItem(object sender, RoutedEventArgs e)
         {
-
+            Products.Remove(BasketList.SelectedItem as BasketItem);
+            BaseProvider.DbContext.Baskets.Remove(BaseProvider.DbContext.Baskets.Single(product => (BasketList.SelectedItem as BasketItem).ProductModel.Id == product.ProductId && product.UserId == UserId));
+            NotifyBasketChange();
         }
 
         private void ToMainPage(object sender, RoutedEventArgs e)

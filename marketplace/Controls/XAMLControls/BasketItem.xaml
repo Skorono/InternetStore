@@ -31,7 +31,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 
-                <CheckBox Grid.Column="0" Grid.RowSpan="2"  VerticalAlignment="Center"></CheckBox>
+                <CheckBox x:Name="IsSelected" Grid.Column="0" Grid.RowSpan="2"  VerticalAlignment="Center"></CheckBox>
                 <Border Grid.Column="1"   Grid.RowSpan="2" BorderBrush="#FF868686" BorderThickness="1" CornerRadius="5" Margin="3">
                     <Image MaxHeight="100" MaxWidth="150" Source="{Binding Path=Image, TargetNullValue=../../../Assets/Images/emptyProduct.png}"></Image>
                 </Border>

@@ -28,7 +28,7 @@
             <UniformGrid Columns="3">
                 <TextBlock></TextBlock>
                 <TextBlock></TextBlock>
-                <Button Width="150" Style="{DynamicResource MaterialDesignRaisedAccentButton}" >Оформить</Button>
+                <Button Click="FormOrder" Width="150" Style="{DynamicResource MaterialDesignRaisedAccentButton}" >Оформить</Button>
             </UniformGrid>
         </materialDesign:Card>
 
