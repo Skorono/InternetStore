@@ -1,15 +1,11 @@
 ﻿using InternetStore.Controls;
 using InternetStore.Controls.Interfaces;
 using InternetStore.Controls.XAMLControls;
-using InternetStore.ModelDB;
-using Microsoft.Data.SqlClient;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Controls;
-
+using Microsoft.Data.SqlClient;
 namespace InternetStore.Pages
 {
     /// <summary>
@@ -18,7 +14,7 @@ namespace InternetStore.Pages
     public partial class ProductBasket : Page
     {
         private int UserId;
-        private List<BasketItem> Products = new List<BasketItem>();
+        private List<IBasketViewItem> Products = new List<IBasketViewItem>();
 
         public int ProductCount => Products.Count;
 
@@ -30,16 +26,14 @@ namespace InternetStore.Pages
                                                     .ToList()
                                                     .Where(userBasket => userBasket.UserId == UserId))
             {
-                // Добавить настройку вида продукта в билдере корзины
-                Product model = BaseProvider.DbContext.Products
+                // Добавить настройку вида продукта в билдере корзины 
+                Products.Add(new BasketItem(
+                            BaseProvider.DbContext.Products
                             .ToList()
                             .Where(product => product.Id == basketProduct.ProductId)
-                            .First();
-
-                BasketItem basketItem = new(model);
-                basketItem.Width = 525;
-                basketItem.DeleteBtn.Click += RemoveItem;
-                Products.Add(basketItem);
+                            .First()
+                        )
+                    );
                 NotifyBasketChange();
             }
         }
@@ -60,7 +54,7 @@ namespace InternetStore.Pages
 
         }
 
-        public void Add(BasketItem product)
+        public void Add(IBasketViewItem product)
         {
             SqlParameter uid = new SqlParameter("user_id", UserId);
             SqlParameter productId = new SqlParameter("product_id", product.ProductModel.Id);
@@ -83,7 +77,7 @@ namespace InternetStore.Pages
             NotifyBasketChange();
         }
 
-        public void Remove(BasketItem product)
+        public void Remove(IBasketViewItem product)
         {
             product.Count--;
             SqlParameter uid = new SqlParameter("user_id", UserId);
@@ -98,48 +92,6 @@ namespace InternetStore.Pages
             else
                 BaseProvider.CallStoredProcedureByName("UpdateProductCountInBasket", uid, productId, count);
             NotifyBasketChange();
-        }
-
-        private void FormOrder(object sender, RoutedEventArgs e)
-        {
-            List<BasketItem> orderDetailsList = new();
-            orderDetailsList.AddRange(Products.Where(product => product.IsSelected.IsEnabled == true));
-            
-            foreach (var product in orderDetailsList)
-            {
-                Products.Remove(product);
-            }
-            NotifyBasketChange();
-
-            Order order = new Order();
-            order.UserId = UserId;
-            order.DatetimeOfForm = DateTime.Now;
-            order.Paid = false;
-
-            BaseProvider.DbContext.Orders.Add(order);
-            BaseProvider.DbContext.SaveChanges();
-
-            foreach (var line in orderDetailsList)
-            {
-                var orderLine = new OrderDetail();
-                orderLine.Order = order;
-                orderLine.OrderId = order.OrderId;
-                orderLine.ProductId = line.ProductModel.Id;
-                BaseProvider.DbContext.OrderDetails.Add(orderLine);
-            }
-            BaseProvider.DbContext.SaveChangesAsync();
-        }
-
-        public void RemoveItem(object sender, RoutedEventArgs e)
-        {
-            Products.Remove(BasketList.SelectedItem as BasketItem);
-            BaseProvider.DbContext.Baskets.Remove(BaseProvider.DbContext.Baskets.Single(product => (BasketList.SelectedItem as BasketItem).ProductModel.Id == product.ProductId && product.UserId == UserId));
-            NotifyBasketChange();
-        }
-
-        private void ToMainPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
         }
     }
 }
