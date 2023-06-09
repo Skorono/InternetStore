@@ -26,8 +26,8 @@ namespace InternetStore.Pages
             InitializeComponent();
             EditAccess = EditPermission;
             Product = product;
-            if (Product.Image != null)
-                ProductImage.Source = ImageManager.LoadImage(product.Image!);
+            if (Product.ProductModel.Image != null)
+                ProductImage.Source = ImageManager.LoadImage(product.ProductModel.Image!);
             else
                 ProductImage.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "emptyProduct.png"));
             if (EditPermission)
@@ -115,6 +115,7 @@ namespace InternetStore.Pages
         private void ChangeImage(object sender, System.Windows.RoutedEventArgs e)
         {
             Product.Image = ImageManager.ImageSourceToBytes(new TiffBitmapEncoder(), ImageManager.LoadImageFromFileDialog());
+            ProductImage.Source = ImageManager.LoadImage(Product.ProductModel.Image);
         }
     }
 }

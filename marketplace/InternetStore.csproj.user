@@ -43,6 +43,9 @@
     <Compile Update="Controls\XAMLControls\Icons\ProfileIcon.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\XAMLControls\OrderCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\XAMLControls\ProductArea.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -59,6 +62,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\XAMLControls\TextBlockButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\OrderListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\OrderPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\ProductBasket.xaml.cs">
@@ -80,6 +89,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\XAMLControls\ToolBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\UserOrders.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -120,6 +132,9 @@
     <Page Update="Controls\XAMLControls\Icons\ProfileIcon.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\XAMLControls\OrderCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\XAMLControls\ProductArea.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -141,6 +156,12 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Pages\OrderListPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\OrderPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\ProductBasket.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -160,6 +181,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\XAMLControls\ToolBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\UserOrders.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
