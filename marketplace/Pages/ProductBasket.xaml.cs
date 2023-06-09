@@ -112,21 +112,16 @@ namespace InternetStore.Pages
             }
             NotifyBasketChange();
 
-            Order order = new Order();
-            order.UserId = UserId;
-            order.DatetimeOfForm = DateTime.Now;
-            order.Paid = false;
+            var userId = new SqlParameter("user_id", UserId);
+            var DatetimeOfForm = new SqlParameter("datetime_of_form", DateTime.Now);
 
-            BaseProvider.DbContext.Orders.Add(order);
-            BaseProvider.DbContext.SaveChanges();
+            var orderId = BaseProvider.CallStoredProcedureByName("FormOrder", userId, DatetimeOfForm);
 
             foreach (var line in orderDetailsList)
             {
-                var orderLine = new OrderDetail();
-                orderLine.Order = order;
-                orderLine.OrderId = order.OrderId;
-                orderLine.ProductId = line.ProductModel.Id;
-                BaseProvider.DbContext.OrderDetails.Add(orderLine);
+                var orderLineId = new SqlParameter("order_id", orderId);
+                var productId = new SqlParameter("product_id", line.ProductModel.Id);
+                BaseProvider.CallStoredProcedureByName("AddLineInOrderDetails", orderLineId, productId);
             }
             BaseProvider.DbContext.SaveChangesAsync();
         }
