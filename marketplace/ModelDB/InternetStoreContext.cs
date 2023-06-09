@@ -123,13 +123,34 @@ public partial class InternetStoreContext : DbContext
             entity.ToTable("Product");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Image).HasColumnName("image");
             entity.Property(e => e.ProductName)
                 .IsUnicode(false)
                 .HasColumnName("product_name");
             entity.Property(e => e.Properties)
                 .IsUnicode(false)
                 .HasColumnName("properties");
-            entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
+            entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id"); modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("Product.PK_ID");
+
+                entity.ToTable("Product");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Image).HasColumnName("image");
+                entity.Property(e => e.ProductName)
+                    .IsUnicode(false)
+                    .HasColumnName("product_name");
+                entity.Property(e => e.Properties)
+                    .IsUnicode(false)
+                    .HasColumnName("properties");
+                entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
+
+                entity.HasOne(d => d.Subcategory).WithMany(p => p.Products)
+                    .HasForeignKey(d => d.SubcategoryId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("Product.FK_SUBCATEGORY_ID");
+            });
 
             entity.HasOne(d => d.Subcategory).WithMany(p => p.Products)
                 .HasForeignKey(d => d.SubcategoryId)

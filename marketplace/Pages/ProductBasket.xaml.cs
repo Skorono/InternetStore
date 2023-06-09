@@ -30,16 +30,13 @@ namespace InternetStore.Pages
                                                     .ToList()
                                                     .Where(userBasket => userBasket.UserId == UserId))
             {
-                // Добавить настройку вида продукта в билдере корзины
                 Product model = BaseProvider.DbContext.Products
                             .ToList()
                             .Where(product => product.Id == basketProduct.ProductId)
                             .First();
 
                 BasketItem basketItem = new(model);
-                basketItem.Width = 525;
-                basketItem.DeleteBtn.Click += RemoveItem;
-                Products.Add(basketItem);
+                Add(basketItem);
                 NotifyBasketChange();
             }
         }
@@ -48,6 +45,7 @@ namespace InternetStore.Pages
         {
             if (Products.Count > 0)
                 BasketList.ItemsSource = Products;
+            BasketList.Items.Refresh();
         }
 
         public bool inBasket(int ID)
@@ -75,6 +73,10 @@ namespace InternetStore.Pages
             }
             else
             {
+                product.Width = 525;
+                product.DeleteBtn.Click += RemoveItem;
+                product.OwnerId = UserId;
+                product.AllowSync = true;
                 SqlParameter AddingDateTime = new SqlParameter("addDate", DateTime.Now);
                 BaseProvider.CallStoredProcedureByName("AddProductToBasket", uid, productId, count, AddingDateTime);
                 Products.Add(product);
@@ -91,8 +93,7 @@ namespace InternetStore.Pages
             SqlParameter count = new SqlParameter("count", product.Count);
             if (product.Count <= 0)
             {
-                BaseProvider.DbContext.Baskets.Remove(BaseProvider.DbContext.Baskets.Single(basketProduct => (basketProduct.UserId == UserId)
-                                                                                        && (basketProduct.ProductId == product.ProductModel.Id)));
+                _DeleteProductFromDB(product.ProductModel.Id);
                 Products.Remove(product);
             }
             else
@@ -132,14 +133,22 @@ namespace InternetStore.Pages
 
         public void RemoveItem(object sender, RoutedEventArgs e)
         {
-            Products.Remove(BasketList.SelectedItem as BasketItem);
-            BaseProvider.DbContext.Baskets.Remove(BaseProvider.DbContext.Baskets.Single(product => (BasketList.SelectedItem as BasketItem).ProductModel.Id == product.ProductId && product.UserId == UserId));
+            BasketItem Item = ((Button)(sender)).DataContext as BasketItem;
+            Products.Remove(Item);
+            _DeleteProductFromDB(Item.ProductModel.Id);
             NotifyBasketChange();
         }
 
         private void ToMainPage(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void _DeleteProductFromDB(int productID)
+        {
+            var user_id = new SqlParameter("user_id", UserId);
+            var product_id = new SqlParameter("product_id", productID);
+            BaseProvider.CallStoredProcedureByName("DeleteProductFromBasket", user_id, product_id);
         }
     }
 }

@@ -26,6 +26,15 @@ USE InternetStore
 -- Создание хранимых процедур
 
 GO
+CREATE PROCEDURE DeleteProductFromBasket
+	@user_id int,
+	@product_id int
+AS
+	DELETE Basket
+	Where Basket.user_id = @user_id AND Basket.product_id = @product_id
+GO
+
+GO
 CREATE PROCEDURE DROPLINKS
 	@TABLENAME varchar(MAX)
 AS
@@ -274,6 +283,7 @@ CREATE TABLE Product(
 	subcategory_id INT,
 	product_name VARCHAR(MAX) NOT NULL,
 	properties varchar(MAX) NOT NULL,
+	[image] varbinary(MAX)
 	
 	CONSTRAINT [Product.PK_ID] PRIMARY KEY(id),
 	
@@ -355,7 +365,7 @@ SET IDENTITY_INSERT [dbo].[Category] OFF
 GO
 SET IDENTITY_INSERT [dbo].[SubCategories] ON 
 GO
-INSERT [dbo].[SubCategories] ([id], [category_id], [name], [attributes]) VALUES (1, 1, N'Процессоры ', N'{"Модель": null, "Сокет": null}')
+INSERT [dbo].[SubCategories] ([id], [category_id], [name], [attributes]) VALUES (1, 1, N'Процессоры ', N'{"Модель": null, "Сокет": null, "Код производителя": null, "Год релиза": null, "Система охлаждения в комплекте": null, "Термоинтерфейс в комплекте": null, "Общее количество ядер": null, "Максимальное число потоков": null, "Количество производительных ядер": null, "Количество энергоэффективных ядер": null, "Объем кэша L2": null, "Объем кэша L3": null, "Техпроцесс": null, "Ядро": null}')
 GO
 INSERT [dbo].[SubCategories] ([id], [category_id], [name], [attributes]) VALUES (2, 1, N'Видеокарты', N'{}')
 GO
@@ -375,7 +385,7 @@ SET IDENTITY_INSERT [dbo].[SubCategories] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Product] ON 
 GO
-INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (1, 1, N'Процессор AMD Ryzen 5 4600G, SocketAM4, BOX [100-100000147box]', N'{"Модель": "AMD PRO A6-8570", "Сокет": "AM4", "count": 100, "cost": 10990, "image": null}')
+INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (1, 1, N'Процессор AMD Ryzen 5 4600G, SocketAM4,  BOX [100-100000147box]', N'{"Модель": "AMD PRO A6-8570", "Сокет": "AM4", "count": 100, "cost": 10990, "image": null}')
 GO
 INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (2, 1, N'Процессор Intel Core i7 9700, LGA 1151v2, OEM', N'{"count":99, "cost": 27990,  "image": null}')
 GO
@@ -404,6 +414,16 @@ GO
 INSERT [dbo].[Product] ([id], [subcategory_id], [product_name], [properties]) VALUES (1010, 9, N'100 заданий для малыша. 1+ | Дмитриева Валентина Геннадьевна', N'{"count":0, "cost": 267, "image": null}')
 GO
 SET IDENTITY_INSERT [dbo].[Product] OFF
+GO
+
+GO
+SET IDENTITY_INSERT [dbo].[User] ON 
+GO
+INSERT [dbo].[User] ([id], [email], [password], [role_id]) VALUES (1, N'admin@admin.ru', N'JNGuicG0l9amrBO1wj1MuA==', N'A')
+GO
+INSERT [dbo].[User] ([id], [email], [password], [role_id]) VALUES (2, N'user@user,ru', N'r+ouTBDDToskb4hFeGX+Fw==', N'U')
+GO
+SET IDENTITY_INSERT [dbo].[User] OFF
 GO
 
 -- -------------------------
