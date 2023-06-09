@@ -95,6 +95,11 @@ namespace InternetStore.Pages
             Photo = ImageManager.ImageSourceToBytes(new TiffBitmapEncoder(), ImageManager.LoadImageFromFileDialog());
         }
 
+        private void ToOrderList(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(OrderListPage.GetInstance(User.Id));
+        }
+
         private void Hyperlink_EditProfile(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(ProfileEdit.getInstance(User));

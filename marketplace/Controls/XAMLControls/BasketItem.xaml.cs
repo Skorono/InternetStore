@@ -25,6 +25,5 @@ namespace InternetStore.Controls.XAMLControls
                 Count--;
             }
         }
-
     }
 }

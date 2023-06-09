@@ -44,7 +44,7 @@ public partial class InternetStoreContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=WIN-D3VRG30H7BE;Database=InternetStore;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=localhost;Database=InternetStore;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -123,13 +123,34 @@ public partial class InternetStoreContext : DbContext
             entity.ToTable("Product");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Image).HasColumnName("image");
             entity.Property(e => e.ProductName)
                 .IsUnicode(false)
                 .HasColumnName("product_name");
             entity.Property(e => e.Properties)
                 .IsUnicode(false)
                 .HasColumnName("properties");
-            entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
+            entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id"); modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("Product.PK_ID");
+
+                entity.ToTable("Product");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Image).HasColumnName("image");
+                entity.Property(e => e.ProductName)
+                    .IsUnicode(false)
+                    .HasColumnName("product_name");
+                entity.Property(e => e.Properties)
+                    .IsUnicode(false)
+                    .HasColumnName("properties");
+                entity.Property(e => e.SubcategoryId).HasColumnName("subcategory_id");
+
+                entity.HasOne(d => d.Subcategory).WithMany(p => p.Products)
+                    .HasForeignKey(d => d.SubcategoryId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("Product.FK_SUBCATEGORY_ID");
+            });
 
             entity.HasOne(d => d.Subcategory).WithMany(p => p.Products)
                 .HasForeignKey(d => d.SubcategoryId)

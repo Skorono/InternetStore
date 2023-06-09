@@ -91,14 +91,7 @@ namespace InternetStore.Controls
             int count = 0;
             float.TryParse(Properties.GetValue("cost")?.ToString(), out cost);
             int.TryParse(Properties.GetValue("count")?.ToString(), out count);
-            object? imageData = Properties.GetValue("image");
-            if (imageData != null)
-            {
-                byte[]? image = Encoding.ASCII.GetBytes(imageData.ToString());
-                Image = image;
-            }
-            else
-                Image = null;
+            Image = ProductModel.Image;
             Cost = cost;
             Count = count;
         }
@@ -132,10 +125,11 @@ namespace InternetStore.Controls
             }
         }
 
-        private void SyncModel()
+        protected virtual void SyncModel()
         {
             if (AllowSync)
             {
+                ProductModel.Image = Image;
                 if (Properties != null)
                     ProductModel.Properties = JsonSerializer.Serialize<Dictionary<string, object>>(Properties);
                 BaseProvider.DbContext.Products.Update(ProductModel);
