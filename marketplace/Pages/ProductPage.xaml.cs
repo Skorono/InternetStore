@@ -34,7 +34,10 @@ namespace InternetStore.Pages
             {
                 ProductPhoto.Visibility = Visibility.Visible;
                 foreach (var editButton in UIHelper.FindAllUid(descriptionGrid, "EditButton")!)
+                {
                     ((Button)editButton).Visibility = Visibility.Visible;
+                    ((Button)editButton).Click += EditDescription;
+                }
             }
             
             ProductName.Text = product.ProductModel.ProductName;
@@ -109,6 +112,21 @@ namespace InternetStore.Pages
                             ((TextBox)sender).Text);
                     }
                 }
+            }
+        }
+
+        private void EditDescription(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var DockPanel = VisualTreeHelper.GetParent((Button)sender) as DockPanel;
+            if (DockPanel != null)
+            {
+                foreach (var child in DockPanel.Children)
+                    if (child.GetType().IsAssignableTo(typeof(TextBox)))
+                    {
+                        ((TextBox)child).IsReadOnly = false;
+                        ((TextBox)child).IsReadOnlyCaretVisible = false;
+                        ((TextBox)child).IsEnabled = true;
+                    }
             }
         }
 
