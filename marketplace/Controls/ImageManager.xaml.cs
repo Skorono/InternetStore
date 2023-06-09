@@ -110,5 +110,13 @@ namespace InternetStore.Controls
             }
             return bytes;
         }
+
+        public static System.Drawing.Image ImageFromBytes(byte[] imgData)
+        {
+            using (var memStream = new MemoryStream(imgData))
+            {
+                return System.Drawing.Image.FromStream(memStream);
+            }
+        }
     }
 }
