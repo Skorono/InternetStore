@@ -72,6 +72,7 @@ namespace InternetStore.Pages
         private void InitSideBar()
         {
             SidePanel = SideBar.GetInstance();
+            SidePanel.CategoriesList.UpdateClickHandler(SortBySubCategory);
             Grid.SetRow(SidePanel, 1);
             Grid.SetColumn(SidePanel, 0);
             Grid.SetRowSpan(SidePanel, 4);
@@ -178,6 +179,21 @@ namespace InternetStore.Pages
         private void ReloadProductList(object sender, RoutedEventArgs e)
         {
             ProductList.Load();
+        }
+
+        private void SortBySubCategory(object sender, RoutedEventArgs e)
+        {
+            var SubCategoryTextBtn = sender as TextBlockButton;
+
+            if (SubCategoryTextBtn == null)
+                return;
+
+            foreach (var subCategory in BaseProvider.DbContext.SubCategories.ToList())
+            {
+                if (subCategory.Name == SubCategoryTextBtn.Text){
+                    ProductList.Sort(subCategory.Id);
+                }
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
             <ScrollViewer Grid.Row="1" Grid.Column="2">
-                <ListView x:Name="OrdersList" HorizontalAlignment="Stretch">
+                <ListView x:Name="OrdersList" HorizontalAlignment="Left">
                 
                 </ListView>
             </ScrollViewer>

@@ -1,21 +1,11 @@
-﻿using DocumentFormat.OpenXml.Drawing.Charts;
-using InternetStore.Controls;
+﻿using InternetStore.Controls;
 using InternetStore.Controls.XAMLControls;
-using System;
+using InternetStore.ModelDB;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Xceed.Wpf.Toolkit;
 
 namespace InternetStore.Pages
 {
@@ -47,7 +37,12 @@ namespace InternetStore.Pages
 
         private void ShowOrders()
         {
-            foreach (var order in BaseProvider.DbContext.Orders.Where(order => order.UserId == UserId))
+            List<Order> orderList = BaseProvider.DbContext.Orders
+                .Where(order => order.UserId == UserId)
+                .ToList();
+            orderList.Reverse();
+
+            foreach (var order in orderList)
             {
                 Orders.Add(new OrderCard(order));
             }

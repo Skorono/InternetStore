@@ -13,6 +13,7 @@
     <None Remove="Assets\Images\camera_200.png" />
     <None Remove="Assets\Images\edit.png" />
     <None Remove="Assets\Images\emptyProduct.png" />
+    <None Remove="Assets\Images\exit.png" />
     <None Remove="Assets\Images\loading.gif" />
     <None Remove="Assets\Images\loading2.gif" />
     <None Remove="Assets\Images\loading3.gif" />
@@ -32,6 +33,7 @@
     <Resource Include="Assets\Images\camera_200.png" />
     <Resource Include="Assets\Images\edit.png" />
     <Resource Include="Assets\Images\emptyProduct.png" />
+    <Resource Include="Assets\Images\exit.png" />
     <Resource Include="Assets\Images\loading.gif" />
     <Resource Include="Assets\Images\loading2.gif" />
     <Resource Include="Assets\Images\loading3.gif" />

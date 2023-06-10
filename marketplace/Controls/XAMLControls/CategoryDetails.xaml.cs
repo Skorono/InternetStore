@@ -1,6 +1,7 @@
 ﻿using InternetStore.ModelDB;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 
@@ -12,7 +13,7 @@ namespace InternetStore.Controls.XAMLControls;
 public partial class CategoryDetails : UserControl
 {
     public Category CategoryModel { get; private set; }
-
+    private RoutedEventHandler ClickHandler = null!;
     List<TextBlockButton> subcategoryList = new();
     public CategoryDetails(Category model)
     {
@@ -34,7 +35,19 @@ public partial class CategoryDetails : UserControl
         {
             TextBlockButton subCategoryTextBlock = new();
             subCategoryTextBlock.Text = subcategory.Name;
+            if (ClickHandler != null)
+                subCategoryTextBlock.Click += ClickHandler;
             subcategoryList.Add(subCategoryTextBlock);
         }
+    }
+
+    public void UpdateClickHandler(RoutedEventHandler handler)
+    {
+        foreach (var subCat in subcategoryList)
+        {
+            subCat.Click -= ClickHandler;
+            subCat.Click += handler;
+        }
+        ClickHandler = handler;
     }
 }

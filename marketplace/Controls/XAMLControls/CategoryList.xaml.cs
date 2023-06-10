@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace InternetStore.Controls.XAMLControls
@@ -9,7 +10,8 @@ namespace InternetStore.Controls.XAMLControls
     /// </summary>
     public partial class CategoryList : UserControl
     {
-        List<CategoryDetails> categoriesList = new();
+        public RoutedEventHandler categoryClickHandler = null!;
+        private List<CategoryDetails> categoriesList = new();
 
         public CategoryList()
         {
@@ -25,6 +27,14 @@ namespace InternetStore.Controls.XAMLControls
                 categoriesList.Add(categoryTextBlock);
             }
             CategoryDetailsList.ItemsSource = categoriesList;
+        }
+
+        public void UpdateClickHandler(RoutedEventHandler handler)
+        {
+            categoryClickHandler = handler;
+            foreach (var cat in categoriesList) {
+                cat.UpdateClickHandler(categoryClickHandler);
+            }
         }
     }
 }

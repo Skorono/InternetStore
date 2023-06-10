@@ -8,6 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock x:Name="InnerBlock"></TextBlock>
+        <Button HorizontalAlignment="Stretch" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0" Click="Clicked">
+            <TextBlock x:Name="InnerBlock"></TextBlock>
+        </Button>
     </Grid>
 </con:ViewControl>

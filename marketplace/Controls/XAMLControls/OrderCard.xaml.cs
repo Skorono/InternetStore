@@ -1,7 +1,4 @@
-﻿using DocumentFormat.OpenXml.Office.CustomUI;
-using InternetStore.ModelDB;
-using InternetStore.Pages;
-using System.Data.Entity.Core.Metadata.Edm;
+﻿using InternetStore.ModelDB;
 using System.Windows.Media;
 
 namespace InternetStore.Controls.XAMLControls
@@ -9,20 +6,14 @@ namespace InternetStore.Controls.XAMLControls
     /// <summary>
     /// Логика взаимодействия для OrderCard.xaml
     /// </summary>
-    public partial class OrderCard : ViewControl
+    public partial class OrderCard : OrderView
     {
-        private Order OrderModel = null!;
+       
 
-        #region [ Binding Fields ]
-        #endregion
-
-        #region [ Binding Properties ]
-        #endregion
-
-        public OrderCard(Order model)
+        public OrderCard(Order model): base(model)
         {
-            OrderModel = model;
             this.DoubleClick += ToOrderPage;
+            DateOfForm = OrderModel.DatetimeOfForm;
             InitializeComponent();
         }
 
