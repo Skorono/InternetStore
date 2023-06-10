@@ -60,7 +60,7 @@
 
                     <con:ItemAcceptableActions x:Name="ManipulationPanel" HorizontalAlignment="Right" Grid.Row="1" Visibility="Collapsed"></con:ItemAcceptableActions>
 
-                    <TextBlock x:Name="CostText" Grid.Row="1" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock x:Name="CostText" Grid.Row="1" Grid.Column="0" Text="{Binding Path=Cost, TargetNullValue=0, StringFormat={}{0:C0}, ConverterCulture=Ru-ru, ConverterParameter=Unicode}" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
 
                     <TextBlock x:Name="DescriptionText" Grid.Row="2" Grid.Column="0" Text="{Binding Path=ItemName, TargetNullValue=Example Name}" FontSize="12" FontFamily="Trebuchet MS" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"  Margin="2"></TextBlock>
                     <Button VerticalAlignment="Center" x:Name="HandledButton" Grid.Row="3" Grid.Column="0" Margin="25 0" Click="Clicked" Style="{DynamicResource MaterialDesignRaisedDarkButton}">В корзину</Button>

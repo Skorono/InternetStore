@@ -174,5 +174,10 @@ namespace InternetStore.Pages
         {
             NavigationService.Navigate(Basket);
         }
+
+        private void ReloadProductList(object sender, RoutedEventArgs e)
+        {
+            ProductList.Load();
+        }
     }
 }

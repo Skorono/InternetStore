@@ -104,7 +104,7 @@ namespace InternetStore.Pages
         private void FormOrder(object sender, RoutedEventArgs e)
         {
             List<BasketItem> orderDetailsList = new();
-            orderDetailsList.AddRange(Products.Where(product => product.IsSelected.IsEnabled == true));
+            orderDetailsList.AddRange(Products.Where(product => product.IsSelected.IsChecked == true));
             
             foreach (var product in orderDetailsList)
             {
@@ -114,12 +114,19 @@ namespace InternetStore.Pages
 
             var userId = new SqlParameter("user_id", UserId);
             var DatetimeOfForm = new SqlParameter("datetime_of_form", DateTime.Now);
+            BaseProvider.CallStoredProcedureByName("FormOrder", userId, DatetimeOfForm);
 
-            var orderId = BaseProvider.CallStoredProcedureByName("FormOrder", userId, DatetimeOfForm);
+            var orderId = new SqlParameter
+            {
+                ParameterName = "order_id",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            BaseProvider.CallStoredProcedureByName("GetOrderID", userId, DatetimeOfForm, orderId);
 
             foreach (var line in orderDetailsList)
             {
-                var orderLineId = new SqlParameter("order_id", orderId);
+                var orderLineId = new SqlParameter("order_id", orderId.Value);
                 var productId = new SqlParameter("product_id", line.ProductModel.Id);
                 BaseProvider.CallStoredProcedureByName("AddLineInOrderDetails", orderLineId, productId);
             }

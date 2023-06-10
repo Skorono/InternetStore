@@ -41,7 +41,7 @@
                     <TextBlock VerticalAlignment="Center" Width="45" Text="{Binding Path=Count, UpdateSourceTrigger=PropertyChanged}" Margin="1 0 1 0" TextTrimming="CharacterEllipsis"></TextBlock>
                     <Button x:Name="DecButton" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"  Width="15" Height="15" Margin="0" Padding="0" Click="Inc">+</Button>
                 </UniformGrid>
-                <TextBlock VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Column="5" FontSize="12" FontWeight="Bold" Text="{Binding Path=Cost}"></TextBlock>
+                <TextBlock VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Column="5" FontSize="12" FontWeight="Bold" Text="{Binding Path=Cost, StringFormat={}{0:C0}, ConverterCulture=Ru-ru, ConverterParameter=Unicode}"></TextBlock>
                 <Button x:Name="DeleteBtn" Width="15" Height="15" Grid.Column="5" HorizontalAlignment="Right" Background="Red"></Button>
             </Grid>
         </materialDesign:Card>

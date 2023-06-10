@@ -28,16 +28,25 @@ namespace InternetStore.Controls
         /// <param name="procedure"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public static int CallStoredProcedureByName(string procedure, params SqlParameter[] parameters)
+        /// 
+
+        private static string GetSQLRaw(string procedure, params SqlParameter[] parameters)
         {
             StringBuilder sqlRequest = new StringBuilder($"EXEC ").AppendFormat(@"{0} ", procedure);
             foreach (SqlParameter parameter in parameters)
             {
                 sqlRequest.AppendFormat("@{0}", parameter.ParameterName);
+                if (parameter.Direction == System.Data.ParameterDirection.Output)
+                    sqlRequest.Append(" OUT");
                 if (parameters.LastOrDefault() != parameter)
                     sqlRequest.Append(", ");
             }
-            return dbContext.Database.ExecuteSqlRaw(sqlRequest.ToString(), parameters);
+            return sqlRequest.ToString();
+        } 
+
+        public static int CallStoredProcedureByName(string procedure, params SqlParameter[] parameters)
+        {
+            return dbContext.Database.ExecuteSqlRaw(GetSQLRaw(procedure, parameters).ToString(), parameters);
         }
 
         public static void Update()
