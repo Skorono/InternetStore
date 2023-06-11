@@ -23,10 +23,11 @@
                 <StackPanel Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch">
                     <TextBlock FontWeight="Bold" Text="{Binding Path=DateOfForm, StringFormat=Заказ от {0:M}, ConverterCulture=Ru-ru}"></TextBlock>
                     <Separator Height="25"></Separator>
-                    <TextBlock></TextBlock>
-                    <ListView x:Name="OrderComposition" HorizontalAlignment="Left">
+                    <ScrollViewer>
+                        <ListView x:Name="OrderComposition" HorizontalAlignment="Left" VerticalAlignment="Top">
                         
-                    </ListView>
+                        </ListView>
+                    </ScrollViewer>
                 </StackPanel>
 
                 <Button x:Name="StatusButton" MaxHeight="65" MaxWidth="75" BorderThickness="1" Grid.Column="1" Background="#FF25C35A" FontSize="12" Padding="0"></Button>
