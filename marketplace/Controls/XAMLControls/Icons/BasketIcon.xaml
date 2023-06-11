@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="0.35*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Button MaxWidth="25" MaxHeight="25" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Content="{Binding Path=Count, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  Padding="0"></Button>
+                <Button Foreground="Black" Background="#FFA49F9F" BorderBrush="#FFA4A2A2" MaxWidth="25" MaxHeight="25" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Content="{Binding Path=Count, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  Padding="0"></Button>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" FontSize="15" >Корзина</TextBlock>
                 <Image MinWidth="25" MinHeight="25" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Source="../../../Assets/Images/basketIcon.png"></Image>
             </Grid>

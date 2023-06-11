@@ -32,5 +32,10 @@ namespace InternetStore.Controls.XAMLControls.Icons
         {
             InitializeComponent();
         }
+
+        public void UpdateBasketCount(object sender, RoutedEventArgs e)
+        {
+            NotifyPropertyChanged("Count");
+        }
     }
 }

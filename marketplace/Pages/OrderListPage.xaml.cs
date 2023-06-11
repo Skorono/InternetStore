@@ -1,6 +1,7 @@
 ﻿using InternetStore.Controls;
 using InternetStore.Controls.XAMLControls;
 using InternetStore.ModelDB;
+using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -23,7 +24,7 @@ namespace InternetStore.Pages
         {
             UserId = UID;
             InitializeComponent();
-            ShowOrders();
+            CreateOrdersCard();
         }
 
         public static OrderListPage GetInstance(int UID)
@@ -35,19 +36,24 @@ namespace InternetStore.Pages
             return _context;
         }
 
-        private void ShowOrders()
+        private void CreateOrdersCard()
         {
             List<Order> orderList = BaseProvider.DbContext.Orders
                 .Where(order => order.UserId == UserId)
                 .ToList();
             orderList.Reverse();
 
-            foreach (var order in orderList)
+            foreach (var order in orderList.Where(_order => Orders.Where(product => product.CardOrderModel == _order).IsNullOrEmpty()))
             {
                 Orders.Add(new OrderCard(order));
             }
             OrdersList.ItemsSource = Orders;
             OrdersList.Items.Refresh();
+        }
+
+        private void  UpdateOrderList(object sender, RoutedEventArgs e)
+        {
+            CreateOrdersCard();
         }
 
         private void GoBack(object sender, RoutedEventArgs e)

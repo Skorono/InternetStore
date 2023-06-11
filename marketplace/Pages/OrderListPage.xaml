@@ -9,7 +9,7 @@
       Title="Заказы">
 
     <Grid>
-        <Grid Background="#FFDCDCDE">
+        <Grid Background="#FFDCDCDE" GotFocus="UpdateOrderList">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="1.5*"></ColumnDefinition>

@@ -139,6 +139,7 @@ namespace InternetStore.Pages
         private void LoadBasketIcon()
         {
             ToolPanel.BasketIcon.DoubleClick += ToBasket;
+            ToolPanel.BasketIcon.GotFocus += ToolPanel.BasketIcon.UpdateBasketCount;
         }
 
         private void ProfileNavigate(object sender, RoutedEventArgs e)

@@ -6,7 +6,7 @@ using DocumentFormat.OpenXml.Office2010.Excel;
 
 namespace InternetStore.Controls
 {
-    public abstract class OrderView: ViewControl
+    public abstract class OrderView : ViewControl
     {
         #region [ Binding Fields ]
 
@@ -28,6 +28,11 @@ namespace InternetStore.Controls
         #endregion
 
         protected Order OrderModel = null!;
+
+        public Order CardOrderModel{
+            get => OrderModel;
+            private set => OrderModel = value;
+        }
 
         public OrderView(Order model)
         {
