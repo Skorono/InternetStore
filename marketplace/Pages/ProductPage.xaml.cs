@@ -1,4 +1,5 @@
 using InternetStore.Controls;
+using InternetStore.ModelDB;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,8 @@ namespace InternetStore.Pages
             if (Product.ProductModel.Image != null)
                 ProductImage.Source = ImageManager.LoadImage(product.ProductModel.Image!);
             else
-                ProductImage.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, "emptyProduct.png"));
+                ProductImage.Source = ImageManager.LoadImage(Path.Combine(Environment.GetEnvironmentVariable("Images")!, 
+                                                                            "emptyProduct.png"));
             if (EditPermission)
             {
                 ProductPhoto.Visibility = Visibility.Visible;
@@ -41,16 +43,18 @@ namespace InternetStore.Pages
             }
             
             ProductName.Text = product.ProductModel.ProductName;
-            CategoryName.Text = BaseProvider.DbContext.SubCategories.Single(category => category.Id == product.ProductModel.SubcategoryId).Name;
+            
+            CategoryName.Text = product.ProductModel.SubcategoryId != null ? BaseProvider.DbContext.SubCategories.Single(category => category.Id == product.ProductModel.SubcategoryId).Name : null;
             ProductCount.Text = product.Count.ToString();
             GenerateProperties();
+            CreateProductDescription();
         }
 
         private void GenerateProperties()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            var SubCategory = BaseProvider.DbContext.SubCategories.Single(subcat => subcat.Id == Product.ProductModel.SubcategoryId);
-            Dictionary<string, object> SubCategoryAttributes = SubCategory.Attributes.Parse<string, object>();
+            var SubCategory = Product.ProductModel.SubcategoryId != null ? BaseProvider.DbContext.SubCategories.Single(subcat => subcat.Id == Product.ProductModel.SubcategoryId) : null;
+            Dictionary<string, object> SubCategoryAttributes = SubCategory?.Attributes.Parse<string, object>();
             if (SubCategoryAttributes != null && Product.Properties != null)
             {
                 var prop = Product.Properties.ToList().Where(dict => SubCategoryAttributes.ContainsKey(dict.Key));
@@ -115,6 +119,18 @@ namespace InternetStore.Pages
             }
         }
 
+        private void CreateProductDescription()
+        {
+            if (EditAccess)
+            {
+                ProductDescription.IsReadOnly = false;
+                ProductDescription.IsReadOnlyCaretVisible = false;
+            }
+            if (Product.Properties != null)
+                if (Product.Properties.ContainsKey("description") && Product.Properties["description"] != null)
+                    ProductDescription.Text = Product.Properties["description"].ToString();
+        }
+
         private void EditDescription(object sender, System.Windows.RoutedEventArgs e)
         {
             var DockPanel = VisualTreeHelper.GetParent((Button)sender) as DockPanel;
@@ -128,6 +144,12 @@ namespace InternetStore.Pages
                         ((TextBox)child).IsEnabled = true;
                     }
             }
+        }
+
+        private void UpdateDescription(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (Product.Properties != null)
+                Product.SetProperty("description", ProductDescription.Text);
         }
 
         private void ChangeImage(object sender, System.Windows.RoutedEventArgs e)

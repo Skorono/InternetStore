@@ -25,7 +25,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Slider x:Name="CostSlider" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" ValueChanged="OnRangeChange"></Slider>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=MinCost, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Path=MaxCost, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=MinCost, UpdateSourceTrigger=LostFocus, Mode=Default}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Path=MaxCost, UpdateSourceTrigger=LostFocus, Mode=Default}"></TextBox>
     </Grid>
 </con:ViewControl>

@@ -40,7 +40,7 @@ namespace InternetStore.Controls.XAMLControls
             set
             {
                 SetValue(MaxCostField, value);
-                NotifyPropertyChanged(nameof(MinCost));
+                NotifyPropertyChanged(nameof(MaxCost));
             }
         }
         #endregion
@@ -50,6 +50,8 @@ namespace InternetStore.Controls.XAMLControls
             InitializeComponent();
             MinCost = 0;
             MaxCost = 1000000;
+            CostSlider.Minimum = MinCost;
+            CostSlider.Maximum = MaxCost;
         }
 
         public static CostPicker GetInstance()
@@ -68,9 +70,7 @@ namespace InternetStore.Controls.XAMLControls
         {
             base.NotifyPropertyChanged(propertyName);
             CostSlider.Minimum = MinCost;
-            CostSlider.Maximum = MaxCost;
-            CostSlider.SelectionStart = MinCost;
-            CostSlider.SelectionEnd = MaxCost;
+            CostSlider.Value = MaxCost;
         }
     }
 }

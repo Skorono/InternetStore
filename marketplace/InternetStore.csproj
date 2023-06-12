@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\backetIcon.png" />
     <None Remove="Assets\Images\camera_200.png" />
     <None Remove="Assets\Images\edit.png" />
     <None Remove="Assets\Images\emptyProduct.png" />
@@ -30,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\backetIcon.png" />
     <Resource Include="Assets\Images\camera_200.png" />
     <Resource Include="Assets\Images\edit.png" />
     <Resource Include="Assets\Images\emptyProduct.png" />
