@@ -90,7 +90,7 @@
 
                                 <DockPanel Grid.Column="1" Grid.Row="1">
                                     <TextBox x:Name="CategoryName" TextChanged="PropertyChanged" VerticalAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" FontFamily="Trebuchet MS" FontSize="14" DockPanel.Dock="Left" IsReadOnly="True" IsReadOnlyCaretVisible="False" IsEnabled="False"></TextBox>
-                                    <Button Uid="EditButton" Visibility="Collapsed" Width="20" Height="20" DockPanel.Dock="Right" HorizontalAlignment="Right" Background="White" BorderBrush="White" Padding="2">
+                                    <Button x:Name="EditCategoryBtn" Click="EditCategory" Uid="EditButton" Visibility="Collapsed" Width="20" Height="20" DockPanel.Dock="Right" HorizontalAlignment="Right" Background="White" BorderBrush="White" Padding="2">
                                         <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="../../Assets/Images/edit.png"></Image>
                                     </Button>
                                 </DockPanel>
@@ -124,7 +124,7 @@
                         <TextBox x:Name="ProductDescription" IsReadOnly="True" IsReadOnlyCaretVisible="True" TextWrapping="Wrap" FontSize="16"  FontFamily="Trebuchet MS" LostFocus="UpdateDescription"></TextBox>
                     </materialDesign:Card>
 
-                    <Button Grid.Column="3" Grid.Row="2" VerticalAlignment="Bottom" Background="LimeGreen" Click="ToMainPage">Назад</Button>
+                    <Button x:Name="ActionButton" Grid.Column="3" Grid.Row="2" VerticalAlignment="Bottom" Background="LimeGreen" Click="ToMainPage">Назад</Button>
                 </Grid>
             </ScrollViewer>
         </materialDesign:Card>

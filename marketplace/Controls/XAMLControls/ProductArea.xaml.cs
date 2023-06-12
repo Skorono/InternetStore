@@ -1,11 +1,13 @@
 ﻿using InternetStore.Controls.Builders;
 using InternetStore.ModelDB;
+using InternetStore.Pages;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -136,11 +138,6 @@ namespace InternetStore.Controls.XAMLControls
             SortParam(product => product.ProductModel.SubcategoryId == SubCategoryID);
         }
 
-        private void ToAdddingPage(object sender, RoutedEventArgs e)
-        {
-            //NavigationService.Navigate(new );
-        }
-
         public void NotifyChangeClickHandler(RoutedEventHandler handler)
         {
             ItemClickHandler = handler;
@@ -149,6 +146,18 @@ namespace InternetStore.Controls.XAMLControls
                 if (item.AllowSync)
                     item.UpdateClickHandler(handler);
             }
+        }
+
+        public void Add(AbsProductView product)
+        {
+            ItemList.Add(product);
+            ListBox.ItemsSource = ItemList;
+        }
+        
+        public void Remove(AbsProductView product)
+        {
+            ItemList.Remove(product);
+            ListBox.ItemsSource = ItemList;
         }
 
         public void NotifyChangeDoubleClickHandler(RoutedEventHandler handler)

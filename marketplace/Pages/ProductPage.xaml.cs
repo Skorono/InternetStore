@@ -146,6 +146,21 @@ namespace InternetStore.Pages
             }
         }
 
+        private void EditCategory(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var DockPanel = VisualTreeHelper.GetParent((Button)sender) as DockPanel;
+            if (DockPanel != null)
+            {
+                foreach (var child in DockPanel.Children)
+                    if (child.GetType().IsAssignableTo(typeof(TextBox)))
+                        ((TextBox)child).Visibility = Visibility.Collapsed;
+                var CategoryList = new ComboBox();
+                DockPanel.Children.Add(CategoryList);
+                foreach (var subcat in BaseProvider.DbContext.SubCategories)
+                    CategoryList.Items.Add(subcat.Name);
+            }
+        }
+
         private void UpdateDescription(object sender, System.Windows.RoutedEventArgs e)
         {
             if (Product.Properties != null)
