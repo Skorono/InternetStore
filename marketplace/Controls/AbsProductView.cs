@@ -23,6 +23,7 @@ namespace InternetStore.Controls
             set
             {
                 count = value;
+                SetOrAddProperty("count", value);
                 SyncModel();
             }
         }
@@ -68,6 +69,7 @@ namespace InternetStore.Controls
             set
             {
                 SetValue(PropertyCost, value);
+                SetOrAddProperty("cost", value);
                 SyncModel();
             }
         }
@@ -100,6 +102,8 @@ namespace InternetStore.Controls
         {
             string jsonString = ProductModel.Properties;
             Properties = jsonString.Parse<string, object>();
+            if (Properties == null)
+                Properties = new Dictionary<string, object>();
         }
 
         public virtual void UpdateClickHandler(RoutedEventHandler handler)
@@ -125,6 +129,13 @@ namespace InternetStore.Controls
             }
         }
 
+        public virtual void SetOrAddProperty(string key, object value)
+        {
+            if (!Properties.ContainsKey(key))
+                Properties.Add(key, count);
+            SetProperty(key, value);
+        }
+
         protected virtual void SyncModel()
         {
             if (AllowSync)
@@ -132,8 +143,11 @@ namespace InternetStore.Controls
                 ProductModel.Image = Image;
                 if (Properties != null)
                     ProductModel.Properties = JsonSerializer.Serialize<Dictionary<string, object>>(Properties);
-                BaseProvider.DbContext.Products.Update(ProductModel);
-                BaseProvider.DbContext.SaveChangesAsync();
+                if (ProductModel.Id > 0)
+                    BaseProvider.DbContext.Products.Update(ProductModel);
+                else
+                    BaseProvider.DbContext.Products.Add(ProductModel);
+                BaseProvider.DbContext.SaveChanges();
             }
         }
     }

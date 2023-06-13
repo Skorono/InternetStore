@@ -46,6 +46,7 @@ namespace InternetStore.Pages
             
             CategoryName.Text = product.ProductModel.SubcategoryId != null ? BaseProvider.DbContext.SubCategories.Single(category => category.Id == product.ProductModel.SubcategoryId).Name : null;
             ProductCount.Text = product.Count.ToString();
+            ProductCost.Text = product.Cost.ToString();
             GenerateProperties();
             CreateProductDescription();
         }
@@ -94,8 +95,18 @@ namespace InternetStore.Pages
             return PropertyLine;
         }
 
-        private void ToMainPage(object sender, System.Windows.RoutedEventArgs e)
+        private void SaveChanges(object sender, System.Windows.RoutedEventArgs e)
         {
+            if (SubCategoriesList.Visibility== Visibility.Visible && SubCategoriesList.SelectedItem != null)
+                foreach (var subcat in BaseProvider.DbContext.SubCategories) {
+                    if (SubCategoriesList.SelectedItem.ToString() == subcat.Name)
+                    {
+                        Product.ProductModel.SubcategoryId = subcat.Id;
+                    }
+                }
+            Product.ProductModel.ProductName = ProductName.Text;
+            Product.Cost = float.Parse(ProductCost.Text);
+            Product.Count = int.Parse(ProductCount.Text);
             NavigationService.GoBack();
         }
 
@@ -154,10 +165,9 @@ namespace InternetStore.Pages
                 foreach (var child in DockPanel.Children)
                     if (child.GetType().IsAssignableTo(typeof(TextBox)))
                         ((TextBox)child).Visibility = Visibility.Collapsed;
-                var CategoryList = new ComboBox();
-                DockPanel.Children.Add(CategoryList);
+                SubCategoriesList.Visibility = Visibility.Visible;
                 foreach (var subcat in BaseProvider.DbContext.SubCategories)
-                    CategoryList.Items.Add(subcat.Name);
+                    SubCategoriesList.Items.Add(subcat.Name);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace InternetStore.ModelDB;
 
@@ -12,7 +13,7 @@ public partial class Order
 
     public DateTime? DatetimeOfPayment { get; set; }
 
-    public bool Paid { get; set; }
+    public int? Cost { get; set; }
 
-    public virtual User? User { get; set; }
+    public bool Paid { get; set; }
 }

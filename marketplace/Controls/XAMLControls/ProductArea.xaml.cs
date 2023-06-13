@@ -82,7 +82,7 @@ namespace InternetStore.Controls.XAMLControls
             CardBuilder.SetFontSize("DescriptionText", 16).SetFontWidth("DescriptionText", FontWeights.Bold);
             CardBuilder.SetVisibility("HandledButton", Visibility.Collapsed);
             CardBuilder.SetVisibility("CostText", Visibility.Collapsed);
-            CardBuilder.SetDoubleClickHandler(ItemDoubleClickHandler);
+            CardBuilder.SetDoubleClickHandler(AddCardHandler);
 
             ItemList.Add(CardBuilder.Build());
         }
@@ -158,6 +158,15 @@ namespace InternetStore.Controls.XAMLControls
         {
             ItemList.Remove(product);
             ListBox.ItemsSource = ItemList;
+        }
+
+        private void AddCardHandler(object sender, RoutedEventArgs e)
+        {
+            ItemBuilder ItemBuilder = new(new Product());
+            ItemBuilder.isEdittable().isChangeable().isSortable();
+            Item item = ItemBuilder.Build();
+            NavigationService.GetNavigationService(this).Navigate(new ProductPage(item, true));
+            Add(item);
         }
 
         public void NotifyChangeDoubleClickHandler(RoutedEventHandler handler)

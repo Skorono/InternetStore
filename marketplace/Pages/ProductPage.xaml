@@ -79,7 +79,8 @@
                                 
                                 <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="0">Название товара:</TextBlock>
                                 <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="1">Категория:</TextBlock>
-                                <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="2">Количество в наличии:</TextBlock>
+                                <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="2">Стоимость:</TextBlock>
+                                <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Bold" Grid.Column="0" Grid.Row="3">Количество в наличии:</TextBlock>
 
                                 <DockPanel Grid.Column="1" Grid.Row="0">
                                     <TextBox x:Name="ProductName" TextChanged="PropertyChanged" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" FontFamily="Trebuchet MS" FontSize="14" DockPanel.Dock="Left" IsReadOnlyCaretVisible="True" IsEnabled="False"></TextBox>
@@ -90,18 +91,25 @@
 
                                 <DockPanel Grid.Column="1" Grid.Row="1">
                                     <TextBox x:Name="CategoryName" TextChanged="PropertyChanged" VerticalAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" FontFamily="Trebuchet MS" FontSize="14" DockPanel.Dock="Left" IsReadOnly="True" IsReadOnlyCaretVisible="False" IsEnabled="False"></TextBox>
+                                    <ComboBox Visibility="Collapsed" x:Name="SubCategoriesList"></ComboBox>
                                     <Button x:Name="EditCategoryBtn" Click="EditCategory" Uid="EditButton" Visibility="Collapsed" Width="20" Height="20" DockPanel.Dock="Right" HorizontalAlignment="Right" Background="White" BorderBrush="White" Padding="2">
                                         <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="../../Assets/Images/edit.png"></Image>
                                     </Button>
                                 </DockPanel>
 
                                 <DockPanel Grid.Column="1" Grid.Row="2">
-                                    <TextBox x:Name="ProductCount" TextChanged="PropertyChanged" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap" FontFamily="Trebuchet MS" FontSize="14" DockPanel.Dock="Left" IsReadOnly="True" IsReadOnlyCaretVisible="True" IsEnabled="False"></TextBox>
+                                    <TextBox x:Name="ProductCost" TextChanged="PropertyChanged" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap" FontFamily="Trebuchet MS" FontSize="14" DockPanel.Dock="Left" IsReadOnly="True" IsReadOnlyCaretVisible="True" IsEnabled="False"></TextBox>
                                     <Button Uid="EditButton" Visibility="Collapsed" Width="20" Height="20" DockPanel.Dock="Right" HorizontalAlignment="Right" Background="White" BorderBrush="White" Padding="2">
                                         <Image AutomationProperties.AutomationId="Center" VerticalAlignment="Center" Source="../../Assets/Images/edit.png"></Image>
                                     </Button>
                                 </DockPanel>
                                 
+                                <DockPanel Grid.Column="1" Grid.Row="3">
+                                    <TextBox x:Name="ProductCount" TextChanged="PropertyChanged" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap" FontFamily="Trebuchet MS" FontSize="14" DockPanel.Dock="Left" IsReadOnly="True" IsReadOnlyCaretVisible="True" IsEnabled="False"></TextBox>
+                                    <Button Uid="EditButton" Visibility="Collapsed" Width="20" Height="20" DockPanel.Dock="Right" HorizontalAlignment="Right" Background="White" BorderBrush="White" Padding="2">
+                                        <Image AutomationProperties.AutomationId="Center" VerticalAlignment="Center" Source="../../Assets/Images/edit.png"></Image>
+                                    </Button>
+                                </DockPanel>
                             </Grid>
                         </materialDesign:Card>
                     </materialDesign:Card>
@@ -124,7 +132,7 @@
                         <TextBox x:Name="ProductDescription" IsReadOnly="True" IsReadOnlyCaretVisible="True" TextWrapping="Wrap" FontSize="16"  FontFamily="Trebuchet MS" LostFocus="UpdateDescription"></TextBox>
                     </materialDesign:Card>
 
-                    <Button x:Name="ActionButton" Grid.Column="3" Grid.Row="2" VerticalAlignment="Bottom" Background="LimeGreen" Click="ToMainPage">Назад</Button>
+                    <Button x:Name="ActionButton" Grid.Column="3" Grid.Row="2" VerticalAlignment="Bottom" Background="LimeGreen" Click="SaveChanges">Назад</Button>
                 </Grid>
             </ScrollViewer>
         </materialDesign:Card>

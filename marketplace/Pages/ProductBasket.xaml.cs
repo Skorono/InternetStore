@@ -104,6 +104,7 @@ namespace InternetStore.Pages
         private void FormOrder(object sender, RoutedEventArgs e)
         {
             List<BasketItem> orderDetailsList = new();
+            int TotalCost = 0;
             orderDetailsList.AddRange(Products.Where(product => product.IsSelected.IsChecked == true));
             
             foreach (var product in orderDetailsList)
@@ -123,13 +124,17 @@ namespace InternetStore.Pages
                 Direction = System.Data.ParameterDirection.Output
             };
             BaseProvider.CallStoredProcedureByName("GetOrderID", userId, DatetimeOfForm, orderId);
-
+            
+            var orderLineId = new SqlParameter("order_id", orderId.Value);
             foreach (var line in orderDetailsList)
             {
-                var orderLineId = new SqlParameter("order_id", orderId.Value);
                 var productId = new SqlParameter("product_id", line.ProductModel.Id);
-                BaseProvider.CallStoredProcedureByName("AddLineInOrderDetails", orderLineId, productId);
+                var count = new SqlParameter("product_id", line.Count);
+                BaseProvider.CallStoredProcedureByName("AddLineInOrderDetails", orderLineId, productId, count);
+                TotalCost += (int)line.Cost * line.Count;
             }
+            var OrderCost = new SqlParameter("cost", TotalCost);
+            BaseProvider.CallStoredProcedureByName("UpdateOrderCost", orderLineId, OrderCost);
             BaseProvider.DbContext.SaveChangesAsync();
         }
 

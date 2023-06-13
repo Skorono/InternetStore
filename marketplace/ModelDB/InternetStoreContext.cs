@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InternetStore.ModelDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternetStore.ModelDB;
 
@@ -89,6 +90,7 @@ public partial class InternetStoreContext : DbContext
             entity.ToTable("Order");
 
             entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.Cost).HasColumnName("cost");
             entity.Property(e => e.DatetimeOfForm)
                 .HasColumnType("datetime")
                 .HasColumnName("datetime_of_form");
@@ -97,16 +99,13 @@ public partial class InternetStoreContext : DbContext
                 .HasColumnName("datetime_of_payment");
             entity.Property(e => e.Paid).HasColumnName("paid");
             entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("Order.FK_USER_ID");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
             entity.HasNoKey();
 
+            entity.Property(e => e.Count).HasColumnName("count");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.ProductId).HasColumnName("product_id");
 
